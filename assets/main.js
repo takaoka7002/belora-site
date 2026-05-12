@@ -83,5 +83,25 @@
         tocs[k].removeAttribute('open');
       }
     }
+
+    // モバイル：下にスクロール時にナビ＆ロゴを隠す（上にスクロール時に再表示）
+    // ※CSSのメディアクエリで効果はモバイルのみ。デスクトップではclass付与しても見た目変わらない
+    var lastScroll = 0;
+    var ticking = false;
+    var threshold = 80;
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      window.requestAnimationFrame(function () {
+        var current = window.scrollY || window.pageYOffset;
+        if (current > lastScroll && current > threshold) {
+          document.body.classList.add('nav-hidden');
+        } else if (current < lastScroll - 5 || current <= threshold) {
+          document.body.classList.remove('nav-hidden');
+        }
+        lastScroll = current;
+        ticking = false;
+      });
+      ticking = true;
+    }, { passive: true });
   });
 })();

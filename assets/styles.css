@@ -214,6 +214,21 @@
         nav button, nav a {
             font-size:.72rem;
         }
+        /* スクロール時にナビ＆ロゴを隠す（モバイルのみ） */
+        .site-logo, nav {
+            transition: transform 0.35s ease, opacity 0.35s ease;
+            will-change: transform, opacity;
+        }
+        body.nav-hidden .site-logo {
+            transform: translateY(-120%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        body.nav-hidden nav {
+            transform: translateX(50%) translateY(-180%);
+            opacity: 0;
+            pointer-events: none;
+        }
     }
 
     .content-block{
