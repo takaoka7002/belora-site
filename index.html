@@ -42,6 +42,20 @@
 
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+
+    <!-- Google tag (gtag.js) - GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2D25ZXCXPR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2D25ZXCXPR', {
+        'anonymize_ip': true,
+        'page_title': document.title,
+        'page_location': window.location.href
+      });
+    </script>
 
     <!-- Structured Data: Organization -->
     <script type="application/ld+json">
