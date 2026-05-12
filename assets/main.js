@@ -75,5 +75,13 @@
       var navEl = document.getElementById(navId);
       if (navEl) navEl.classList.add('active-nav');
     }
+
+    // スマホでは記事目次を初期状態で閉じる
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      var tocs = document.querySelectorAll('details.article-toc[open]');
+      for (var k = 0; k < tocs.length; k++) {
+        tocs[k].removeAttribute('open');
+      }
+    }
   });
 })();
