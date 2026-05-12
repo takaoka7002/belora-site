@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CONTACT / DEMO | BELORA サージカルルーペお問い合わせ｜デモ・見積依頼</title>
+    <meta name="description" content="BELORAサージカルルーペへのお問い合わせ・デモ依頼・お見積り・修理相談はこちら。医療関係者・個人向けと企業・代理店向けの2種類のフォームをご用意。お電話・メールでもお気軽にご相談ください。">
+    <meta name="keywords" content="サージカルルーペ お問い合わせ,Belora 見積もり,ルーペ デモ依頼,ルーペ 試着,代理店 募集 医療機器,B2B 医療機器">
+    <meta name="author" content="株式会社Belora">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0a0f">
+
+    <link rel="canonical" href="https://belora.jp/contact/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://belora.jp/contact/">
+    <meta property="og:title" content="CONTACT / DEMO | BELORA お問い合わせ">
+    <meta property="og:description" content="デモ試着、製品相談、協業のご相談など、用途に合わせてお問い合わせください。">
+    <meta property="og:image" content="https://belora.jp/og-image.jpg">
+    <meta property="og:site_name" content="BELORA">
+    <meta property="og:locale" content="ja_JP">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://belora.jp/contact/">
+    <meta name="twitter:title" content="CONTACT / DEMO | BELORA お問い合わせ">
+    <meta name="twitter:description" content="デモ試着、製品相談、協業のご相談など。">
+    <meta name="twitter:image" content="https://belora.jp/og-image.jpg">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://script.google.com">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2D25ZXCXPR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2D25ZXCXPR', { 'anonymize_ip': true });
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "CONTACT / DEMO",
+      "url": "https://belora.jp/contact/",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "株式会社Belora",
+        "email": "info@belora.jp"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "TOP", "item": "https://belora.jp/" },
+        { "@type": "ListItem", "position": 2, "name": "CONTACT", "item": "https://belora.jp/contact/" }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+<div id="medical-disclaimer-modal" class="modal-overlay">
+    <div class="modal-content">
+        <h2 class="modal-title">医療関係者確認</h2>
+        <p class="modal-text">
+            本サイトは、国内の医療関係者（医師、歯科医師、歯科衛生士、獣医師等）を対象に、弊社の医療機器に関する情報を提供することを目的としています。<br>
+            一般の方に対する情報提供を目的としたものではありませんので、ご了承ください。
+        </p>
+        <p class="modal-question">あなたは医療関係者ですか？</p>
+        <div class="modal-buttons">
+            <button class="btn-solid" onclick="acceptDisclaimer()">はい（医療関係者です）</button>
+            <button class="btn-outline" onclick="rejectDisclaimer()">いいえ</button>
+        </div>
+        <p id="reject-message" class="reject-message" style="display: none;">
+            誠に申し訳ございませんが、当サイトは医療関係者の方のみを対象としております。
+        </p>
+    </div>
+</div>
+
+<a href="/" class="site-logo">BELORA<span>&reg;</span></a>
+
+<nav>
+    <a href="/" id="nav-top">TOP</a>
+    <a href="/philosophy/" id="nav-philosophy">PHILOSOPHY</a>
+    <a href="/products/" id="nav-products">PRODUCTS</a>
+    <a href="/flow/" id="nav-flow">FLOW</a>
+    <a href="/support/" id="nav-support">SUPPORT</a>
+    <a href="/contact/" id="nav-contact">CONTACT</a>
+</nav>
+
+<div class="main-content">
+
+    <section class="content-block">
+        <h1 class="title-gradient">CONTACT / DEMO</h1>
+        <p class="subtitle" style="margin-bottom:28px;">
+            デモ試着、製品相談、協業のご相談など、用途に合わせて以下よりお問い合わせください。
+        </p>
+
+        <div class="contact-tabs">
+            <button class="contact-tab-btn active" id="btn-tab-individual" onclick="switchContactTab('individual')">医療関係者様・個人向け</button>
+            <button class="contact-tab-btn" id="btn-tab-corporate" onclick="switchContactTab('corporate')">企業・代理店様向け</button>
+        </div>
+
+        <div id="form-individual" class="contact-form-wrapper active">
+            <form
+                name="contact-individual"
+                onsubmit="handleFormSubmit(event)"
+                action="https://script.google.com/macros/s/AKfycbwnubQQ9i1rPYAFI9wEVRLKWZ1f8eIPgjhRjTZM4K2F7C-B3RFwzyaNj938RHcyvc_O/exec"
+                class="form-container"
+            >
+                <input type="hidden" name="form-name" value="contact-individual">
+
+                <div class="form-group">
+                    <label class="form-label">お問い合わせ内容 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                    <div class="checkbox-group">
+                        <label class="check-label"><input type="checkbox" name="inquiry_type" value="デモ・製品試着"> デモ・製品試着</label>
+                        <label class="check-label"><input type="checkbox" name="inquiry_type" value="お見積り"> お見積り</label>
+                        <label class="check-label"><input type="checkbox" name="inquiry_type" value="修理・メンテナンス相談"> 修理・メンテナンス相談</label>
+                        <label class="check-label"><input type="checkbox" name="inquiry_type" value="その他"> その他</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">ご職種・区分 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                    <div class="radio-group">
+                        <label class="check-label"><input type="radio" name="job" value="医師" required> 医師</label>
+                        <label class="check-label"><input type="radio" name="job" value="歯科医師"> 歯科医師</label>
+                        <label class="check-label"><input type="radio" name="job" value="歯科衛生士"> 歯科衛生士</label>
+                        <label class="check-label"><input type="radio" name="job" value="獣医師"> 獣医師</label>
+                        <label class="check-label"><input type="radio" name="job" value="その他業種"> その他業種</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">お名前 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                    <input type="text" name="name" class="form-input" required placeholder="例：山田 太郎">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">メールアドレス <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                    <input type="email" name="email" class="form-input" required placeholder="例：info@belora.jp">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">電話番号</label>
+                    <input type="tel" name="phone" class="form-input" placeholder="例：03-0000-0000">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">備考・ご質問</label>
+                    <textarea name="message" class="form-input" rows="5" placeholder=""></textarea>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 24px;">
+                    <div class="notice-box" style="margin: 0; padding: 12px 16px; font-size: 0.85rem; background: transparent; border: 1px solid rgba(255,255,255,0.1);">
+                        お客様から収集する個人情報は、当社が定める<a href="/privacy/" style="color: var(--accent); text-decoration: underline;">個人情報保護方針（プライバシーポリシー）</a>に則って厳重に管理いたします。
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">送信する</button>
+            </form>
+        </div>
+
+        <div id="form-corporate" class="contact-form-wrapper">
+            <form
+                name="contact-corporate"
+                onsubmit="handleFormSubmit(event)"
+                action="https://script.google.com/macros/s/AKfycbwnubQQ9i1rPYAFI9wEVRLKWZ1f8eIPgjhRjTZM4K2F7C-B3RFwzyaNj938RHcyvc_O/exec"
+                class="form-container"
+            >
+                <input type="hidden" name="form-name" value="contact-corporate">
+
+                <div class="form-group">
+                    <label class="form-label">お問い合わせ内容 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                    <div class="checkbox-group">
+                        <label class="check-label"><input type="checkbox" name="corp_type" value="販売代理店に関するご相談"> 販売代理店に関するご相談</label>
+                        <label class="check-label"><input type="checkbox" name="corp_type" value="共同開発・技術提携"> 共同開発・技術提携</label>
+                        <label class="check-label"><input type="checkbox" name="corp_type" value="その他"> その他</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">貴社名・法人名 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                    <input type="text" name="company" class="form-input" required placeholder="例：株式会社Belora">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">部署名・役職</label>
+                    <input type="text" name="department" class="form-input" placeholder="例：営業部 マネージャー">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">ご担当者名 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                    <input type="text" name="person_name" class="form-input" required placeholder="例：山田 太郎">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">メールアドレス <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                    <input type="email" name="email" class="form-input" required placeholder="例：info@belora.jp">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">電話番号</label>
+                    <input type="tel" name="phone" class="form-input" placeholder="例：03-0000-0000">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">ご相談内容詳細 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                    <textarea name="message" class="form-input" rows="5" required placeholder="協業のご提案内容やご質問などをご記入ください。"></textarea>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 24px;">
+                    <div class="notice-box" style="margin: 0; padding: 12px 16px; font-size: 0.85rem; background: transparent; border: 1px solid rgba(255,255,255,0.1);">
+                        ご記入いただいた個人情報は、当社が定める<a href="/privacy/" style="color: var(--accent); text-decoration: underline;">個人情報保護方針（プライバシーポリシー）</a>に則って厳重に管理いたします。
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">送信する</button>
+            </form>
+        </div>
+
+    </section>
+
+</div>
+
+<footer class="global-footer">
+    <div class="medical-license">
+        本サイトには医療従事者・医療関係者向け情報が含まれます。<br>
+        ※各製品の医療機器届出番号、添付文書情報等は、発売準備が整い次第掲載いたします。
+    </div>
+    <div class="footer-links">
+        <a href="/support/">サポート / FAQ</a>
+        <a href="/company/">会社概要</a>
+        <a href="/privacy/">プライバシーポリシー</a>
+        <a href="/legal/">特定商取引法に基づく表記</a>
+    </div>
+    <p>
+        <a href="https://www.instagram.com/belora_surgical_loupes/" target="_blank" rel="noopener noreferrer" style="color: white;">
+            公式Instagramはこちら
+        </a>
+    </p>
+    <div class="copyright">&copy; 2026 Belora Inc. All Rights Reserved.</div>
+</footer>
+
+<script src="/assets/main.js"></script>
+<script src="/assets/contact.js"></script>
+
+</body>
+</html>
