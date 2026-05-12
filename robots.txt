@@ -1,0 +1,9 @@
+# robots.txt for BELORA (https://belora.jp)
+# 株式会社Belora 公式サイト
+
+User-agent: *
+Allow: /
+Disallow: /thank-you.html
+
+# サイトマップ
+Sitemap: https://belora.jp/sitemap.xml
