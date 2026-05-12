@@ -103,5 +103,35 @@
       });
       ticking = true;
     }, { passive: true });
+
+    // スクロールリビール演出（IntersectionObserver）
+    // 各コンテンツブロック / 記事の見出し・パラグラフを順次フェードイン
+    var revealSelectors = [
+      '.content-block',
+      '.feature-card',
+      '.philo-item',
+      '.flow-step',
+      '.faq-item',
+      '.article-body h2',
+      '.article-body h3',
+      '.article-body p',
+      '.article-body blockquote',
+      '.article-callout',
+      '.article-cta',
+      '.article-card'
+    ];
+    var targets = document.querySelectorAll(revealSelectors.join(','));
+    if ('IntersectionObserver' in window && targets.length) {
+      targets.forEach(function (el) { el.classList.add('reveal'); });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      targets.forEach(function (el) { io.observe(el); });
+    }
   });
 })();
