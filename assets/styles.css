@@ -143,25 +143,15 @@
         letter-spacing:.22em;
         text-decoration:none;
         cursor:pointer;
-        font-weight: bold;
+        font-weight:bold;
         padding:12px 26px;
-        /* グラデーション文字（テキストにクリップ） */
-        background:linear-gradient(45deg,#c2bfff,#ffffff,#f0c4d3);
-        -webkit-background-clip:text;
-        background-clip:text;
-        -webkit-text-fill-color:transparent;
-    }
-    .site-logo::before{
-        content:"";
-        position:absolute;
-        inset:0;
         border-radius:999px;
         border:1px solid rgba(255,255,255,0.15);
-        background:rgba(10, 10, 15, 0.7);
+        background:rgba(10, 10, 15, 0.85);
         backdrop-filter:blur(16px);
         -webkit-backdrop-filter:blur(16px);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        z-index:-1;
+        box-shadow:0 4px 20px rgba(0,0,0,0.2);
+        color:#fff;
     }
 
     /* Rマークの文字サイズと位置を調整 */
