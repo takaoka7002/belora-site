@@ -1545,3 +1545,205 @@ nav a {
         grid-template-columns: 1fr 1fr;
     }
 }
+
+/* ============================================================
+   ▼▼▼ section-dark : CSS変数をローカルに上書きしてダーク版へ ▼▼▼
+   各ページの <section class="section-dark"> として使う。
+   子要素は var(--text)/--muted/--glass-bg 等を参照しているので
+   配色が自動で反転する。一部 hardcode の色は明示的に上書き。
+   ============================================================ */
+.section-dark {
+    --bg: #050508;
+    --bg-soft: #12121a;
+    --text: #fdfdfd;
+    --muted: #c4c4d4;
+    --sub: #8d8d98;
+    --line: rgba(255, 255, 255, 0.1);
+    --line-strong: rgba(255, 255, 255, 0.25);
+    --accent: #c2bfff;
+    --accent-soft: rgba(194, 191, 255, 0.12);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.12);
+
+    background-color: var(--bg);
+    color: var(--text);
+    position: relative;
+    z-index: 2;  /* 背景ノイズより前 */
+}
+
+/* グラデーション文字をダーク背景向け（明るい色合い）に */
+.section-dark .title-gradient,
+.section-dark .hero-title,
+.section-dark .article-h1 {
+    background: linear-gradient(45deg, #c2bfff, #ffffff, #f0c4d3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* ボタン：主ボタンを白＋黒文字に反転 */
+.section-dark .btn-solid,
+.section-dark .primary-cta,
+.section-dark .submit-btn {
+    background: #ffffff;
+    color: #050508;
+    border-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+}
+.section-dark .btn-solid:hover,
+.section-dark .primary-cta:hover,
+.section-dark .submit-btn:hover:not(:disabled) {
+    background: var(--accent);
+    color: #050508;
+    border-color: var(--accent);
+    box-shadow: 0 8px 25px rgba(194, 191, 255, 0.3);
+}
+.section-dark .btn-outline,
+.section-dark .view-btn {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+.section-dark .btn-outline:hover,
+.section-dark .view-btn:hover {
+    background: #ffffff;
+    color: #050508;
+    border-color: #ffffff;
+}
+.section-dark .back-btn {
+    color: var(--muted);
+    border-color: rgba(255, 255, 255, 0.2);
+    background: transparent;
+}
+.section-dark .back-btn:hover {
+    color: #050508;
+    background: #ffffff;
+    border-color: #ffffff;
+}
+
+/* hardcodeされていた色を明示上書き */
+.section-dark .feature-card-title,
+.section-dark .philo-h3,
+.section-dark .flow-title,
+.section-dark .detail-title,
+.section-dark .faq-q,
+.section-dark .article-cta-title,
+.section-dark .article-card-title,
+.section-dark .form-label,
+.section-dark .modal-title {
+    color: var(--text);
+}
+.section-dark .feature-card-text,
+.section-dark .faq-a,
+.section-dark .flow-text,
+.section-dark .detail-text,
+.section-dark .article-card-desc,
+.section-dark .article-meta {
+    color: var(--muted);
+}
+.section-dark .feature-card,
+.section-dark .article-cta,
+.section-dark .article-callout,
+.section-dark .article-card,
+.section-dark .lens-circle,
+.section-dark .form-container,
+.section-dark .article-toc {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+}
+.section-dark .article-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(194, 191, 255, 0.4);
+}
+.section-dark .feature-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(194, 191, 255, 0.4);
+}
+
+/* フォームinputをダーク向けに */
+.section-dark .form-input,
+.section-dark .form-select {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: var(--glass-border);
+    color: var(--text);
+}
+.section-dark .form-input:focus,
+.section-dark .form-select:focus {
+    border-color: var(--accent);
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 0 3px rgba(194, 191, 255, 0.2);
+}
+.section-dark .contact-tab-btn {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    color: var(--muted);
+}
+.section-dark .contact-tab-btn.active {
+    background: #ffffff;
+    color: #050508;
+    border-color: #ffffff;
+}
+
+/* spec-table / fov-list */
+.section-dark .spec-table th { color: var(--sub); }
+.section-dark .spec-table td { color: var(--text); }
+.section-dark .spec-fov-list span:first-child { color: var(--sub); }
+.section-dark .spec-fov-list span:last-child { color: var(--text); }
+
+/* 縦コピー */
+.section-dark .vertical-copy {
+    color: var(--text);
+    border-color: var(--line-strong);
+}
+
+/* 中央のライン装飾 */
+.section-dark .line {
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,.5), transparent);
+}
+
+/* 数字番号は薄い白に */
+.section-dark .philo-num {
+    color: #ffffff;
+    opacity: 0.18;
+}
+.section-dark .feature-num-label::before {
+    background: var(--accent);
+}
+
+/* 引用 */
+.section-dark .article-body blockquote {
+    background: rgba(194, 191, 255, 0.08);
+    color: var(--text);
+}
+.section-dark .article-body strong {
+    color: #ffffff;
+}
+.section-dark .article-body h2,
+.section-dark .article-body h3 {
+    color: var(--text);
+}
+.section-dark .article-body p,
+.section-dark .article-body ul,
+.section-dark .article-body ol {
+    color: var(--muted);
+}
+
+/* ダーク内テキストリンクをアクセント色に */
+.section-dark a:not(.btn-outline):not(.btn-solid):not(.view-btn):not(.back-btn):not(.primary-cta):not(.site-logo) {
+    color: var(--accent);
+}
+
+/* ダーク版ヒーロー：画像フィルタ調整 */
+.section-dark.hero-section .hero-image-placeholder {
+    filter: brightness(0.5) contrast(1.1) saturate(0.9);
+    opacity: 0.55;
+}
+.section-dark.hero-section .hero-bg-image {
+    background: linear-gradient(to right, #050508 0%, rgba(5,5,8,0.3) 50%);
+}
+@media (max-width: 850px){
+    .section-dark.hero-section .hero-bg-image {
+        background: linear-gradient(to top, #050508 10%, rgba(5,5,8,0.3) 62%);
+    }
+}
