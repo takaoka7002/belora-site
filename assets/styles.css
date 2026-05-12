@@ -684,6 +684,7 @@
         letter-spacing:.02em;
         font-weight:bold;
         line-height:1.5;
+        text-align:center;
     }
 
     .detail-text{
