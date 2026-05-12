@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="お問い合わせを受け付けました。Belora（ベロラ）">
+<title>送信完了 | Belora</title>
+<style>
+    :root{
+        --bg: #0a0a0f;
+        --text: #fdfdfd;
+        --muted: #c4c4d4;
+        --accent: #c2bfff;
+        --glass-bg: rgba(255, 255, 255, 0.04);
+        --glass-border: rgba(255, 255, 255, 0.1);
+    }
+
+    *{box-sizing:border-box;}
+    body{
+        margin:0;
+        background:var(--bg);
+        color:var(--text);
+        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN",serif;
+        line-height:2;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        position: relative;
+    }
+
+    /* アンビエントライト */
+    body::before {
+        content: "";
+        position: fixed;
+        top: -10%;
+        left: -10%;
+        width: 60vw;
+        height: 60vw;
+        background: radial-gradient(circle, rgba(185,182,255,0.07) 0%, transparent 60%);
+        z-index: -1;
+        pointer-events: none;
+    }
+    body::after {
+        content: "";
+        position: fixed;
+        bottom: -10%;
+        right: -10%;
+        width: 70vw;
+        height: 70vw;
+        background: radial-gradient(circle, rgba(240,196,211,0.05) 0%, transparent 60%);
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .site-logo{
+        position:absolute;
+        top:28px;
+        left:40px;
+        font-size:1.4rem;
+        letter-spacing:.22em;
+        text-decoration:none;
+        background:linear-gradient(45deg,#c2bfff,#ffffff,#f0c4d3);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+        font-weight: bold;
+    }
+
+    .thanks-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 5%;
+        animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .thanks-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--glass-border);
+        padding: 60px 40px;
+        border-radius: 8px;
+        max-width: 600px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+
+    .thanks-icon {
+        font-size: 3rem;
+        color: var(--accent);
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        margin: 0 0 24px 0;
+        font-size: 1.8rem;
+        letter-spacing: 0.1em;
+        font-weight: normal;
+    }
+
+    p {
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-bottom: 40px;
+    }
+
+    .back-btn {
+        display: inline-block;
+        padding: 15px 38px;
+        border: 1px solid rgba(255,255,255,0.4);
+        background: rgba(255,255,255,0.03);
+        backdrop-filter: blur(8px);
+        color: #fff;
+        font-size: .94rem;
+        text-decoration: none;
+        letter-spacing: .1em;
+        border-radius: 4px;
+        transition: all 0.4s ease;
+    }
+
+    .back-btn:hover {
+        background: #fff;
+        color: #000;
+        border-color: #fff;
+        box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+    }
+
+    @media (max-width: 850px) {
+        .site-logo {
+            top: 18px;
+            left: 18px;
+            font-size: 1.2rem;
+        }
+        .thanks-card {
+            padding: 40px 20px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="site-logo">BELORA</a>
+
+<div class="thanks-container">
+    <div class="thanks-card">
+        <div class="thanks-icon">✉</div>
+        <h1>お問い合わせを受け付けました</h1>
+        <p>
+            この度はBeloraにお問い合わせいただき、誠にありがとうございます。<br><br>
+            ご入力いただいたメールアドレス宛に、確認の自動返信メールをお送りいたしました。<br>
+            担当者より、通常2営業日以内にご連絡を差し上げますので、今しばらくお待ちくださいませ。
+        </p>
+        <a href="index.html" class="back-btn">トップページへ戻る</a>
+    </div>
+</div>
+
+</body>
+</html>

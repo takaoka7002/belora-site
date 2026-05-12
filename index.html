@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Belora",
+  "alternateName": ["ベローラ", "べろーら", "ベロラ"],
+  "url": "https://belora.jp"
+}
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Belora（ベローラ）は、医科・歯科・獣医向けの高品質なサージカルルーペ（拡大鏡）とLEDライトを提供しています。日本の光学技術と鯖江フレームを融合し、精密な治療と姿勢改善をサポートします。">
+<title>BELORA | Surgical Loupes</title>
+<style>
+    :root{
+        /* 真っ黒ではなく、少し青みを持たせたダークグレーで空間の広がりを演出 */
+        --bg: #0a0a0f;
+        --bg-soft: #12121a;
+        --text: #fdfdfd;
+        --muted: #c4c4d4;
+        --sub: #8d8d98;
+        --line: rgba(255,255,255,0.1);
+        --line-strong: rgba(255,255,255,0.25);
+        --accent: #c2bfff;
+        --accent-soft: rgba(194, 191, 255, 0.15);
+        /* すりガラス用の変数 */
+        --glass-bg: rgba(255, 255, 255, 0.04);
+        --glass-border: rgba(255, 255, 255, 0.1);
+    }
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+        margin:0;
+        background:var(--bg);
+        color:var(--text);
+        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN",serif;
+        line-height:2;
+        overflow-x:hidden;
+        position: relative;
+    }
+
+    /* ▼▼▼ アンビエントライト（背景の柔らかな光） ▼▼▼ */
+    body::before {
+        content: "";
+        position: fixed;
+        top: -10%;
+        left: -10%;
+        width: 60vw;
+        height: 60vw;
+        background: radial-gradient(circle, rgba(185,182,255,0.07) 0%, transparent 60%);
+        z-index: -1;
+        pointer-events: none;
+    }
+    body::after {
+        content: "";
+        position: fixed;
+        bottom: -10%;
+        right: -10%;
+        width: 70vw;
+        height: 70vw;
+        background: radial-gradient(circle, rgba(240,196,211,0.05) 0%, transparent 60%);
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    /* ▼▼▼ 医療従事者確認モーダル ▼▼▼ */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 10, 15, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+    }
+    .modal-overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+    .modal-content {
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 8px;
+        padding: 50px 40px;
+        max-width: 600px;
+        width: 90%;
+        text-align: center;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.02);
+    }
+    .modal-title {
+        color: #fff;
+        font-size: 1.5rem;
+        letter-spacing: 0.1em;
+        margin-top: 0;
+        margin-bottom: 24px;
+        font-weight: normal;
+    }
+    .modal-text {
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.9;
+        margin-bottom: 34px;
+        text-align: left;
+    }
+    .modal-question {
+        color: var(--accent);
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 24px;
+        letter-spacing: 0.08em;
+    }
+    .modal-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+    .reject-message {
+        color: #ff9e9e;
+        font-size: 0.9rem;
+        margin-top: 24px;
+        letter-spacing: 0.05em;
+    }
+
+    .main-content{min-height:100vh;}
+    .page-section{display:none; width:100%;}
+    .page-section.active{display:block; animation:fadePage .6s ease-out;}
+    @keyframes fadePage{
+        from{opacity:0; transform:translateY(15px);}
+        to{opacity:1; transform:translateY(0);}
+    }
+
+    .site-logo{
+        position:fixed;
+        top:28px;
+        left:40px;
+        z-index:100;
+        font-size:1.4rem;
+        letter-spacing:.22em;
+        text-decoration:none;
+        color:#fff;
+        cursor:pointer;
+        background:linear-gradient(45deg,#c2bfff,#ffffff,#f0c4d3);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+        font-weight: bold;
+    }
+
+    /* Rマークの文字サイズと位置を調整 */
+    .site-logo span {
+        letter-spacing: normal;
+        font-size: 0.75em;
+        vertical-align: super;
+        margin-left: 4px;
+    }
+
+    nav{
+        position:fixed;
+        top:24px;
+        right:36px;
+        z-index:100;
+        display:flex;
+        gap:22px;
+        padding:12px 26px;
+        border:1px solid rgba(255,255,255,0.15);
+        border-radius:999px;
+        background:rgba(10, 10, 15, 0.6);
+        backdrop-filter:blur(16px); /* すりガラス効果 */
+        -webkit-backdrop-filter:blur(16px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    nav button{
+        background:none;
+        border:none;
+        color:rgba(255,255,255,0.7);
+        font-family:inherit;
+        font-size:.8rem;
+        letter-spacing:.12em;
+        cursor:pointer;
+        padding:0;
+        position:relative;
+        transition:color 0.3s ease;
+    }
+
+    nav button:hover,
+    nav button.active-nav{color:#fff;}
+
+    nav button::after{
+        content:"";
+        position:absolute;
+        left:0;
+        bottom:-5px;
+        width:0;
+        height:1px;
+        background:#fff;
+        transition:width 0.3s ease;
+    }
+
+    nav button:hover::after,
+    nav button.active-nav::after{width:100%;}
+
+    @media (max-width: 980px){
+        .site-logo{
+            top:18px;
+            left:18px;
+            font-size:1.2rem;
+        }
+        nav{
+            top:56px;
+            right:50%;
+            transform:translateX(50%);
+            width:95%;
+            justify-content:space-around;
+            gap:8px;
+            padding:12px 16px;
+            border-radius:12px;
+            flex-wrap:wrap;
+        }
+        nav button{
+            font-size:.72rem;
+        }
+    }
+
+    .content-block{
+        min-height:100vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        padding:110px 5% 120px;
+        position:relative;
+        z-index: 1;
+    }
+
+    h1{
+        margin:0;
+        font-size:clamp(2.3rem,5vw,4.5rem);
+        line-height:1.2;
+        letter-spacing:.12em;
+        font-weight:normal;
+        text-align:center;
+    }
+
+    .hero-title{
+        text-align:left;
+        font-size:clamp(2.4rem,5vw,4.8rem);
+        line-height:1.15;
+        letter-spacing:.06em;
+        background:linear-gradient(45deg,#c2bfff,#ffffff,#f0c4d3);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+        text-shadow: 0 10px 30px rgba(194, 191, 255, 0.2);
+    }
+
+    .title-gradient{
+        background:linear-gradient(45deg,#c2bfff,#ffffff,#f0c4d3);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+    }
+
+    .subtitle{
+        margin-top:18px;
+        color:var(--muted);
+        text-align:center;
+        font-size:clamp(.95rem,2vw,1.08rem);
+        letter-spacing:.08em;
+        line-height:1.9;
+        max-width:760px;
+    }
+
+    .hero-section{
+        position:relative;
+        min-height:100vh;
+        display:flex;
+        align-items:center;
+        overflow:hidden;
+    }
+
+    .hero-bg-image{
+        position:absolute;
+        inset:0 0 0 auto;
+        width:66%;
+        z-index:1;
+        background:linear-gradient(to right, var(--bg) 0%, rgba(10,10,15,0.2) 50%);
+    }
+
+    .hero-image-placeholder{
+        position:absolute;
+        inset:0;
+        background:url('https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1600&q=80') no-repeat center center;
+        background-size:cover;
+        filter:brightness(.45) contrast(1.1);
+        z-index:-1;
+    }
+
+    .hero-content{
+        position:relative;
+        z-index:2;
+        width:100%;
+        max-width:1380px;
+        margin:0 auto;
+        padding:0 5%;
+    }
+
+    .hero-copy{
+        max-width:700px;
+        color:var(--text);
+        font-size:1.05rem;
+        line-height:2;
+        margin:26px 0 38px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .hero-buttons,
+    .action-buttons{
+        display:flex;
+        gap:16px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero-buttons{justify-content:flex-start;}
+
+    .btn-outline,
+    .btn-solid,
+    .primary-cta,
+    .view-btn,
+    .back-btn{
+        font-family:inherit;
+        letter-spacing:.1em;
+        text-decoration:none;
+        cursor:pointer;
+        transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border-radius: 4px;
+    }
+
+    .btn-outline,
+    .view-btn,
+    .back-btn{
+        padding:15px 38px;
+        border:1px solid rgba(255,255,255,0.4);
+        background: rgba(255,255,255,0.03);
+        backdrop-filter: blur(8px);
+        color:#fff;
+        font-size:.94rem;
+    }
+
+    .btn-outline:hover,
+    .view-btn:hover{
+        background:#fff;
+        color:#000;
+        border-color:#fff;
+        box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+    }
+
+    .btn-solid,
+    .primary-cta{
+        padding:16px 42px;
+        border:1px solid #fff;
+        background:#fff;
+        color:#000;
+        font-size:.97rem;
+        font-weight:bold;
+        box-shadow: 0 4px 15px rgba(255,255,255,0.15);
+    }
+
+    .btn-solid:hover,
+    .primary-cta:hover{
+        background:#e0e0e0;
+        border-color:#e0e0e0;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255,255,255,0.25);
+    }
+
+    .back-btn{
+        color:var(--muted);
+        border-color:rgba(255,255,255,0.2);
+    }
+    .back-btn:hover{
+        color:#fff;
+        border-color:#fff;
+        background:rgba(255,255,255,.1);
+    }
+
+    @media (max-width:850px){
+        .hero-bg-image{
+            width:100%;
+            background:linear-gradient(to top,var(--bg) 10%,rgba(10,10,15,0.2) 62%);
+        }
+        .hero-content{
+            display:flex;
+            flex-direction:column;
+            justify-content:flex-end;
+            min-height:82vh;
+            padding-bottom:52px;
+        }
+        .hero-title{text-align:center;}
+        .hero-copy{text-align:center; margin-left:auto; margin-right:auto;}
+        .hero-buttons{justify-content:center;}
+    }
+
+    .line{
+        width:1px;
+        height:90px;
+        margin-bottom:38px;
+        background:linear-gradient(to bottom, transparent, rgba(255,255,255,.5), transparent);
+    }
+
+    .vertical-copy{
+        writing-mode:vertical-rl;
+        height:auto;
+        margin:55px auto;
+        padding-right:34px;
+        border-right:1px solid rgba(255,255,255,.2);
+        color:#fff;
+        letter-spacing:.42em;
+        font-size:clamp(1.35rem,3.2vw,1.9rem);
+        position:relative;
+        z-index:2;
+        text-shadow: 0 4px 20px rgba(255,255,255,0.2);
+    }
+
+    .philo-container{
+        width:100%;
+        max-width:900px;
+        margin:0 auto;
+        text-align:left;
+    }
+
+    .philo-item {
+        display: flex;
+        gap: 34px;
+        margin-bottom: 50px;
+        padding-bottom: 50px;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .philo-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .philo-num {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        font-size: 1.8rem;
+        color: var(--accent);
+        opacity: 0.8;
+        font-weight: 300;
+        line-height: 1.1;
+        letter-spacing: 0.05em;
+        min-width: 45px; 
+    }
+
+    .philo-content {
+        flex: 1;
+    }
+
+    .philo-h3{
+        margin:0 0 20px 0;
+        font-size:clamp(1.15rem, 2.8vw, 1.35rem);
+        font-weight:normal;
+        line-height:1.6;
+        letter-spacing:.05em;
+        color:#fff;
+    }
+
+    .philo-list{
+        list-style:none;
+        padding:0;
+        margin:0;
+        color:var(--muted);
+        font-size:.96rem;
+        line-height:1.95;
+    }
+
+    .philo-list li{
+        position:relative;
+        padding-left:1.35em;
+        margin-bottom:11px;
+    }
+
+    .philo-list li::before{
+        content:"—";
+        position:absolute;
+        left:0;
+        color:var(--accent);
+        opacity:.8;
+    }
+
+    /* ▼▼▼ PRODUCTS page features grid (グラスモーフィズム適用) ▼▼▼ */
+    .feature-grid-wrapper {
+        width: 100%;
+        max-width: 1040px;
+        margin: 0 auto;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 50px;
+    }
+
+    .feature-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        padding: 40px;
+        text-align: left;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+    }
+
+    .feature-card:hover {
+        border-color: rgba(194,191,255,0.4);
+        background: rgba(255,255,255,0.06);
+        transform: translateY(-6px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.3), 0 0 20px rgba(194,191,255,0.1);
+    }
+
+    .feature-num-label {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        color: var(--accent);
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        margin-bottom: 16px;
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    .feature-card-title {
+        margin: 0 0 18px 0;
+        font-size: 1.15rem;
+        color: #fff;
+        font-weight: normal;
+        letter-spacing: 0.05em;
+        line-height: 1.5;
+    }
+
+    .feature-card-text {
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.9;
+        margin: 0;
+    }
+
+    @media (max-width: 850px) {
+        .feature-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .feature-card {
+            padding: 30px 24px;
+        }
+        .philo-item {
+            flex-direction: column;
+            gap: 16px;
+            padding-bottom: 40px;
+            margin-bottom: 40px;
+        }
+        .philo-num {
+            font-size: 1.4rem;
+        }
+    }
+
+    /* For support page / other lists */
+    .detail-list-wrapper,
+    .flow-container,
+    .faq-container,
+    .form-container{
+        width:100%;
+        max-width:820px;
+    }
+
+    .detail-item{
+        position:relative;
+        padding-left:28px;
+        margin-bottom:34px;
+    }
+
+    .detail-item::before{
+        content:"—";
+        position:absolute;
+        left:0;
+        top:.25em;
+        font-size:1.3rem;
+        color:var(--accent);
+        opacity:.8;
+    }
+
+    .detail-title{
+        margin-bottom:8px;
+        font-size:1.08rem;
+        color:#fff;
+        letter-spacing:.05em;
+    }
+
+    .detail-text{
+        color:var(--muted);
+        font-size:.95rem;
+        line-height:1.9;
+    }
+
+    .prod-row{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:28px;
+        flex-wrap:wrap;
+        margin-top:54px;
+    }
+
+    /* グラスモーフィズムを適用したプロダクトボタン */
+    .lens-circle{
+        width:250px;
+        height:250px;
+        border-radius:50%;
+        border:1px solid rgba(255,255,255,.2); 
+        background: var(--glass-bg);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        position:relative;
+        overflow:hidden;
+        cursor:pointer;
+        transition:.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        text-align:center;
+        padding:20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(255,255,255,0.02);
+    }
+
+    .lens-circle:hover{
+        transform:scale(1.05);
+        border-color:var(--accent);
+        background:rgba(255,255,255,.08);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.4), 0 0 40px rgba(194,191,255,0.2), inset 0 0 20px rgba(194,191,255,0.1); 
+    }
+
+    /* COMING SOONラベル用CSS */
+    .coming-soon-badge {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 6px 14px;
+        background: rgba(194, 191, 255, 0.15);
+        border: 1px solid rgba(194, 191, 255, 0.4);
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: bold;
+        letter-spacing: 0.15em;
+        border-radius: 20px;
+        backdrop-filter: blur(4px);
+    }
+
+    /* ロック状態のボタン用CSS */
+    .lens-circle.locked {
+        cursor: not-allowed;
+    }
+    .lens-circle.locked:hover {
+        transform: none; 
+        border-color: rgba(255,255,255,.2);
+        background: var(--glass-bg);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(255,255,255,0.02);
+    }
+
+    .product-title-large{
+        font-size:clamp(2.2rem,5vw,3.2rem);
+        line-height:1;
+        letter-spacing:.08em;
+        font-weight:normal;
+        text-shadow: 0 2px 10px rgba(255,255,255,0.2);
+    }
+
+    .product-sub{
+        margin-top:8px;
+        margin-bottom:8px;
+        color:#e2e2ee;
+        font-size:.85rem;
+        letter-spacing:.04em;
+    }
+
+    /* 4.0x 詳細ページのプレースホルダー画像部分 */
+    .product-detail-image{
+        width:min(350px,80vw);
+        height:min(350px,80vw);
+        margin:0 auto 40px;
+        border-radius:50%;
+        border:1px solid rgba(255,255,255,.15);
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.4), inset 0 0 30px rgba(0,0,0,0.5);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* SPEC TABLE & FOV LIST */
+    .spec-table{
+        width:100%;
+        max-width:720px;
+        margin:38px auto;
+        border-collapse:collapse;
+        text-align:left;
+    }
+
+    .spec-table th,
+    .spec-table td{
+        padding:17px 14px;
+        border-bottom:1px solid var(--line);
+        font-size:.95rem;
+        vertical-align:middle; 
+    }
+
+    .spec-table th{
+        width:34%;
+        font-weight:normal;
+        color:#a1a1ae;
+    }
+
+    .spec-table td{
+        color:#fdfdfd;
+    }
+
+    .spec-fov-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        max-width: 220px;
+    }
+
+    .spec-fov-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 0;
+        border-bottom: 1px dotted rgba(255,255,255,0.2);
+    }
+
+    .spec-fov-list li:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .spec-fov-list span:first-child {
+        color: #a1a1ae;
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+    }
+
+    .spec-fov-list span:last-child {
+        color: #fff;
+        font-size: 0.95rem;
+        letter-spacing: 0.05em;
+    }
+
+    .flow-container{
+        margin:58px auto 0;
+        text-align:left;
+        padding-left:28px;
+        border-left:1px solid var(--line-strong);
+    }
+
+    .flow-step{
+        position:relative;
+        margin-bottom:52px;
+    }
+
+    .flow-step::before{
+        content:"";
+        position:absolute;
+        left:-33px;
+        top:7px;
+        width:8px;
+        height:8px;
+        border-radius:50%;
+        background:var(--accent);
+        border:4px solid var(--bg);
+        box-shadow: 0 0 10px var(--accent);
+    }
+
+    .flow-number{
+        display:block;
+        margin-bottom:4px;
+        color:var(--accent);
+        font-weight: bold;
+        font-size:.82rem;
+        letter-spacing:.14em;
+    }
+
+    .flow-title{
+        margin-bottom:12px;
+        font-size:1.12rem;
+        letter-spacing:.05em;
+        color:#fff;
+    }
+
+    .flow-text{
+        color:var(--muted);
+        font-size:.95rem;
+        line-height:1.9;
+    }
+
+    .faq-item{
+        margin-bottom:32px;
+        padding-bottom:20px;
+        border-bottom:1px solid var(--line);
+    }
+
+    .faq-q{
+        display:flex;
+        gap:12px;
+        margin-bottom:12px;
+        color:#fff;
+        font-size:1.04rem;
+        line-height:1.8;
+    }
+
+    .faq-q::before{
+        content:"Q.";
+        color:var(--accent);
+        font-weight:bold;
+    }
+
+    .faq-a{
+        display:flex;
+        gap:12px;
+        color:var(--muted);
+        font-size:.95rem;
+        line-height:1.9;
+    }
+
+    .faq-a::before{
+        content:"A.";
+        color:#8d8d98;
+        font-weight:bold;
+    }
+
+    /* ▼▼▼ CONTACT FORM TABS ▼▼▼ */
+    .contact-tabs {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 40px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .contact-tab-btn {
+        padding: 15px 32px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--glass-border);
+        color: #a1a1ae;
+        cursor: pointer;
+        font-family: inherit;
+        letter-spacing: 0.08em;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+        font-size: 0.95rem;
+    }
+
+    .contact-tab-btn:hover {
+        background: rgba(255,255,255,0.08);
+        color: #fff;
+    }
+
+    .contact-tab-btn.active {
+        background: #fff;
+        color: #000;
+        border-color: #fff;
+        font-weight: bold;
+        box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+    }
+
+    .contact-form-wrapper {
+        display: none;
+        width: 100%;
+        max-width: 820px;
+    }
+
+    .contact-form-wrapper.active {
+        display: block;
+        animation: fadePage 0.4s ease-out forwards;
+    }
+    
+    .form-container{
+        margin-top:0;
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--glass-border);
+        padding: 50px;
+        border-radius: 8px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 850px) {
+        .form-container {
+            padding: 30px 20px;
+        }
+    }
+
+    .form-group{
+        margin-bottom:34px;
+        text-align:left;
+    }
+
+    .form-label{
+        display:block;
+        margin-bottom:12px;
+        color:#fff;
+        font-size:.95rem;
+        letter-spacing:.08em;
+    }
+
+    .form-input,
+    .form-select{
+        width:100%;
+        padding:17px 18px;
+        background:rgba(0,0,0,0.4);
+        border:1px solid var(--glass-border);
+        color:#fff;
+        font-family:inherit;
+        font-size:1rem;
+        border-radius: 4px;
+        transition: border-color 0.3s;
+    }
+
+    .form-input:focus,
+    .form-select:focus{
+        outline:none;
+        border-color:var(--accent);
+        background:rgba(0,0,0,0.6);
+        box-shadow: 0 0 0 2px rgba(194, 191, 255, 0.2);
+    }
+
+    textarea.form-input{
+        min-height:150px;
+        resize:vertical;
+        line-height:1.8;
+    }
+
+    .radio-group,
+    .checkbox-group{
+        display:flex;
+        flex-wrap:wrap;
+        gap:14px 22px;
+    }
+
+    .check-label{
+        display:flex;
+        align-items:center;
+        gap:8px;
+        color:var(--muted);
+        font-size:.95rem;
+        cursor:pointer;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"]{
+        accent-color:var(--accent);
+        width:16px;
+        height:16px;
+    }
+
+    .submit-btn{
+        width:100%;
+        margin-top:10px;
+        padding:19px;
+        background:#fff;
+        border:1px solid #fff;
+        color:#000;
+        font-family:inherit;
+        font-size:1.03rem;
+        font-weight:bold;
+        letter-spacing:.16em;
+        cursor:pointer;
+        transition:.3s;
+        border-radius: 4px;
+    }
+
+    /* 送信中のボタンスタイル追加 */
+    .submit-btn:disabled {
+        background: #666;
+        border-color: #666;
+        cursor: not-allowed;
+        opacity: 0.6;
+        transform: none;
+        box-shadow: none;
+    }
+
+    .submit-btn:hover:not(:disabled){
+        background:#e0e0e0;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255,255,255,0.25);
+    }
+
+    .notice-box{
+        width:100%;
+        max-width:820px;
+        margin:0 auto 24px;
+        padding:16px 20px;
+        border:1px solid rgba(194, 191, 255, 0.2);
+        background:rgba(194, 191, 255, 0.05);
+        color:var(--muted);
+        font-size:.88rem;
+        line-height:1.9;
+        border-radius: 6px;
+    }
+
+    .global-footer{
+        width:100%;
+        padding:72px 5% 38px;
+        background:#050508;
+        border-top:1px solid var(--line);
+        text-align:center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .footer-links{
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:26px;
+        margin-bottom:26px;
+    }
+
+    .footer-links a{
+        color:var(--sub);
+        text-decoration:none;
+        font-size:.84rem;
+        letter-spacing:.08em;
+        cursor:pointer;
+        transition: color 0.3s;
+    }
+
+    .footer-links a:hover{color:#fff;}
+
+    .medical-license{
+        margin-bottom:24px;
+        color:#63636f;
+        font-size:.76rem;
+        line-height:2;
+    }
+
+    .copyright{
+        color:#4f4f58;
+        font-size:.76rem;
+        letter-spacing:.08em;
+    }
+
+    /* ===== PRODUCTS page only : optical origin gallery ===== */
+    #page-products .products-origin-block{
+        width:100%;
+        max-width:1040px;
+        margin:0 auto 56px;
+        padding-top:10px;
+    }
+
+    #page-products .products-origin-head{
+        max-width:760px;
+        margin:0 auto 26px;
+        text-align:center;
+    }
+
+    #page-products .products-origin-label{
+        display:block;
+        margin-bottom:10px;
+        color:var(--sub);
+        font-size:.76rem;
+        letter-spacing:.18em;
+        text-transform:uppercase;
+    }
+
+    #page-products .products-origin-title{
+        margin:0 0 16px;
+        font-size:1.2rem;
+        letter-spacing:.05em;
+        color:#fff;
+        font-weight:normal;
+    }
+
+    #page-products .products-origin-text{
+        color:var(--muted);
+        line-height:1.95;
+        font-size:.95rem;
+        text-align:left;
+    }
+
+    #page-products .products-origin-text p{
+        margin:0 0 16px;
+    }
+
+    #page-products .products-origin-text strong{
+        color:#fff;
+        font-weight:normal;
+    }
+
+    #page-products .products-origin-gallery{
+        margin-top:30px;
+        display:flex;
+        justify-content:center;
+        gap:18px;
+    }
+
+    #page-products .products-origin-item{
+        position:relative;
+        overflow:hidden;
+        border:1px solid var(--glass-border);
+        background:#000;
+        aspect-ratio:4 / 5;
+        max-width:420px;
+        width:100%;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    #page-products .products-origin-item img{
+        width:100%;
+        height:100%;
+        display:block;
+        object-fit:cover;
+        object-position:center center;
+        filter:brightness(.9) saturate(1.1) contrast(1.1);
+        transform:scale(1.01);
+    }
+
+    #page-products .products-origin-item::before{
+        content:"";
+        position:absolute;
+        inset:0;
+        z-index:2;
+        pointer-events:none;
+        background:
+            radial-gradient(circle at center, rgba(0,0,0,0) 50%, rgba(0,0,0,.16) 72%, rgba(0,0,0,.34) 100%),
+            linear-gradient(to top, rgba(5,5,5,.92) 0%, rgba(5,5,5,.14) 30%, rgba(5,5,5,.10) 70%, rgba(5,5,5,.72) 100%),
+            linear-gradient(to right, rgba(5,5,5,.72) 0%, rgba(5,5,5,.06) 18%, rgba(5,5,5,.06) 82%, rgba(5,5,5,.72) 100%);
+    }
+
+    #page-products .products-origin-item::after{
+        content:"";
+        position:absolute;
+        inset:-1px;
+        z-index:3;
+        pointer-events:none;
+        box-shadow:
+            inset 0 0 70px rgba(0,0,0,.64),
+            inset 0 -34px 70px rgba(0,0,0,.56);
+    }
+
+    #page-products .products-origin-caption{
+        margin-top:16px;
+        color:var(--sub);
+        font-size:.8rem;
+        letter-spacing:.06em;
+        text-align:center;
+    }
+
+    @media (max-width: 900px){
+        #page-products .products-origin-gallery{
+            flex-direction:column;
+            align-items:center;
+        }
+
+        #page-products .products-origin-item{
+            aspect-ratio:16 / 11;
+            max-width:500px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div id="medical-disclaimer-modal" class="modal-overlay">
+    <div class="modal-content">
+        <h2 class="modal-title">医療関係者確認</h2>
+        <p class="modal-text">
+            本サイトは、国内の医療関係者（医師、歯科医師、歯科衛生士、獣医師等）を対象に、弊社の医療機器に関する情報を提供することを目的としています。<br>
+            一般の方に対する情報提供を目的としたものではありませんので、ご了承ください。
+        </p>
+        <p class="modal-question">あなたは医療関係者ですか？</p>
+        <div class="modal-buttons">
+            <button class="btn-solid" onclick="acceptDisclaimer()">はい（医療関係者です）</button>
+            <button class="btn-outline" onclick="rejectDisclaimer()">いいえ</button>
+        </div>
+        <p id="reject-message" class="reject-message" style="display: none;">
+            誠に申し訳ございませんが、当サイトは医療関係者の方のみを対象としております。
+        </p>
+    </div>
+</div>
+<a href="#top" onclick="switchPage('top'); return false;" class="site-logo">BELORA<span>&reg;</span></a>
+
+<nav>
+    <button onclick="switchPage('top')" id="nav-top" class="active-nav">TOP</button>
+    <button onclick="switchPage('philosophy')" id="nav-philosophy">PHILOSOPHY</button>
+    <button onclick="switchPage('products')" id="nav-products">PRODUCTS</button>
+    <button onclick="switchPage('flow')" id="nav-flow">FLOW</button>
+    <button onclick="switchPage('support')" id="nav-support">SUPPORT</button>
+    <button onclick="switchPage('contact')" id="nav-contact">CONTACT</button>
+</nav>
+
+<div class="main-content">
+
+    <div id="page-top" class="page-section active">
+        <section class="hero-section">
+            <div class="hero-bg-image">
+                <div class="hero-image-placeholder"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">BELORA<br>TTL Surgical Loupes</h1>
+                <p class="hero-copy">
+                    日本の光学技術と鯖江チタンフレームを組み合わせ、
+                    術者の精密な視野確保と姿勢負担の軽減に配慮した
+                    サージカルルーペを提案します。
+                </p>
+                <div class="hero-buttons">
+                    <button onclick="switchPage('contact')" class="btn-outline">デモ・ご相談</button>
+                    <button onclick="switchPage('products')" class="btn-solid">製品を見る</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-block">
+            <div class="line"></div>
+            <h1 class="title-gradient">JAPAN QUALITY</h1>
+            <p class="subtitle">
+                部品の製造から組み立て、厳格な検査に至るまで、日本国内で一貫して生産。<br>
+                メイド・イン・ジャパンの確かな品質と万全のサポート体制により、<br>
+                日々の診療に長く寄り添うルーペをお届けします。
+            </p>
+            <button onclick="switchPage('philosophy')" class="view-btn" style="margin-top:40px;">ブランド哲学を見る</button>
+        </section>
+    </div>
+
+    <div id="page-philosophy" class="page-section">
+        <section class="content-block">
+            <h1 class="title-gradient" style="position:relative; z-index:2; margin-bottom:38px;">PHILOSOPHY</h1>
+            <div class="vertical-copy">高倍率を、すべてのプロフェッショナルの日常に。</div>
+            <p class="subtitle" style="position:relative; z-index:2;">
+                妥協のない解像度と、身体の一部になるような掛け心地。<br>
+                Beloraは、高倍率ルーペの新しいスタンダードを日本から発信します。
+            </p>
+        </section>
+
+        <section class="content-block" style="padding-top: 0;">
+            <div class="philo-container">
+                <div class="philo-item">
+                    <div class="philo-num">01</div>
+                    <div class="philo-content">
+                        <h3 class="philo-h3">高倍率領域に向き合う国産ブランド</h3>
+                        <ul class="philo-list">
+                            <li>Beloraは、4.0倍以上の高倍率TTLルーペ領域に注力しています。</li>
+                            <li>企画・調整・サポートを国内で進めることで、品質と運用の両立を目指します。</li>
+                            <li>高倍率ルーペを、より導入しやすいかたちで届けることを目標としています。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="philo-item">
+                    <div class="philo-num">02</div>
+                    <div class="philo-content">
+                        <h3 class="philo-h3">人間工学に基づく重心設計</h3>
+                        <ul class="philo-list">
+                            <li>偏角（Declination Angle：うつむき角度）や作業距離に応じた設計で、自然な診療姿勢を目指します。</li>
+                            <li>フレームと鏡筒の重量バランスに配慮し、装着時の安定感を高めます。</li>
+                            <li>長時間使用時の首・肩・腰への負担軽減を意識した構成です。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="philo-item">
+                    <div class="philo-num">03</div>
+                    <div class="philo-content">
+                        <h3 class="philo-h3">長期使用を前提とした構造</h3>
+                        <ul class="philo-list">
+                            <li>日々の診療を想定し、耐久性とメンテナンス性の両立を重視しています。</li>
+                            <li>修理や再調整、部品交換に対応しやすい設計を志向しています。</li>
+                            <li>導入後も継続的に使い続けられるプロダクトを目指します。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="philo-item">
+                    <div class="philo-num">04</div>
+                    <div class="philo-content">
+                        <h3 class="philo-h3">導入後まで見据えたサポート</h3>
+                        <ul class="philo-list">
+                            <li>国内対応により、不具合や再調整のご相談に迅速に向き合える体制づくりを進めています。</li>
+                            <li>視力変化や診療ポジションの変化に応じたご相談も想定しています。</li>
+                            <li>購入後も相談しやすい運用を大切にしています。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <button onclick="switchPage('products')" class="view-btn" style="margin-top: 30px;">製品ラインナップへ</button>
+        </section>
+    </div>
+    <div id="page-products" class="page-section">
+        
+        <section class="content-block" style="padding-bottom: 40px;">
+            <div class="feature-grid-wrapper">
+                <h1 class="title-gradient" style="margin-bottom:20px;">PRODUCT FEATURES</h1>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="feature-num-label">FEATURE 01</span>
+                        <h3 class="feature-card-title">TTL方式ならではの視野設計</h3>
+                        <p class="feature-card-text">
+                            レンズをフレームへ直接組み込むTTL（Through The Lens）方式を採用。
+                            フリップアップ式と比べて、視野確保や重量バランスの面で利点が期待でき、
+                            術者ごとの瞳孔間距離（PD）や作業距離に合わせた個別設計が可能です。
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <span class="feature-num-label">FEATURE 02</span>
+                        <h3 class="feature-card-title">広視野と解像感の両立を目指した光学系</h3>
+                        <p class="feature-card-text">
+                            広い視野の確保を重視しつつ、精密治療に必要な解像感とコントラストに配慮。
+                            術野全体を把握しやすいクリアな視界を実現しています。
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <span class="feature-num-label">FEATURE 03</span>
+                        <h3 class="feature-card-title">鯖江チタンフレームによる装着安定性</h3>
+                        <p class="feature-card-text">
+                            福井県鯖江市のチタンフレームを採用し、日本人の骨格に合わせた理想的な掛け心地と重心配置を実現しました。
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <span class="feature-num-label">FEATURE 04</span>
+                        <h3 class="feature-card-title">高倍率TTLケプラー設計</h3>
+                        <p class="feature-card-text">
+                            4.0倍、6.0倍にはケプラー式（屈折型光学系）を採用。
+                            高倍率領域でも視野と作業性のバランスを両立した設計を確立しています。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-block" style="padding-top: 0;">
+            <div class="products-origin-block">
+                <div class="products-origin-head">
+                    <span class="products-origin-label">Optical Design Origin</span>
+                    <h2 class="products-origin-title">設計の原点</h2>
+                    <div class="products-origin-text">
+                        <p>
+                            ルーペの光学ユニットの設計の原点には、
+                            美術館で絵画の繊細な色合いや表面の微細な構造を鑑賞するための単眼鏡に見られる、
+                            <strong>「細部を美しく、忠実に見る」</strong>
+                            という光学思想があります。
+                        </p>
+                        <p>
+                            その思想を臨床向けに再構成し、
+                            高倍率でありながら実用性を損なわない専用レンズユニットとして形にしています。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="products-origin-gallery">
+                    <div class="products-origin-item">
+                        <img src="Johannes_Vermeer_-_The_lacemaker_(c.1669-1671).jpg" alt="細部観察の思想を象徴する絵画">
+                    </div>
+                </div>
+
+                <div class="products-origin-caption">
+                    美術鑑賞用単眼鏡に通じる光学思想を、臨床向けに再構成。
+                </div>
+            </div>
+        </section>
+
+        <section class="content-block">
+            <div class="line" style="margin-bottom: 50px;"></div>
+            <h1 class="title-gradient">LINEUP</h1>
+            <p class="subtitle">Loupe & Lighting System</p>
+
+            <div class="prod-row">
+                <div>
+                    <div class="lens-circle" onclick="switchPage('product-4x')">
+                        <span class="product-title-large">4.0x</span>
+                        <span class="product-sub">Standard / Wide Field</span>
+                        <span class="coming-soon-badge">COMING SOON</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="lens-circle locked">
+                        <span class="product-title-large" style="color:#e3cbff;">6.0x</span>
+                        <span class="product-sub" style="color:#e3cbff;">Micro Surgery</span>
+                        <span class="coming-soon-badge">COMING SOON</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="lens-circle locked">
+                        <span class="product-title-large" style="font-size:1.8rem;">LED</span>
+                        <span class="product-sub">High CRI System</span>
+                        <span class="coming-soon-badge">COMING SOON</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="page-product-4x" class="page-section">
+        <section class="content-block">
+            <div class="product-detail-image">
+                <div>
+                    <span style="color: var(--accent); font-weight: bold; letter-spacing: 0.15em; font-size: 1.2rem; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">COMING SOON</span><br>
+                    <span style="font-size: 0.8rem; color: #fff;">4.0X TTL KEPLERIAN</span>
+                </div>
+            </div>
+            <h1 class="title-gradient">4.0X TTL KEPLERIAN</h1>
+            <p class="subtitle">Standard / Wide Field</p>
+
+            <div style="max-width:620px; margin:38px auto; line-height:1.9; color:var(--muted);">
+                高倍率でありながら、視野の広さと導入しやすさのバランスを重視したモデルです。
+                精密治療のベースアップを検討される方に向けた設計となっています。
+            </div>
+
+            <table class="spec-table">
+                <tr><th>倍率</th><td>4.0倍 (Keplerian)</td></tr>
+                <tr><th>レンズ構成</th><td>計7枚（レンズ5枚＋プリズム2枚）</td></tr>
+                <tr>
+                    <th>視野範囲<br><span style="font-size:0.8em; color:var(--sub);">(実測値 / 参考値)</span></th>
+                    <td>
+                        <ul class="spec-fov-list">
+                            <li><span>W.D. 400mm</span><span>72mm</span></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr><th>作業距離 / 瞳孔間距離</th><td>ユーザーごとに個別測定</td></tr>
+                <tr><th>重量</th><td>93g</td></tr>
+                <tr><th>フレーム</th><td>Sabae Titanium Frame</td></tr>
+            </table>
+
+            <div class="action-buttons" style="margin-top: 40px;">
+                <button onclick="switchPage('contact')" class="btn-solid">ご相談・デモ依頼</button>
+                <button onclick="switchPage('products')" class="back-btn">LINEUPに戻る</button>
+            </div>
+        </section>
+    </div>
+    
+    <div id="page-product-6x" class="page-section">
+        <section class="content-block">
+            <div class="product-detail-image" style="border-color:#e3cbff; background-image: none;">
+                <span style="color: #e3cbff; font-weight: bold; letter-spacing: 0.15em;">COMING SOON</span>
+            </div>
+            <h1 style="background:linear-gradient(45deg,#e3cbff,#ffffff,#f0c4d3); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">6.0X TTL KEPLERIAN</h1>
+            <p class="subtitle" style="color:#d8c6f2;">High Resolution / Micro Surgery</p>
+
+            <div style="max-width:620px; margin:38px auto; line-height:1.9; color:var(--muted);">
+                微細な処置に向けて、より高い拡大率を必要とする術者向けのモデルです。
+                根管治療やマイクロサージェリー領域を見据えた仕様です。
+            </div>
+
+            <table class="spec-table">
+                <tr><th>倍率</th><td>6.0倍 (Keplerian)</td></tr>
+                <tr><th>視野</th><td>高解像度重視設計</td></tr>
+                <tr><th>作業距離</th><td>カスタムオーダー（300mm - 550mm）</td></tr>
+                <tr><th>フレーム</th><td>Sabae Titanium Frame</td></tr>
+            </table>
+
+            <div class="action-buttons">
+                <button onclick="switchPage('contact')" class="btn-solid">ご相談・デモ依頼</button>
+                <button onclick="switchPage('products')" class="back-btn">LINEUPに戻る</button>
+            </div>
+        </section>
+    </div>
+
+    <div id="page-product-led" class="page-section">
+        <section class="content-block">
+            <div class="product-detail-image" style="background-image: none;">
+                <span style="color: var(--accent); font-weight: bold; letter-spacing: 0.15em;">COMING SOON</span>
+            </div>
+            <h1 class="title-gradient">HIGH-CRI LED SYSTEM</h1>
+            <p class="subtitle">高演色・コードレス対応</p>
+
+            <div style="max-width:620px; margin:38px auto; line-height:1.9; color:var(--muted);">
+                組織や血液の色再現性に配慮した高演色LEDライトシステムです。
+                診療時の見え方と疲労感のバランスを重視し、自然光に近い視認性を実現しています.
+            </div>
+
+            <table class="spec-table">
+                <tr><th>光源</th><td>高演色 LED（High CRI）</td></tr>
+                <tr><th>色温度</th><td>5500K前後</td></tr>
+                <tr><th>照度調整</th><td>多段階調整</td></tr>
+                <tr><th>バッテリー</th><td>長時間駆動・軽量設計</td></tr>
+            </table>
+
+            <div class="action-buttons">
+                <button onclick="switchPage('contact')" class="btn-solid">ご相談・デモ依頼</button>
+                <button onclick="switchPage('products')" class="back-btn">LINEUPに戻る</button>
+            </div>
+        </section>
+    </div>
+
+    <div id="page-flow" class="page-section">
+        <section class="content-block">
+            <h1 class="title-gradient">ORDER FLOW</h1>
+            <p class="subtitle">オーダーメイドTTLルーペ 導入までの流れ</p>
+
+            <div class="flow-container">
+                <div class="flow-step">
+                    <span class="flow-number">STEP 01</span>
+                    <div class="flow-title">お問い合わせ・デモのご依頼</div>
+                    <div class="flow-text">CONTACTフォームよりご連絡ください。内容確認後、担当者より折り返しご連絡いたします.</div>
+                </div>
+
+                <div class="flow-step">
+                    <span class="flow-number">STEP 02</span>
+                    <div class="flow-title">デモ・ヒアリング</div>
+                    <div class="flow-text">ご希望の倍率や現在のお悩み、作業姿勢などをヒアリングし、見え方や装着感をご確認いただきます。</div>
+                </div>
+
+                <div class="flow-step">
+                    <span class="flow-number">STEP 03</span>
+                    <div class="flow-title">個別測定と正式オーダー</div>
+                    <div class="flow-text">瞳孔間距離（PD）や作業距離（Working Distance）を測定し、フレーム仕様などを確認のうえ正式オーダーとなります。</div>
+                </div>
+
+                <div class="flow-step">
+                    <span class="flow-number">STEP 04</span>
+                    <div class="flow-title">製作・調整</div>
+                    <div class="flow-text">仕様に合わせて製作・調整を行います。納期は仕様や時期により異なりますので、別途ご案内いたします。</div>
+                </div>
+
+                <div class="flow-step">
+                    <span class="flow-number">STEP 05</span>
+                    <div class="flow-title">納品</div>
+                </div>
+            </div>
+
+            <button onclick="switchPage('contact')" class="btn-solid" style="margin-top:50px;">デモを依頼する</button>
+        </section>
+    </div>
+
+    <div id="page-support" class="page-section">
+        <section class="content-block">
+            <h1 class="title-gradient">SUPPORT</h1>
+            <p class="subtitle">導入後の使いやすさを支える、アフターサポートを重視しています。</p>
+
+            <div class="detail-list-wrapper">
+                <div class="detail-item">
+                    <div class="detail-title">長く使い続けるための国内修理サポート</div>
+                    <div class="detail-text">
+                        サージカルルーペは、先生の毎日の診療に欠かせない「身体の一部」です。だからこそBeloraでは、万が一の破損や不具合が生じた際、国内の製造拠点にて迅速に修理対応を行う体制を整えています。海外製品で懸念される「長期間の修理待ち」によるダウンタイムを最小限に抑え、先生の診療への影響を防ぐことで、長く安心して使い続けられる環境をサポートします。
+                    </div>
+                </div>
+            </div>
+
+            <h1 style="margin-top:56px;">FAQ</h1>
+            <p class="subtitle">よくあるご質問</p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-q">度付きレンズには対応していますか？</div>
+                    <div class="faq-a">度付きレンズには対応しておりません。視力に変化が生じた際、ルーペ全体を作り直す必要が出てしまうため、コンタクトレンズによる視力矯正を推奨しております。</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">納品までどのくらいかかりますか？</div>
+                    <div class="faq-a">完全オーダーメイドで一つひとつ国内で組み立て・調整を行うため、正式なご注文から納品まで通常数週間〜1ヶ月程お時間をいただいております。時期により変動するため、詳細はオーダー時にご案内いたします。</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">購入前に試着やデモ機を試すことはできますか？</div>
+                    <div class="faq-a">はい、可能です。実際の診療環境での見え方や掛け心地をご確認いただくため、デモ・ヒアリングを実施しております。CONTACTフォームより「デモ・製品試着」をご選択の上、お気軽にお申し込みください。</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">高倍率ルーペは重くて疲れませんか？</div>
+                    <div class="faq-a">ケプラー式はレンズの構造上、低倍率モデルより重量がありますが、Beloraでは福井県鯖江市の軽量かつ高剛性なチタンフレームを採用しています。また、重心を人間工学に基づいて設計することで、鼻や耳への負担を分散し、長時間の診療でも疲れにくい掛け心地を追求しています。</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">日常のお手入れや消毒はどのようにすればよいですか？</div>
+                    <div class="faq-a">レンズ面は専用のクロスで優しく拭き取ってください。フレームや鏡筒部分は、アルコールを含ませた清拭シート等での消毒が可能です。ただし、強い薬品への浸け置きやオートクレーブ（高圧蒸気滅菌）には対応しておりませんのでご注意ください。</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">現在持っている他社製のLEDライトを取り付けることは可能ですか？</div>
+                    <div class="faq-a">はい、他社製のLEDライトもお使いいただけます。お取り付けの際は、お手持ちのライトに適合する市販のユニバーサルクリップや汎用アタッチメント等をご使用いただくことで、フレームへの装着が可能です。</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">保証期間はありますか？</div>
+                    <div class="faq-a">保証条件は製品仕様や販売形態に応じてご案内予定です。公開時点では個別にお問い合わせください。</div>
+                </div>
+            </div>
+
+            <button onclick="switchPage('contact')" class="primary-cta" style="margin-top:44px;">サポートへのお問い合わせ</button>
+        </section>
+    </div>
+
+    <div id="page-company" class="page-section">
+        <section class="content-block" style="min-height:auto; padding-top:150px;">
+            <h1 class="title-gradient">COMPANY</h1>
+            <p class="subtitle">企業情報</p>
+
+            <div style="max-width:720px; margin:40px auto; line-height:1.9; color:var(--muted); text-align:left;">
+                Belora(ベローラ)は、日本の優れた精密加工技術を活かし、術者のパフォーマンスを支える高品質な医療機器の企画・開発・製造・販売を行っています。<br><br>
+                現場のニーズに応える製品づくりと、導入後の手厚いサポート体制を通じて、長く信頼される国産ブランドを確立しています。
+            </div>
+
+            <table class="spec-table" style="max-width:720px;">
+                <tr><th>会社名</th><td>株式会社Belora(ベローラ)</td></tr>
+                <tr><th>法人番号</th><td>7180001169422</td></tr>
+                <tr><th>所在地</th><td>〒464-0016 愛知県名古屋市千種区希望ヶ丘四丁目5番26号</td></tr>
+                <tr><th>代表者</th><td>髙岡大嗣</td></tr>
+                <tr><th>事業内容</th><td>医療機器の企画・開発・製造・販売</td></tr>
+                <tr><th>許認可</th><td>医療機器製造業 登録番号：23BZ200364</td></tr>
+                <tr><th>連絡先</th><td><a href="mailto:info@belora.jp" style="color:#ddd; text-decoration:none;">info@belora.jp</a></td></tr>
+            </table>
+
+            <h3 class="philo-h3" style="margin-top:56px; max-width:720px; width:100%;">B2Bパートナーシップについて</h3>
+            <div style="max-width:720px; margin:0 auto; line-height:1.9; color:var(--muted); text-align:left;">
+                販売代理店様、技術提携先様、大学・医療機関様との協業も検討しております。
+                お取引に関するご相談は、CONTACTよりご連絡ください.
+            </div>
+
+            <div class="action-buttons" style="margin-top:34px;">
+                <button onclick="switchPage('contact')" class="view-btn">企業様向けお問い合わせ</button>
+            </div>
+        </section>
+    </div>
+
+    <div id="page-contact" class="page-section">
+        <section class="content-block">
+            <h1 class="title-gradient">CONTACT / DEMO</h1>
+            <p class="subtitle" style="margin-bottom:28px;">
+                デモ試着、製品相談、協業のご相談など、用途に合わせて以下よりお問い合わせください。
+            </p>
+
+            <div class="contact-tabs">
+                <button class="contact-tab-btn active" id="btn-tab-individual" onclick="switchContactTab('individual')">医療関係者様・個人向け</button>
+                <button class="contact-tab-btn" id="btn-tab-corporate" onclick="switchContactTab('corporate')">企業・代理店様向け</button>
+            </div>
+
+            <div id="form-individual" class="contact-form-wrapper active">
+                <form
+                    name="contact-individual"
+                    onsubmit="handleFormSubmit(event)"
+                    action="https://script.google.com/macros/s/AKfycbwnubQQ9i1rPYAFI9wEVRLKWZ1f8eIPgjhRjTZM4K2F7C-B3RFwzyaNj938RHcyvc_O/exec"
+                    class="form-container"
+                >
+                    <input type="hidden" name="form-name" value="contact-individual">
+
+                    <div class="form-group">
+                        <label class="form-label">お問い合わせ内容 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                        <div class="checkbox-group">
+                            <label class="check-label"><input type="checkbox" name="inquiry_type" value="デモ・製品試着"> デモ・製品試着</label>
+                            <label class="check-label"><input type="checkbox" name="inquiry_type" value="お見積り"> お見積り</label>
+                            <label class="check-label"><input type="checkbox" name="inquiry_type" value="修理・メンテナンス相談"> 修理・メンテナンス相談</label>
+                            <label class="check-label"><input type="checkbox" name="inquiry_type" value="その他"> その他</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">ご職種・区分 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                        <div class="radio-group">
+                            <label class="check-label"><input type="radio" name="job" value="医師" required> 医師</label>
+                            <label class="check-label"><input type="radio" name="job" value="歯科医師"> 歯科医師</label>
+                            <label class="check-label"><input type="radio" name="job" value="歯科衛生士"> 歯科衛生士</label>
+                            <label class="check-label"><input type="radio" name="job" value="獣医師"> 獣医師</label>
+                            <label class="check-label"><input type="radio" name="job" value="その他業種"> その他業種</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">お名前 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                        <input type="text" name="name" class="form-input" required placeholder="例：山田 太郎">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">メールアドレス <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                        <input type="email" name="email" class="form-input" required placeholder="例：info@belora.jp">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">電話番号</label>
+                        <input type="tel" name="phone" class="form-input" placeholder="例：03-0000-0000">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">備考・ご質問</label>
+                        <textarea name="message" class="form-input" rows="5" placeholder=""></textarea>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 24px;">
+                        <div class="notice-box" style="margin: 0; padding: 12px 16px; font-size: 0.85rem; background: transparent; border: 1px solid rgba(255,255,255,0.1);">
+                            お客様から収集する個人情報は、当社が定める<a href="#privacy" onclick="switchPage('privacy'); return false;" style="color: var(--accent); text-decoration: underline;">個人情報保護方針（プライバシーポリシー）</a>に則って厳重に管理いたします。
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">送信する</button>
+                </form>
+            </div>
+
+            <div id="form-corporate" class="contact-form-wrapper">
+                <form
+                    name="contact-corporate"
+                    onsubmit="handleFormSubmit(event)"
+                    action="https://script.google.com/macros/s/AKfycbwnubQQ9i1rPYAFI9wEVRLKWZ1f8eIPgjhRjTZM4K2F7C-B3RFwzyaNj938RHcyvc_O/exec"
+                    class="form-container"
+                >
+                    <input type="hidden" name="form-name" value="contact-corporate">
+
+                    <div class="form-group">
+                        <label class="form-label">お問い合わせ内容 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                        <div class="checkbox-group">
+                            <label class="check-label"><input type="checkbox" name="corp_type" value="販売代理店に関するご相談"> 販売代理店に関するご相談</label>
+                            <label class="check-label"><input type="checkbox" name="corp_type" value="共同開発・技術提携"> 共同開発・技術提携</label>
+                            <label class="check-label"><input type="checkbox" name="corp_type" value="その他"> その他</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">貴社名・法人名 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                        <input type="text" name="company" class="form-input" required placeholder="例：株式会社Belora">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">部署名・役職</label>
+                        <input type="text" name="department" class="form-input" placeholder="例：営業部 マネージャー">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">ご担当者名 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                        <input type="text" name="person_name" class="form-input" required placeholder="例：山田 太郎">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">メールアドレス <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                        <input type="email" name="email" class="form-input" required placeholder="例：info@belora.jp">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">電話番号</label>
+                        <input type="tel" name="phone" class="form-input" placeholder="例：03-0000-0000">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">ご相談内容詳細 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                        <textarea name="message" class="form-input" rows="5" required placeholder="協業のご提案内容やご質問などをご記入ください。"></textarea>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 24px;">
+                        <div class="notice-box" style="margin: 0; padding: 12px 16px; font-size: 0.85rem; background: transparent; border: 1px solid rgba(255,255,255,0.1);">
+                            ご記入いただいた個人情報は、当社が定める<a href="#privacy" onclick="switchPage('privacy'); return false;" style="color: var(--accent); text-decoration: underline;">個人情報保護方針（プライバシーポリシー）</a>に則って厳重に管理いたします。
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">送信する</button>
+                </form>
+            </div>
+
+        </section>
+    </div>
+    <div id="page-privacy" class="page-section">
+        <section class="content-block" style="min-height:auto; padding-top:150px;">
+            <h1 class="title-gradient">PRIVACY POLICY</h1>
+            <p class="subtitle">プライバシーポリシー</p>
+
+            <div style="max-width:820px; margin:40px auto; line-height:1.9; color:var(--muted); text-align:left;">
+                <p>Belora株式会社（以下「当社」）は、お客様の個人情報の保護を重要事項と位置づけ、以下の通りプライバシーポリシーを定めます。</p>
+
+                <h3 class="philo-h3" style="margin-top:40px;">1. 個人情報の取得</h3>
+                <p>当社は、お問い合わせ、デモのご依頼、製品のご購入等に際して、必要な範囲でお客様の個人情報（氏名、ご職業、メールアドレス、電話番号等）を適法かつ公正な手段により取得します。</p>
+
+                <h3 class="philo-h3" style="margin-top:40px;">2. 個人情報の利用目的</h3>
+                <p>取得した個人情報は、以下の目的で利用いたします。<br>
+                ・お問い合わせへの対応、デモやご商談の連絡<br>
+                ・製品の製造、調整、納品、およびアフターサポートの提供<br>
+                ・当社が提供する製品・サービスに関するご案内</p>
+
+                <h3 class="philo-h3" style="margin-top:40px;">3. 個人情報の第三者提供</h3>
+                <p>当社は、法令に基づく場合を除き、事前にお客様の同意を得ることなく、個人情報を第三者に提供いたしません。</p>
+
+                <h3 class="philo-h3" style="margin-top:40px;">4. 個人情報の適切な管理</h3>
+                <p>当社は、個人情報の漏洩、紛失、改ざんを防止するため、適切な安全管理措置を講じます。</p>
+
+                <h3 class="philo-h3" style="margin-top:40px;">5. お問い合わせ窓口</h3>
+                <p>本ポリシーに関するお問い合わせは、以下の窓口までお願いいたします。<br>
+                Belora株式会社 個人情報お問合せ窓口<br>
+                Email: <a href="mailto:info@belora.jp" style="color:#ddd; text-decoration:none;">info@belora.jp</a></p>
+            </div>
+        </section>
+    </div>
+    <div id="page-legal" class="page-section">
+        <section class="content-block" style="min-height:auto; padding-top:150px;">
+            <h1 class="title-gradient">LEGAL NOTICE</h1>
+            <p class="subtitle">特定商取引法に基づく表記</p>
+
+            <table class="spec-table" style="max-width:820px; margin-top:40px;">
+                <tr><th>販売業者</th><td>Belora株式会社</td></tr>
+                <tr><th>運営統括責任者</th><td>髙岡大嗣</td></tr>
+                <tr><th>所在地</th><td>〒464-0016 愛知県名古屋市千種区希望ヶ丘四丁目5番26号</td></tr>
+                <tr><th>連絡先</th><td>info@belora.jp</td></tr>
+                <tr><th>販売価格</th><td>各製品ページまたはお見積りにてご案内する価格（税込）に準じます。</td></tr>
+                <tr><th>商品代金以外の必要料金</th><td>消費税、配送料（お見積り時に明記）、振込手数料等</td></tr>
+                <tr><th>支払方法および支払時期</th><td>銀行振込等（正式オーダー時にご案内する期日までにお支払いください）</td></tr>
+                <tr><th>商品の引渡時期</th><td>完全オーダーメイド製品のため、正式受注後、通常数週間〜1ヶ月程度でのお届けとなります。</td></tr>
+                <tr><th>返品・不良品・キャンセルについて</th><td>受注生産という製品の性質上、正式オーダー後のキャンセルやお客様都合による返品はお受けできません。<br>万が一、初期不良や仕様との不一致があった場合は、納品後速やかにご連絡ください。責任を持って対応・再調整いたします。</td></tr>
+            </table>
+        </section>
+    </div>
+    </div>
+
+<footer class="global-footer">
+    <div class="medical-license">
+        本サイトには医療従事者・医療関係者向け情報が含まれます。<br>
+        ※各製品の医療機器届出番号、添付文書情報等は、発売準備が整い次第掲載いたします。
+    </div>
+
+    <div class="footer-links">
+        <a href="#support" onclick="switchPage('support'); return false;">サポート / FAQ</a>
+        <a href="#company" onclick="switchPage('company'); return false;">会社概要</a>
+        <a href="#privacy" onclick="switchPage('privacy'); return false;">プライバシーポリシー</a>
+        <a href="#legal" onclick="switchPage('legal'); return false;">特定商取引法に基づく表記</a>
+    </div>
+<p>
+  <a href="https://www.instagram.com/belora_surgical_loupes/" target="_blank" rel="noopener noreferrer" style="color: white;">
+    📷 公式Instagramはこちら
+  </a>
+</p>
+    <div class="copyright">&copy; 2026 Belora Inc. All Rights Reserved.</div>
+</footer>
+
+<script>
+    // 医療関係者確認モーダルの確実な動作と、初期URLハッシュの処理
+    document.addEventListener('DOMContentLoaded', function() {
+        var modal = document.getElementById('medical-disclaimer-modal');
+        if (sessionStorage.getItem('medicalDisclaimerAccepted')) {
+            modal.style.display = 'none';
+        }
+
+        // ★追加：URLに直接 #contact などが指定されていた場合、そのページを開く
+        var hash = window.location.hash.substring(1); // 先頭の#を取り除く
+        if (hash && document.getElementById('page-' + hash)) {
+            history.replaceState({ page: hash }, null, "#" + hash);
+            switchPage(hash, true);
+        } else {
+            history.replaceState({ page: 'top' }, null, "");
+        }
+    });
+
+    function acceptDisclaimer() {
+        var modal = document.getElementById('medical-disclaimer-modal');
+        modal.classList.add('hidden');
+        sessionStorage.setItem('medicalDisclaimerAccepted', 'true');
+        setTimeout(function() {
+            modal.style.display = 'none';
+        }, 500);
+    }
+
+    function rejectDisclaimer() {
+        var rejectMsg = document.getElementById('reject-message');
+        rejectMsg.style.display = 'block';
+    }
+
+    // ★修正：ブラウザの履歴（戻るボタン）に対応するように改良
+    function switchPage(pageName, isBackAction = false) {
+        var sections = document.querySelectorAll('.page-section');
+        for (var i = 0; i < sections.length; i++) {
+            sections[i].classList.remove('active');
+        }
+        var target = document.getElementById('page-' + pageName);
+        if (target) target.classList.add('active');
+
+        var navButtons = document.querySelectorAll('nav button');
+        for (var j = 0; j < navButtons.length; j++) {
+            navButtons[j].classList.remove('active-nav');
+        }
+
+        if (pageName.startsWith('product-')) {
+            document.getElementById('nav-products').classList.add('active-nav');
+        } else {
+            var nav = document.getElementById('nav-' + pageName);
+            if (nav) nav.classList.add('active-nav');
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // ブラウザの履歴に現在のページを追加（戻るボタンを押した時以外）
+        if (!isBackAction) {
+            history.pushState({ page: pageName }, null, "#" + pageName);
+        }
+    }
+
+    // ★追加：ブラウザの「戻る」「進む」ボタンが押された時の動作
+    window.addEventListener('popstate', function(event) {
+        if (event.state && event.state.page) {
+            switchPage(event.state.page, true); // 履歴のページに戻る
+        } else {
+            switchPage('top', true); // 履歴がない場合はトップに戻る
+        }
+    });
+
+    // CONTACTフォームのタブ切り替え
+    function switchContactTab(tabName) {
+        var forms = document.querySelectorAll('.contact-form-wrapper');
+        for (var i = 0; i < forms.length; i++) {
+            forms[i].classList.remove('active');
+        }
+        var btns = document.querySelectorAll('.contact-tab-btn');
+        for (var j = 0; j < btns.length; j++) {
+            btns[j].classList.remove('active');
+        }
+        
+        document.getElementById('form-' + tabName).classList.add('active');
+        document.getElementById('btn-tab-' + tabName).classList.add('active');
+    }
+
+    // データを安全かつ確実にGASへ送り、サンクスページへジャンプする処理
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        var form = event.target;
+        var submitBtn = form.querySelector('.submit-btn');
+        var originalBtnText = submitBtn.innerText;
+        
+        submitBtn.disabled = true;
+        submitBtn.innerText = "送信中...";
+
+        // 確実なデータ変換処理
+        var data = new URLSearchParams();
+        var formData = new FormData(form);
+        formData.forEach(function(value, key) {
+            data.append(key, value);
+        });
+
+        // GASへ送信（no-corsでGoogleの警告を回避）
+        fetch(form.action, {
+            method: 'POST',
+            body: data,
+            mode: 'no-cors'
+        }).then(function() {
+            window.location.href = "thank-you.html";
+        }).catch(function(error) {
+            console.error('Error:', error);
+            alert("送信に失敗しました。時間をおいて再度お試しください。");
+            submitBtn.disabled = false;
+            submitBtn.innerText = originalBtnText;
+        });
+    }
+</script>
+
+</body>
+</html>

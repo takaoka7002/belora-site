@@ -1,0 +1,40 @@
+# OS関連
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# エディタ
+.vscode/
+.idea/
+*.swp
+*~
+
+# ログ・キャッシュ
+*.log
+.cache/
+.parcel-cache/
+
+# Node（将来使う可能性に備えて）
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# 環境変数（秘密情報）
+.env
+.env.local
+.env.*.local
+
+# ビルド成果物
+dist/
+build/
+out/
+
+# Vercel
+.vercel/
+
+# その他
+*.tmp
+*.bak
+*.backup
