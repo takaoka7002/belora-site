@@ -2173,6 +2173,28 @@ nav a {
     line-height: 1.4;
 }
 
+/* 保証規約ページへの導線CTA */
+.warranty-cta{
+    margin: 32px auto 0;
+    max-width: 720px;
+    padding: 28px 24px;
+    text-align: center;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--bg-soft);
+}
+
+.warranty-cta p{
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.85;
+}
+
+.warranty-cta .btn-outline{
+    display: inline-block;
+}
+
 /* 注意書き */
 .warranty-notes{
     width: 100%;
