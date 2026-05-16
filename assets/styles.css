@@ -1969,6 +1969,27 @@ nav a {
     margin: 8px 0;
 }
 
+/* 保証対象外（チップ風リスト） */
+.warranty-exclude-list{
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+}
+
+.warranty-exclude-list li{
+    padding: 8px 14px;
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--sub);
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+}
+
 /* 注意書き */
 .warranty-notes{
     width: 100%;
