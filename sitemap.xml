@@ -30,6 +30,13 @@
   </url>
 
   <url>
+    <loc>https://belora.jp/early-access/</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
     <loc>https://belora.jp/products/6x/</loc>
     <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>

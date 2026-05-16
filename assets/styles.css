@@ -1768,189 +1768,332 @@ nav a {
 }
 
 /* =========================================
-   EARLY ACCESS 30 （先行導入セクション）
-   黒・ゴールド・ダークグレー基調のプレミアム
+   EARLY ACCESS 30 （ティーザー & 専用ページ）
+   黒×シャンパンゴールド、コンパクトで上品に
    ========================================= */
-.early-access{
+
+/* ---- 共通カラートークン（ローカル） ---- */
+:root{
+    --ea-bg: #14141a;
+    --ea-bg-soft: #1c1c24;
+    --ea-text: #f1ebdc;
+    --ea-muted: #c8c0ad;
+    --ea-sub: #8e8775;
+    --ea-gold: #c9a974;
+    --ea-gold-bright: #e8d4a4;
+    --ea-line: rgba(201, 169, 116, 0.22);
+}
+
+/* ---- 4.0xページ用 コンパクトティーザー ---- */
+.ea-teaser{
+    display: block;
     width: 100%;
-    max-width: 1080px;
-    margin: 56px auto 24px;
-    padding: 56px 44px;
-    background: linear-gradient(180deg, #0d0d12 0%, #15151b 100%);
-    color: #f0ebde;
-    border-radius: 12px;
+    max-width: 880px;
+    margin: 56px auto 0;
+    padding: 22px 28px;
+    background: linear-gradient(120deg, var(--ea-bg) 0%, var(--ea-bg-soft) 100%);
+    border: 1px solid var(--ea-line);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--ea-text);
     position: relative;
     overflow: hidden;
-    text-align: left;
+    transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
 }
 
-.early-access::before{
+.ea-teaser::before{
     content: "";
     position: absolute;
-    inset: 0;
-    border: 1px solid rgba(201, 163, 92, 0.32);
-    border-radius: 12px;
+    top: -80px; right: -80px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(201, 169, 116, 0.10) 0%, transparent 60%);
     pointer-events: none;
-    z-index: 1;
 }
 
-.early-access::after{
-    content: "";
-    position: absolute;
-    top: -120px;
-    right: -120px;
-    width: 360px;
-    height: 360px;
-    background: radial-gradient(circle, rgba(201, 163, 92, 0.10) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
+.ea-teaser:hover{
+    border-color: rgba(201, 169, 116, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
-.early-access > *{
-    position: relative;
-    z-index: 2;
-}
-
-.ea-eyebrow{
+.ea-teaser .ea-eyebrow{
     display: inline-block;
-    padding: 5px 14px;
-    border: 1px solid rgba(201, 163, 92, 0.55);
-    color: #c9a35c;
+    padding: 4px 12px;
+    border: 1px solid rgba(201, 169, 116, 0.55);
+    color: var(--ea-gold);
     font-family: "Inter","Helvetica Neue",sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.28em;
+    font-size: 0.68rem;
+    letter-spacing: 0.26em;
     font-weight: 600;
     border-radius: 999px;
-    margin-bottom: 18px;
 }
 
-.early-access h2{
-    margin: 0;
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-    letter-spacing: 0.06em;
-    line-height: 1.25;
-    color: #f5efe2;
-    background: linear-gradient(90deg, #f5efe2 0%, #e2c184 60%, #c9a35c 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.ea-teaser-body{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 14px;
+}
+
+.ea-teaser-text{
+    flex: 1;
+}
+
+.ea-teaser h2{
+    margin: 0 0 6px;
+    font-size: 1.15rem;
+    letter-spacing: 0.05em;
     font-weight: 500;
+    color: var(--ea-text);
 }
 
-.ea-subtitle{
-    margin: 12px 0 28px;
-    color: #c9a35c;
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-    letter-spacing: 0.08em;
-}
-
-.ea-lead{
-    color: #d9d2c2;
-    font-size: 0.96rem;
-    line-height: 2;
-    max-width: 760px;
-}
-
-.ea-lead strong{
-    color: #e2c184;
-    font-weight: 600;
-}
-
-.ea-section-title{
-    margin: 44px 0 18px;
-    font-size: 0.78rem;
-    letter-spacing: 0.28em;
-    color: #c9a35c;
-    text-transform: uppercase;
-    font-weight: 600;
-}
-
-/* 特典カード */
-.ea-perks{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin: 0 0 8px;
-}
-
-.ea-perk{
-    padding: 22px 20px;
-    background: rgba(255, 255, 255, 0.025);
-    border: 1px solid rgba(201, 163, 92, 0.18);
-    border-radius: 8px;
-}
-
-.ea-perk-num{
-    color: #c9a35c;
-    font-family: "Inter","Helvetica Neue",sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.15em;
-    font-weight: 600;
-    margin-bottom: 6px;
-}
-
-.ea-perk h3{
-    margin: 0 0 10px;
-    font-size: 1rem;
-    color: #f5efe2;
-    letter-spacing: 0.04em;
-    font-weight: 600;
-}
-
-.ea-perk p{
+.ea-teaser p{
     margin: 0;
-    color: #b8b0a0;
+    color: var(--ea-muted);
+    font-size: 0.88rem;
+    line-height: 1.75;
+}
+
+.ea-teaser p s{
+    color: var(--ea-sub);
+    opacity: 0.7;
+}
+
+.ea-teaser p strong{
+    color: var(--ea-gold-bright);
+    font-weight: 600;
+    font-size: 1.05em;
+}
+
+.ea-teaser-cta{
+    flex-shrink: 0;
+    padding: 10px 22px;
+    border: 1px solid rgba(201, 169, 116, 0.5);
+    border-radius: 999px;
+    color: var(--ea-gold-bright);
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    transition: background .25s ease;
+}
+
+.ea-teaser:hover .ea-teaser-cta{
+    background: rgba(201, 169, 116, 0.12);
+}
+
+/* 保証セクション内に出す補足 */
+.ea-inline-note{
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto 24px;
+    padding: 14px 20px;
+    background: linear-gradient(120deg, var(--ea-bg) 0%, var(--ea-bg-soft) 100%);
+    border: 1px solid var(--ea-line);
+    border-radius: 6px;
+    color: var(--ea-muted);
     font-size: 0.85rem;
     line-height: 1.85;
 }
 
-.ea-perk p code{
+.ea-inline-note strong{
+    color: var(--ea-gold-bright);
+}
+
+.ea-inline-note .ea-inline-tag{
     display: inline-block;
-    margin-top: 6px;
-    padding: 3px 8px;
-    background: rgba(201, 163, 92, 0.12);
-    border: 1px solid rgba(201, 163, 92, 0.3);
-    border-radius: 4px;
-    color: #e2c184;
+    margin-right: 10px;
+    padding: 2px 10px;
+    border: 1px solid rgba(201, 169, 116, 0.55);
+    border-radius: 999px;
+    color: var(--ea-gold);
+    font-family: "Inter","Helvetica Neue",sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+@media (max-width: 700px){
+    .ea-teaser-body{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .ea-teaser-cta{
+        align-self: stretch;
+        text-align: center;
+    }
+}
+
+/* ---- 専用ページ /early-access/ ---- */
+.ea-page{
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 60px 5% 80px;
+    text-align: left;
+    color: var(--ea-text);
+}
+
+.ea-page-bg{
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 0%, rgba(201, 169, 116, 0.08), transparent 50%),
+                radial-gradient(ellipse at 80% 100%, rgba(201, 169, 116, 0.05), transparent 50%),
+                linear-gradient(180deg, #0e0e13 0%, #18181f 100%);
+    z-index: -2;
+}
+
+.ea-page-hero{
+    text-align: center;
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--ea-line);
+}
+
+.ea-page-hero .ea-eyebrow{
+    display: inline-block;
+    padding: 5px 16px;
+    border: 1px solid rgba(201, 169, 116, 0.55);
+    color: var(--ea-gold);
+    font-family: "Inter","Helvetica Neue",sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    font-weight: 600;
+    border-radius: 999px;
+    margin-bottom: 22px;
+}
+
+.ea-page-hero h1{
+    margin: 0;
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+    font-weight: 400;
+    background: linear-gradient(90deg, #f5efe2 0%, #e8d4a4 60%, #c9a974 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.ea-page-hero .ea-page-sub{
+    margin: 14px 0 0;
+    color: var(--ea-gold);
+    font-size: clamp(0.92rem, 1.8vw, 1.05rem);
+    letter-spacing: 0.1em;
+}
+
+.ea-section{
+    margin-bottom: 48px;
+}
+
+.ea-section-label{
+    margin: 0 0 16px;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    color: var(--ea-gold);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.ea-section p{
+    margin: 0 0 12px;
+    color: var(--ea-muted);
+    font-size: 0.95rem;
+    line-height: 1.95;
+}
+
+.ea-section p strong{
+    color: var(--ea-gold-bright);
+    font-weight: 600;
+}
+
+.ea-section p:last-child{
+    margin-bottom: 0;
+}
+
+/* 特典カード（コンパクト） */
+.ea-perks{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.ea-perk{
+    padding: 20px 18px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--ea-line);
+    border-radius: 8px;
+}
+
+.ea-perk-num{
+    color: var(--ea-gold);
     font-family: "Inter","Helvetica Neue",sans-serif;
     font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.ea-perk h3{
+    margin: 0 0 8px;
+    font-size: 0.95rem;
+    color: var(--ea-text);
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.ea-perk p{
+    margin: 0;
+    color: var(--ea-muted);
+    font-size: 0.83rem;
+    line-height: 1.8;
+}
+
+.ea-perk code{
+    display: inline-block;
+    margin-top: 8px;
+    padding: 3px 8px;
+    background: rgba(201, 169, 116, 0.1);
+    border: 1px solid rgba(201, 169, 116, 0.3);
+    border-radius: 4px;
+    color: var(--ea-gold-bright);
+    font-family: "Inter","Helvetica Neue",sans-serif;
+    font-size: 0.76rem;
     letter-spacing: 0.04em;
 }
 
-/* Early Access 価格表 */
-.ea-table-wrap{
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
+/* 価格表 */
 .ea-table{
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
 }
 
 .ea-table th,
 .ea-table td{
-    padding: 14px 16px;
-    border-bottom: 1px solid rgba(201, 163, 92, 0.18);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--ea-line);
     text-align: left;
     vertical-align: middle;
 }
 
 .ea-table th{
-    width: 38%;
-    color: #b8b0a0;
+    width: 40%;
+    color: var(--ea-muted);
     font-weight: normal;
     letter-spacing: 0.04em;
 }
 
 .ea-table td{
-    color: #f0ebde;
+    color: var(--ea-text);
     font-weight: 500;
 }
 
 .ea-table td.highlight{
-    color: #e2c184;
+    color: var(--ea-gold-bright);
     font-size: 1.05rem;
     font-weight: 600;
 }
@@ -1960,40 +2103,40 @@ nav a {
     border-bottom: none;
 }
 
-/* Accident Care 追加プランの2行カード */
+/* プラン比較 */
 .ea-plan-table{
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     margin-top: 10px;
 }
 
 .ea-plan-table thead th{
     padding: 10px 14px;
-    color: #c9a35c;
-    font-size: 0.72rem;
+    color: var(--ea-gold);
+    font-size: 0.7rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     text-align: left;
-    border-bottom: 1px solid rgba(201, 163, 92, 0.4);
+    border-bottom: 1px solid rgba(201, 169, 116, 0.4);
     font-weight: 600;
 }
 
 .ea-plan-table tbody td{
     padding: 14px 14px;
-    border-bottom: 1px solid rgba(201, 163, 92, 0.12);
-    color: #d9d2c2;
+    border-bottom: 1px solid var(--ea-line);
+    color: var(--ea-muted);
 }
 
 .ea-plan-table tbody td:first-child{
-    color: #e2c184;
+    color: var(--ea-gold-bright);
     font-weight: 600;
-    width: 35%;
+    width: 38%;
 }
 
 .ea-plan-table tbody td:nth-child(2){
-    width: 22%;
-    color: #f0ebde;
+    width: 20%;
+    color: var(--ea-text);
     font-weight: 500;
 }
 
@@ -2001,27 +2144,29 @@ nav a {
     border-bottom: none;
 }
 
-/* コールアウト（申込金など） */
+/* コールアウト */
 .ea-callout{
-    margin-top: 14px;
-    padding: 20px 22px;
-    background: rgba(201, 163, 92, 0.06);
-    border-left: 3px solid #c9a35c;
+    padding: 18px 22px;
+    background: rgba(201, 169, 116, 0.05);
+    border-left: 3px solid var(--ea-gold);
     border-radius: 4px;
-    color: #d9d2c2;
-    font-size: 0.92rem;
+    color: var(--ea-muted);
+    font-size: 0.9rem;
     line-height: 1.95;
 }
 
 .ea-callout strong{
-    color: #e2c184;
+    color: var(--ea-gold-bright);
 }
 
+/* 注意書き */
 .ea-notes{
     margin-top: 36px;
-    padding-top: 22px;
-    border-top: 1px solid rgba(201, 163, 92, 0.18);
-    color: #8b8475;
+    padding: 22px 24px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--ea-line);
+    border-radius: 6px;
+    color: var(--ea-sub);
     font-size: 0.78rem;
     line-height: 1.85;
 }
@@ -2033,12 +2178,16 @@ nav a {
 }
 
 .ea-notes ul li{
-    margin-bottom: 3px;
+    margin-bottom: 4px;
+}
+
+.ea-notes a{
+    color: var(--ea-gold-bright);
 }
 
 /* CTA */
 .ea-cta{
-    margin-top: 36px;
+    margin-top: 44px;
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
@@ -2048,82 +2197,61 @@ nav a {
 .ea-btn-primary,
 .ea-btn-secondary{
     display: inline-block;
-    padding: 14px 32px;
+    padding: 14px 36px;
     border-radius: 4px;
     font-size: 0.9rem;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.14em;
     text-decoration: none;
     transition: all .25s ease;
     font-weight: 500;
 }
 
 .ea-btn-primary{
-    background: linear-gradient(90deg, #c9a35c, #e2c184);
+    background: linear-gradient(90deg, var(--ea-gold), var(--ea-gold-bright));
     color: #15151b;
-    border: 1px solid transparent;
 }
 
 .ea-btn-primary:hover{
-    background: linear-gradient(90deg, #e2c184, #f0d18f);
     transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(201, 163, 92, 0.28);
+    box-shadow: 0 10px 28px rgba(201, 169, 116, 0.32);
 }
 
 .ea-btn-secondary{
     background: transparent;
-    color: #e2c184;
-    border: 1px solid rgba(201, 163, 92, 0.5);
+    color: var(--ea-gold-bright);
+    border: 1px solid rgba(201, 169, 116, 0.5);
 }
 
 .ea-btn-secondary:hover{
-    background: rgba(201, 163, 92, 0.08);
-    border-color: rgba(201, 163, 92, 0.8);
+    background: rgba(201, 169, 116, 0.08);
+    border-color: rgba(201, 169, 116, 0.8);
 }
 
-/* 通常プラン側に出す Early Access 補足 */
-.ea-inline-note{
-    width: 100%;
-    max-width: 880px;
-    margin: 0 auto 24px;
-    padding: 16px 22px;
-    background: linear-gradient(90deg, rgba(13,13,18,0.92), rgba(21,21,27,0.92));
-    border: 1px solid rgba(201, 163, 92, 0.4);
-    border-radius: 6px;
-    color: #d9d2c2;
-    font-size: 0.88rem;
-    line-height: 1.9;
-}
-
-.ea-inline-note strong{
-    color: #e2c184;
-}
-
-.ea-inline-note .ea-inline-tag{
+.ea-back-link{
     display: inline-block;
-    margin-right: 10px;
-    padding: 2px 10px;
-    border: 1px solid rgba(201, 163, 92, 0.55);
-    border-radius: 999px;
-    color: #c9a35c;
-    font-family: "Inter","Helvetica Neue",sans-serif;
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
-    font-weight: 600;
-    vertical-align: middle;
+    margin-bottom: 32px;
+    color: var(--ea-sub);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: color .2s ease;
 }
 
-@media (max-width: 850px){
-    .early-access{
-        padding: 36px 22px;
-        margin: 40px auto 16px;
+.ea-back-link:hover{
+    color: var(--ea-gold-bright);
+}
+
+@media (max-width: 700px){
+    .ea-page{
+        padding: 40px 5% 60px;
     }
     .ea-perks{
         grid-template-columns: 1fr;
     }
     .ea-table th,
     .ea-table td{
-        padding: 12px 12px;
-        font-size: 0.88rem;
+        padding: 11px 12px;
+        font-size: 0.85rem;
     }
     .ea-plan-table tbody td{
         padding: 12px 10px;
