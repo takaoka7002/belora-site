@@ -1828,6 +1828,47 @@ nav a {
     box-shadow: 0 8px 28px rgba(86, 81, 184, 0.08);
 }
 
+.plan-card.recommended{
+    border-color: rgba(86, 81, 184, 0.85);
+    background: linear-gradient(180deg, rgba(86, 81, 184, 0.08), rgba(86, 81, 184, 0.03));
+    box-shadow: 0 16px 40px rgba(86, 81, 184, 0.18);
+    transform: translateY(-6px);
+}
+
+.plan-card .recommend-badge{
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #5651b8, #b85581);
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 6px 18px rgba(86, 81, 184, 0.35);
+}
+
+.plan-hint{
+    max-width: 760px;
+    margin: 18px auto 0;
+    padding: 14px 18px;
+    background: rgba(86, 81, 184, 0.04);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.85;
+    text-align: left;
+}
+
+.plan-hint strong{
+    color: var(--accent);
+    font-weight: 600;
+}
+
 .plan-card .plan-name{
     font-size: 1.15rem;
     letter-spacing: 0.08em;
@@ -2017,7 +2058,10 @@ nav a {
 @media (max-width: 850px){
     .plan-cards{
         grid-template-columns: 1fr;
-        gap: 14px;
+        gap: 22px;
+    }
+    .plan-card.recommended{
+        transform: none;
     }
     .warranty-table th,
     .warranty-table td{
