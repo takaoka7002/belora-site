@@ -2010,6 +2010,148 @@ nav a {
     margin: 8px 0;
 }
 
+/* =========================================
+   WARRANTY POLICY PAGE （保証規約ページ）
+   ========================================= */
+.warranty-policy{
+    width: 100%;
+    max-width: 880px;
+    margin: 48px auto 0;
+    text-align: left;
+}
+
+.policy-section{
+    padding: 36px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.policy-section:last-of-type{
+    border-bottom: none;
+}
+
+.policy-section h2{
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0 0 20px;
+    font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+    letter-spacing: 0.06em;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.policy-section h2 .num{
+    color: var(--accent);
+    font-family: "Inter","Helvetica Neue",sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+}
+
+.policy-section h3{
+    margin: 24px 0 10px;
+    font-size: 0.98rem;
+    color: var(--text);
+    letter-spacing: 0.06em;
+    font-weight: 600;
+}
+
+.policy-section p{
+    margin: 0 0 12px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 2;
+}
+
+.policy-section p:last-child{
+    margin-bottom: 0;
+}
+
+.policy-section a{
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.policy-list{
+    list-style: disc;
+    padding-left: 22px;
+    margin: 0 0 12px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.9;
+}
+
+.policy-list li{
+    margin-bottom: 4px;
+}
+
+.policy-list-muted li{
+    color: var(--sub);
+}
+
+.policy-callout{
+    margin: 18px 0;
+    padding: 16px 20px;
+    background: rgba(86, 81, 184, 0.04);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+}
+
+.policy-callout strong:first-child{
+    display: block;
+    margin-bottom: 6px;
+    color: var(--accent);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+}
+
+.policy-callout p{
+    margin: 4px 0;
+    font-size: 0.9rem;
+    line-height: 1.85;
+}
+
+.policy-flow{
+    counter-reset: flow-counter;
+    list-style: none;
+    padding: 0;
+    margin: 18px 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px 18px;
+}
+
+.policy-flow li{
+    counter-increment: flow-counter;
+    position: relative;
+    padding: 8px 0 8px 36px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.policy-flow li::before{
+    content: counter(flow-counter, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 8px;
+    color: var(--accent);
+    font-family: "Inter","Helvetica Neue",sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+}
+
+@media (max-width: 850px){
+    .warranty-policy{
+        margin-top: 32px;
+    }
+    .policy-section{
+        padding: 28px 0;
+    }
+}
+
 /* 保証対象外（チップ風リスト） */
 .warranty-exclude-list{
     list-style: none;
