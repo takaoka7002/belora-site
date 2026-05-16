@@ -1768,6 +1768,377 @@ nav a {
 }
 
 /* =========================================
+   EARLY ACCESS 30 （先行導入セクション）
+   黒・ゴールド・ダークグレー基調のプレミアム
+   ========================================= */
+.early-access{
+    width: 100%;
+    max-width: 1080px;
+    margin: 56px auto 24px;
+    padding: 56px 44px;
+    background: linear-gradient(180deg, #0d0d12 0%, #15151b 100%);
+    color: #f0ebde;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+}
+
+.early-access::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(201, 163, 92, 0.32);
+    border-radius: 12px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.early-access::after{
+    content: "";
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(201, 163, 92, 0.10) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.early-access > *{
+    position: relative;
+    z-index: 2;
+}
+
+.ea-eyebrow{
+    display: inline-block;
+    padding: 5px 14px;
+    border: 1px solid rgba(201, 163, 92, 0.55);
+    color: #c9a35c;
+    font-family: "Inter","Helvetica Neue",sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    font-weight: 600;
+    border-radius: 999px;
+    margin-bottom: 18px;
+}
+
+.early-access h2{
+    margin: 0;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    letter-spacing: 0.06em;
+    line-height: 1.25;
+    color: #f5efe2;
+    background: linear-gradient(90deg, #f5efe2 0%, #e2c184 60%, #c9a35c 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 500;
+}
+
+.ea-subtitle{
+    margin: 12px 0 28px;
+    color: #c9a35c;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    letter-spacing: 0.08em;
+}
+
+.ea-lead{
+    color: #d9d2c2;
+    font-size: 0.96rem;
+    line-height: 2;
+    max-width: 760px;
+}
+
+.ea-lead strong{
+    color: #e2c184;
+    font-weight: 600;
+}
+
+.ea-section-title{
+    margin: 44px 0 18px;
+    font-size: 0.78rem;
+    letter-spacing: 0.28em;
+    color: #c9a35c;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* 特典カード */
+.ea-perks{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 0 0 8px;
+}
+
+.ea-perk{
+    padding: 22px 20px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(201, 163, 92, 0.18);
+    border-radius: 8px;
+}
+
+.ea-perk-num{
+    color: #c9a35c;
+    font-family: "Inter","Helvetica Neue",sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.ea-perk h3{
+    margin: 0 0 10px;
+    font-size: 1rem;
+    color: #f5efe2;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+}
+
+.ea-perk p{
+    margin: 0;
+    color: #b8b0a0;
+    font-size: 0.85rem;
+    line-height: 1.85;
+}
+
+.ea-perk p code{
+    display: inline-block;
+    margin-top: 6px;
+    padding: 3px 8px;
+    background: rgba(201, 163, 92, 0.12);
+    border: 1px solid rgba(201, 163, 92, 0.3);
+    border-radius: 4px;
+    color: #e2c184;
+    font-family: "Inter","Helvetica Neue",sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+}
+
+/* Early Access 価格表 */
+.ea-table-wrap{
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ea-table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+}
+
+.ea-table th,
+.ea-table td{
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(201, 163, 92, 0.18);
+    text-align: left;
+    vertical-align: middle;
+}
+
+.ea-table th{
+    width: 38%;
+    color: #b8b0a0;
+    font-weight: normal;
+    letter-spacing: 0.04em;
+}
+
+.ea-table td{
+    color: #f0ebde;
+    font-weight: 500;
+}
+
+.ea-table td.highlight{
+    color: #e2c184;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.ea-table tr:last-child th,
+.ea-table tr:last-child td{
+    border-bottom: none;
+}
+
+/* Accident Care 追加プランの2行カード */
+.ea-plan-table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.ea-plan-table thead th{
+    padding: 10px 14px;
+    color: #c9a35c;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: left;
+    border-bottom: 1px solid rgba(201, 163, 92, 0.4);
+    font-weight: 600;
+}
+
+.ea-plan-table tbody td{
+    padding: 14px 14px;
+    border-bottom: 1px solid rgba(201, 163, 92, 0.12);
+    color: #d9d2c2;
+}
+
+.ea-plan-table tbody td:first-child{
+    color: #e2c184;
+    font-weight: 600;
+    width: 35%;
+}
+
+.ea-plan-table tbody td:nth-child(2){
+    width: 22%;
+    color: #f0ebde;
+    font-weight: 500;
+}
+
+.ea-plan-table tbody tr:last-child td{
+    border-bottom: none;
+}
+
+/* コールアウト（申込金など） */
+.ea-callout{
+    margin-top: 14px;
+    padding: 20px 22px;
+    background: rgba(201, 163, 92, 0.06);
+    border-left: 3px solid #c9a35c;
+    border-radius: 4px;
+    color: #d9d2c2;
+    font-size: 0.92rem;
+    line-height: 1.95;
+}
+
+.ea-callout strong{
+    color: #e2c184;
+}
+
+.ea-notes{
+    margin-top: 36px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(201, 163, 92, 0.18);
+    color: #8b8475;
+    font-size: 0.78rem;
+    line-height: 1.85;
+}
+
+.ea-notes ul{
+    list-style: disc;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.ea-notes ul li{
+    margin-bottom: 3px;
+}
+
+/* CTA */
+.ea-cta{
+    margin-top: 36px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ea-btn-primary,
+.ea-btn-secondary{
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    transition: all .25s ease;
+    font-weight: 500;
+}
+
+.ea-btn-primary{
+    background: linear-gradient(90deg, #c9a35c, #e2c184);
+    color: #15151b;
+    border: 1px solid transparent;
+}
+
+.ea-btn-primary:hover{
+    background: linear-gradient(90deg, #e2c184, #f0d18f);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(201, 163, 92, 0.28);
+}
+
+.ea-btn-secondary{
+    background: transparent;
+    color: #e2c184;
+    border: 1px solid rgba(201, 163, 92, 0.5);
+}
+
+.ea-btn-secondary:hover{
+    background: rgba(201, 163, 92, 0.08);
+    border-color: rgba(201, 163, 92, 0.8);
+}
+
+/* 通常プラン側に出す Early Access 補足 */
+.ea-inline-note{
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto 24px;
+    padding: 16px 22px;
+    background: linear-gradient(90deg, rgba(13,13,18,0.92), rgba(21,21,27,0.92));
+    border: 1px solid rgba(201, 163, 92, 0.4);
+    border-radius: 6px;
+    color: #d9d2c2;
+    font-size: 0.88rem;
+    line-height: 1.9;
+}
+
+.ea-inline-note strong{
+    color: #e2c184;
+}
+
+.ea-inline-note .ea-inline-tag{
+    display: inline-block;
+    margin-right: 10px;
+    padding: 2px 10px;
+    border: 1px solid rgba(201, 163, 92, 0.55);
+    border-radius: 999px;
+    color: #c9a35c;
+    font-family: "Inter","Helvetica Neue",sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+@media (max-width: 850px){
+    .early-access{
+        padding: 36px 22px;
+        margin: 40px auto 16px;
+    }
+    .ea-perks{
+        grid-template-columns: 1fr;
+    }
+    .ea-table th,
+    .ea-table td{
+        padding: 12px 12px;
+        font-size: 0.88rem;
+    }
+    .ea-plan-table tbody td{
+        padding: 12px 10px;
+    }
+    .ea-cta{
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .ea-btn-primary,
+    .ea-btn-secondary{
+        text-align: center;
+    }
+}
+
+/* =========================================
    WARRANTY PLANS (製品ページの保証プラン一覧)
    ========================================= */
 .warranty-wrap{
