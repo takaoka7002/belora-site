@@ -2760,8 +2760,9 @@ nav a {
     margin: 0 0 12px;
     font-size: clamp(2.6rem, 6vw, 4.4rem);
     line-height: 1.05;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
     font-weight: 600;
+    text-align: left;
     background: linear-gradient(90deg, #b8b3f5 0%, #ffffff 50%, #f4c2d7 100%);
     -webkit-background-clip: text;
     background-clip: text;
