@@ -2251,6 +2251,12 @@ nav a {
     letter-spacing: 0.12em;
     font-weight: normal;
     margin: 0 0 72px;
+    line-height: 1.45;
+}
+
+.warranty-wrap h2 .th-part{
+    display: inline-block;
+    white-space: nowrap;
 }
 
 .warranty-wrap h3{
