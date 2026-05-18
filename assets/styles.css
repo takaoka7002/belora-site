@@ -2250,7 +2250,7 @@ nav a {
     font-size: clamp(1.6rem, 3vw, 2.2rem);
     letter-spacing: 0.12em;
     font-weight: normal;
-    margin: 0 0 18px;
+    margin: 0 0 48px;
 }
 
 .warranty-wrap h3{
@@ -2264,11 +2264,31 @@ nav a {
 
 .warranty-lead{
     max-width: 760px;
-    margin: 0 auto 36px;
+    margin: 0 auto 48px;
     color: var(--muted);
     font-size: 0.95rem;
-    line-height: 2;
+    line-height: 2.15;
     text-align: center;
+}
+
+.warranty-lead p{
+    margin: 0 0 14px;
+}
+
+.warranty-lead p:last-child{
+    margin-bottom: 0;
+}
+
+.warranty-lead .lead-note{
+    display: inline-block;
+    margin-top: 18px;
+    padding: 10px 18px;
+    background: var(--bg-soft);
+    border-left: 2px solid var(--accent);
+    font-size: 0.85rem;
+    color: var(--sub);
+    line-height: 1.85;
+    text-align: left;
 }
 
 /* プラン3枚カード */
