@@ -2199,6 +2199,33 @@ nav a {
     box-shadow: 0 10px 26px rgba(86, 81, 184, 0.25);
 }
 
+/* ロック状態：受付準備中 */
+.ea-btn-primary.locked{
+    cursor: not-allowed;
+    opacity: 0.55;
+    pointer-events: none;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: var(--accent);
+    color: var(--bg);
+    border: 1px solid var(--accent);
+    user-select: none;
+}
+.ea-btn-primary.locked:hover{
+    transform: none;
+    box-shadow: none;
+}
+.ea-btn-primary .ea-btn-status{
+    font-size: 0.66rem;
+    letter-spacing: 0.32em;
+    opacity: 0.85;
+    text-indent: 0.32em;
+}
+
 .ea-btn-secondary{
     background: transparent;
     color: var(--accent);
