@@ -5,6 +5,18 @@
 (function () {
   'use strict';
 
+  // URLパラメータ ?ref=xxx を全フォームの hidden input[name="ref"] に反映
+  // 説明会・キャンペーン別流入元の判別に使用（例: aguh2026 = 愛知学院大学歯学部付属病院 研修医説明会）
+  try {
+    var refParam = new URLSearchParams(window.location.search).get('ref');
+    if (refParam && /^[a-zA-Z0-9_-]{1,32}$/.test(refParam)) {
+      var refInputs = document.querySelectorAll('input[name="ref"]');
+      for (var i = 0; i < refInputs.length; i++) {
+        refInputs[i].value = refParam;
+      }
+    }
+  } catch (e) { /* silent */ }
+
   window.switchContactTab = function (tabName) {
     var forms = document.querySelectorAll('.contact-form-wrapper');
     for (var i = 0; i < forms.length; i++) {
