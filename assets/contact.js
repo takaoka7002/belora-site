@@ -51,11 +51,14 @@
     var refVal = data.get('ref');
     if (refVal) {
       var msg = data.get('message') || '';
-      var prefix = '【流入元: ' + refVal + '】\n';
-      if (msg.indexOf(prefix) === -1) {
-        data.set('message', prefix + msg);
+      var tag = '[ref:' + refVal + ']';
+      if (msg.indexOf(tag) === -1) {
+        data.set('message', tag + '\n' + msg);
       }
     }
+
+    // diagnostic: 開発者ツールConsoleで実送信内容を確認できる
+    try { console.log('[Belora contact] payload:', Object.fromEntries(data)); } catch (e) {}
 
     fetch(form.action, {
       method: 'POST',
