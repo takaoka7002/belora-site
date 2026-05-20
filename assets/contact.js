@@ -47,6 +47,16 @@
       data.append(key, value);
     });
 
+    // refをmessage先頭に注入してGAS側の改修なしで識別可能にする
+    var refVal = data.get('ref');
+    if (refVal) {
+      var msg = data.get('message') || '';
+      var prefix = '【流入元: ' + refVal + '】\n';
+      if (msg.indexOf(prefix) === -1) {
+        data.set('message', prefix + msg);
+      }
+    }
+
     fetch(form.action, {
       method: 'POST',
       body: data,
