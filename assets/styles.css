@@ -315,6 +315,7 @@
     .content-block h2,
     .content-block h2.title-gradient {
         margin:0;
+        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝","Times New Roman",serif;
         font-size:clamp(2.3rem,5vw,4.5rem);
         line-height:1.2;
         letter-spacing:.12em;
@@ -323,6 +324,7 @@
     }
 
     .hero-title{
+        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝","Times New Roman",serif;
         text-align:left;
         font-size:clamp(2.4rem,5vw,4.8rem);
         line-height:1.15;
@@ -334,6 +336,7 @@
     }
 
     .title-gradient{
+        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝","Times New Roman",serif;
         background:linear-gradient(45deg,#5651b8,#1a1a2e,#b85581);
         -webkit-background-clip:text;
         background-clip:text;
@@ -549,6 +552,7 @@
     }
 
     .philo-h3{
+        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝","Times New Roman",serif;
         margin:0 0 20px 0;
         font-size:clamp(1.25rem, 2.8vw, 1.5rem);
         font-weight:bold;
@@ -800,6 +804,7 @@
     }
 
     .product-title-large{
+        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝","Times New Roman",serif;
         font-size:clamp(2.2rem,5vw,3.2rem);
         line-height:1;
         letter-spacing:.08em;
@@ -1353,6 +1358,7 @@ nav a {
     background: var(--accent);
 }
 .article-h1 {
+    font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝","Times New Roman",serif;
     font-size: clamp(1.6rem, 4vw, 2.4rem);
     line-height: 1.5;
     letter-spacing: 0.05em;
@@ -1430,6 +1436,7 @@ nav a {
     }
 }
 .article-body h2 {
+    font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝","Times New Roman",serif;
     font-size: clamp(1.3rem, 3vw, 1.7rem);
     color: var(--text);
     margin: 60px 0 20px;
@@ -1440,6 +1447,7 @@ nav a {
     line-height: 1.5;
 }
 .article-body h3 {
+    font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝","Times New Roman",serif;
     font-size: 1.15rem;
     color: var(--accent);
     margin: 36px 0 14px;
@@ -2311,6 +2319,7 @@ nav a {
 }
 
 .warranty-wrap h3{
+    font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝","Times New Roman",serif;
     margin: 56px 0 18px;
     font-size: clamp(1.15rem, 2.2vw, 1.35rem);
     letter-spacing: 0.08em;
@@ -2573,6 +2582,7 @@ nav a {
 }
 
 .policy-section h2{
+    font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝","Times New Roman",serif;
     display: flex;
     align-items: baseline;
     gap: 12px;
@@ -2593,6 +2603,7 @@ nav a {
 }
 
 .policy-section h3{
+    font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝","Times New Roman",serif;
     margin: 24px 0 10px;
     font-size: 0.98rem;
     color: var(--text);
