@@ -80,15 +80,11 @@
             font-weight: 500;
             text-transform: uppercase;
         }
-        .warranty-wrap .plan-card .plan-tag.plan-tag-optional {
-            color: var(--sub);
-            font-weight: 500;
-        }
         .warranty-wrap .plan-card .plan-name {
             font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "游明朝", serif;
             font-size: 1.3rem;
             letter-spacing: 0.08em;
-            font-weight: 500;
+            font-weight: 600;
             line-height: 1.4;
         }
         .warranty-wrap .plan-card .plan-price {
@@ -105,20 +101,39 @@
             color: var(--sub);
             font-weight: 400;
         }
-        /* Standard（主軸）: 濃いボーダーで存在感 */
+        /* Standard（紫トーン） */
         .warranty-wrap .plan-cards > .plan-card:first-child {
-            border: 1px solid rgba(40, 40, 60, 0.40);
-            background: #fff;
-            box-shadow: 0 8px 24px rgba(20, 20, 35, 0.08);
+            background: linear-gradient(160deg, rgba(86, 81, 184, 0.10), rgba(86, 81, 184, 0.02));
+            border: 1px solid rgba(86, 81, 184, 0.50);
+            box-shadow: 0 16px 42px rgba(86, 81, 184, 0.16);
         }
-        /* Membership（オプション）: 落ち着いたトーンで補足扱い */
+        .warranty-wrap .plan-cards > .plan-card:first-child .plan-tag {
+            color: #5651b8;
+            font-weight: 600;
+        }
+        .warranty-wrap .plan-cards > .plan-card:first-child .plan-name {
+            background: linear-gradient(90deg, #5651b8, #6f4ea8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+        /* Membership（ピンクトーン・同等の存在感） */
         .warranty-wrap .plan-cards > .plan-card:last-child {
-            background: var(--bg-soft);
-            border: 1px solid var(--line);
-            box-shadow: none;
+            background: linear-gradient(160deg, rgba(184, 85, 129, 0.10), rgba(184, 85, 129, 0.02));
+            border: 1px solid rgba(184, 85, 129, 0.50);
+            box-shadow: 0 16px 42px rgba(184, 85, 129, 0.16);
         }
-        .warranty-wrap .plan-cards > .plan-card:last-child .plan-price {
-            font-size: 1.45rem;
+        .warranty-wrap .plan-cards > .plan-card:last-child .plan-tag {
+            color: #b85581;
+            font-weight: 600;
+        }
+        .warranty-wrap .plan-cards > .plan-card:last-child .plan-name {
+            background: linear-gradient(90deg, #b85581, #8c4c9f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
         }
         .warranty-wrap h3.title-gradient {
             background: linear-gradient(90deg, #5651b8 0%, #8c4c9f 55%, #b85581 100%);
