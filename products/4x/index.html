@@ -82,10 +82,10 @@
         }
         .warranty-wrap .plan-card .plan-name {
             font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "游明朝", serif;
-            font-size: 1.3rem;
-            letter-spacing: 0.08em;
-            font-weight: 600;
-            line-height: 1.4;
+            font-size: 1.65rem;
+            letter-spacing: 0.10em;
+            font-weight: 700;
+            line-height: 1.35;
         }
         .warranty-wrap .plan-card .plan-price {
             font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "游明朝", "Times New Roman", Georgia, serif;
@@ -94,13 +94,33 @@
             font-weight: 500;
             color: var(--text);
             font-feature-settings: "palt" 1;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 10px;
+            line-height: 1.3;
+        }
+        .warranty-wrap .plan-card .plan-price .price-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--sub);
+            letter-spacing: 0.08em;
+        }
+        .warranty-wrap .plan-card .plan-price .price-amount {
+            font-size: 1.9rem;
+            font-weight: 500;
+            color: var(--text);
+            letter-spacing: 0.04em;
         }
         .warranty-wrap .plan-card .plan-price small {
             font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "游明朝", "Times New Roman", Georgia, serif;
+            display: block;
+            width: 100%;
             font-size: 0.72rem;
             letter-spacing: 0.06em;
             color: var(--sub);
             font-weight: 400;
+            margin-top: 2px;
         }
         /* Standard（紫トーン） */
         .warranty-wrap .plan-cards > .plan-card:first-child {
@@ -256,7 +276,11 @@
                 <div class="plan-card">
                     <span class="plan-tag">BASE PRICE</span>
                     <div class="plan-name">BELORA 4.0X Standard</div>
-                    <div class="plan-price">297,000円<small>税込（ルーペ本体）<br>税抜 270,000円</small></div>
+                    <div class="plan-price">
+                        <span class="price-label">ルーペ本体</span>
+                        <span class="price-amount">297,000円</span>
+                        <small>税込（税抜 270,000円）</small>
+                    </div>
                     <ul>
                         <li>通常保証 1年</li>
                         <li>通常使用下の不具合に対応</li>
