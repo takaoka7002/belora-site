@@ -2580,13 +2580,38 @@ nav a {
     font-style: normal;
 }
 
+.warranty-table thead th.col-competitor .th-sub{
+    display: block;
+    margin-top: 4px;
+    font-size: 0.78em;
+    color: var(--sub);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: none;
+    font-family: "Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
+}
+
 .warranty-table tbody td.col-competitor strong{
     color: var(--text);
     font-weight: 600;
 }
 
 .warranty-table tbody th{
-    width: 30%;
+    width: 24%;
+}
+
+/* 5列構成の比較表は wide */
+.warranty-table-compare{
+    min-width: 920px;
+}
+.warranty-table-compare th,
+.warranty-table-compare td{
+    padding: 14px 14px;
+    font-size: 0.86rem;
+}
+.warranty-table-compare thead th{
+    padding: 12px 10px;
+    font-size: 0.68rem;
 }
 
 .warranty-table tbody tr:last-child th,
