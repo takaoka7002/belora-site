@@ -111,7 +111,32 @@
             font-weight: 400;
             margin-top: 4px;
         }
-        /* Standard を控えめにブランドカラーで縁取り */
+        /* Standard を「主役」として強化 */
+        .warranty-wrap .plan-cards > .plan-card:first-child {
+            background: linear-gradient(165deg, rgba(86, 81, 184, 0.09), rgba(184, 85, 129, 0.04) 70%, rgba(86, 81, 184, 0.02));
+            border: 1px solid rgba(86, 81, 184, 0.45);
+            box-shadow: 0 18px 48px rgba(86, 81, 184, 0.14);
+            overflow: hidden;
+        }
+        .warranty-wrap .plan-cards > .plan-card:first-child::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #5651b8 0%, #8c4c9f 55%, #b85581 100%);
+        }
+        .warranty-wrap .plan-cards > .plan-card:first-child .plan-tag {
+            align-self: flex-start;
+            padding: 6px 14px;
+            border: 1px solid rgba(86, 81, 184, 0.45);
+            border-radius: 999px;
+            color: #5651b8;
+            font-weight: 600;
+            letter-spacing: 0.28em;
+            background: rgba(255, 255, 255, 0.5);
+        }
         .warranty-wrap .plan-cards > .plan-card:first-child .plan-name {
             background: linear-gradient(45deg, #5651b8, #1a1a2e, #b85581);
             -webkit-background-clip: text;
@@ -119,6 +144,24 @@
             -webkit-text-fill-color: transparent;
             color: transparent;
         }
+        .warranty-wrap .plan-cards > .plan-card:first-child .plan-price .price-amount {
+            background: linear-gradient(90deg, #5651b8 0%, #8c4c9f 55%, #b85581 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            font-weight: 500;
+            font-size: 2rem;
+        }
+        .warranty-wrap .plan-cards > .plan-card:first-child .plan-price .price-label {
+            color: #5651b8;
+            font-weight: 600;
+        }
+        .warranty-wrap .plan-cards > .plan-card:first-child .plan-price {
+            border-top-color: rgba(86, 81, 184, 0.25);
+        }
+
+        /* Membership 側はバッジ・グラデ名のみ維持 */
         .warranty-wrap .plan-card.recommended .plan-name {
             background: linear-gradient(90deg, #5651b8, #b85581);
             -webkit-background-clip: text;
