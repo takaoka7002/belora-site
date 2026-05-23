@@ -142,15 +142,12 @@
                     BELORA 4.0X は、本体に <strong>1年間の通常保証</strong> を付帯した Standard 価格 <strong>税込 297,000円</strong> でご提供します。
                 </p>
                 <p>
-                    通常使用下で発生した不具合に対応し、落下・衝撃・破損による修理は有償でのご案内となります。
-                </p>
-                <p>
-                    長く安定してお使いいただくため、必要に応じて <strong>Belora Care Membership</strong> へのご加入も可能です。
+                    長く安定してお使いいただくため、年間サポートプログラム <strong>Belora Care Membership</strong> を併せてご用意しています。
                 </p>
             </div>
 
-            <!-- 基本価格カード -->
-            <div class="plan-cards" style="grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto;">
+            <!-- 2カードを並べてメリハリを出す（自動で1列にフォールバック） -->
+            <div class="plan-cards" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 48px; align-items: stretch;">
                 <div class="plan-card">
                     <span class="plan-tag">BASE PRICE</span>
                     <div class="plan-name">BELORA 4.0X Standard</div>
@@ -162,69 +159,68 @@
                         <li>Belora Care Membership 加入可</li>
                     </ul>
                 </div>
-            </div>
-
-            <!-- Belora Care Membership -->
-            <h3 style="margin-top: 80px;">Belora Care Membership</h3>
-            <div class="warranty-lead">
-                <p>
-                    BELORA 4.0X を長く安定してお使いいただくための <strong>年間サポートプログラム</strong> です。
-                </p>
-                <p>
-                    加入期間中は、点検・光軸チェック・クリーニングを含むメンテナンスに無償で対応します。また、ネジ・ノーズパッドなどの小部品交換も無償で対応し、フレーム交換や鏡筒交換を伴う修理については、<strong>メンバーシップ専用価格</strong>をご用意しています。
-                </p>
-                <span class="lead-note">※ 年額 9,800円（税込）／ 最大 5 年。加入は購入時または購入後 30 日以内に限ります。</span>
-            </div>
-
-            <div class="plan-cards" style="grid-template-columns: 1fr; max-width: 720px; margin-left: auto; margin-right: auto;">
-                <div class="plan-card featured">
+                <div class="plan-card featured recommended">
+                    <span class="recommend-badge">LONG-TERM CARE</span>
                     <span class="plan-tag">MEMBERSHIP</span>
                     <div class="plan-name">Belora Care Membership</div>
                     <div class="plan-price">年額 9,800円<small>税込／最大 5 年</small></div>
                     <ul>
                         <li>点検・光軸チェック・クリーニング <strong>無償</strong></li>
-                        <li>ネジ・ノーズパッドなど小部品交換 <strong>無償</strong></li>
-                        <li>フレーム交換・鏡筒交換などの修理は <strong>メンバーシップ専用価格</strong> で対応</li>
+                        <li>小部品交換 <strong>無償</strong><br><span style="font-size:0.82em; color:var(--sub);">ネジ・ノーズパッド等</span></li>
+                        <li>フレーム交換・鏡筒交換は<br><strong>メンバーシップ専用価格</strong> で対応</li>
                     </ul>
                 </div>
             </div>
 
+            <!-- Membership 説明（accent-tint callout でメリハリ） -->
+            <div class="policy-callout" style="margin-top: 60px;">
+                <strong>About Belora Care Membership</strong>
+                <p>
+                    BELORA 4.0X を長く安定してお使いいただくための <strong>年間サポートプログラム</strong> です。加入期間中は、点検・光軸チェック・クリーニングを含むメンテナンスに無償で対応します。また、ネジ・ノーズパッドなどの小部品交換も無償で対応し、フレーム交換や鏡筒交換を伴う修理については、<strong>メンバーシップ専用価格</strong> をご用意しています。
+                </p>
+                <p style="font-size:0.85em; color:var(--sub); margin-top:10px;">
+                    ※ 加入は購入時または購入後 30 日以内に限ります。破損後のご加入はお受けできません。
+                </p>
+            </div>
+
             <!-- 修理価格表 -->
-            <h3 style="margin-top: 80px;">修理価格表</h3>
+            <div class="line" style="margin: 80px auto 40px;"></div>
+            <h3 class="title-gradient" style="font-size:1.5rem; margin-bottom:8px;">修理価格表</h3>
+            <p style="text-align:center; color:var(--muted); font-size:0.9rem; margin-bottom: 18px;">通常修理価格と Belora Care Membership 加入中の専用価格</p>
             <div class="warranty-table-wrap">
                 <table class="warranty-table">
                     <thead>
                         <tr>
                             <th>内容</th>
                             <th>通常修理価格</th>
-                            <th class="col-featured">Belora Care Membership<br>加入中</th>
+                            <th class="col-featured" style="color: var(--accent);">Belora Care Membership<br>加入中</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <th>メンテナンス<br><span style="font-size:0.85em; color:var(--sub);">点検・光軸チェック・クリーニング</span></th>
                             <td>5,500円</td>
-                            <td class="col-featured">無償</td>
+                            <td class="col-featured"><strong style="color: var(--accent);">無償</strong></td>
                         </tr>
                         <tr>
                             <th>小部品交換<br><span style="font-size:0.85em; color:var(--sub);">ネジ・ノーズパッド等</span></th>
                             <td>個別見積</td>
-                            <td class="col-featured">無償</td>
+                            <td class="col-featured"><strong style="color: var(--accent);">無償</strong></td>
                         </tr>
                         <tr>
                             <th>フレーム交換・光軸調整</th>
                             <td>49,500円</td>
-                            <td class="col-featured">22,000円</td>
+                            <td class="col-featured"><strong>22,000円</strong></td>
                         </tr>
                         <tr>
                             <th>鏡筒左右交換</th>
                             <td>154,000円</td>
-                            <td class="col-featured">59,400円</td>
+                            <td class="col-featured"><strong>59,400円</strong></td>
                         </tr>
                         <tr>
                             <th>その他修理</th>
-                            <td>個別見積</td>
-                            <td class="col-featured">個別見積</td>
+                            <td class="muted">個別見積</td>
+                            <td class="col-featured muted">個別見積</td>
                         </tr>
                     </tbody>
                 </table>
@@ -232,7 +228,8 @@
             </div>
 
             <!-- 注意事項 -->
-            <h3 style="margin-top: 60px;">メンバーシップに関するご案内</h3>
+            <div class="line" style="margin: 80px auto 40px;"></div>
+            <h3 class="title-gradient" style="font-size:1.5rem; margin-bottom: 24px;">メンバーシップに関するご案内</h3>
             <div class="warranty-notes">
                 <ul>
                     <li>Belora Care Membership は年額制で、加入期間は最大 5 年です。</li>
