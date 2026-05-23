@@ -30,8 +30,8 @@
         margin:0;
         background:var(--bg);
         color:var(--text);
-        /* 欧文を先に書くことで英数字は Inter/Helvetica、日本語は Yu Mincho で描画される和欧混植 */
-        font-family:"Inter","Helvetica Neue","Helvetica","Yu Mincho","YuMincho","Hiragino Mincho ProN",serif;
+        /* 游明朝を優先：日本語も英数字もすべて明朝・セリフ系に統一。Times は欧文フォールバック */
+        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝","Times New Roman",Georgia,serif;
         font-weight:400;
         font-feature-settings:"palt" 1, "ss01" 1;
         line-height:1.85;
@@ -215,10 +215,11 @@
     nav button, nav a {
         background:none;
         border:none;
-        color:rgba(255,255,255,0.7);
-        font-family:inherit;
-        font-size:.8rem;
-        letter-spacing:.12em;
+        color:rgba(255,255,255,0.78);
+        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝","Times New Roman",Georgia,serif;
+        font-size:.85rem;
+        letter-spacing:.18em;
+        font-weight:500;
         cursor:pointer;
         padding:0;
         position:relative;
