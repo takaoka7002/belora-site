@@ -38,3 +38,8 @@ out/
 *.tmp
 *.bak
 *.backup
+
+# ローカルプレビュー用ドラフト（公開しない）
+_draft.html
+_draft/
+*_draft.html
