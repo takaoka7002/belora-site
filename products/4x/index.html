@@ -187,6 +187,92 @@
         .warranty-wrap .warranty-table thead .col-featured {
             color: var(--accent);
         }
+        /* プランペア（本体＋長期サポート）レイアウト */
+        .warranty-wrap .plan-cards.pair-layout {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: stretch;
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .warranty-wrap .plan-card-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .warranty-wrap .plan-card-group .plan-card {
+            flex: 1;
+        }
+        .warranty-wrap .plan-card-label {
+            display: block;
+            text-align: center;
+            font-family: "Inter", "Helvetica Neue", "Segoe UI", sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.42em;
+            color: var(--sub);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        .warranty-wrap .plan-card-label .ja {
+            display: block;
+            font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "游明朝", serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.22em;
+            color: var(--text);
+            margin-top: 6px;
+            text-transform: none;
+            font-weight: 500;
+        }
+        .warranty-wrap .plan-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 50px;
+        }
+        .warranty-wrap .plan-connector-inner {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #5651b8 0%, #8c4c9f 55%, #b85581 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Inter", "Helvetica Neue", sans-serif;
+            font-size: 1.5rem;
+            font-weight: 300;
+            box-shadow: 0 12px 26px rgba(86, 81, 184, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            border: 3px solid var(--bg);
+            line-height: 1;
+        }
+        .warranty-wrap .plan-pair-description {
+            max-width: 600px;
+            margin: 36px auto 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 2.1;
+            word-break: auto-phrase;
+            line-break: strict;
+        }
+        .warranty-wrap .plan-pair-description strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        @media (max-width: 980px) {
+            .warranty-wrap .plan-cards.pair-layout {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .warranty-wrap .plan-connector {
+                padding-top: 0;
+            }
+            .warranty-wrap .plan-connector-inner {
+                transform: rotate(90deg);
+            }
+        }
+
         /* 価格セクション内のフローティング区切り */
         .warranty-wrap .section-divider {
             width: 40px;
@@ -303,39 +389,54 @@
                 </p>
             </div>
 
-            <!-- 2カード横並び。Standard を主軸、Membership は補足オプションとして提示 -->
-            <div class="plan-cards" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); align-items: stretch;">
-                <div class="plan-card">
-                    <span class="plan-tag">Base Price</span>
-                    <div class="plan-name">BELORA 4.0X Standard</div>
-                    <div class="plan-price">
-                        <span class="price-label">ルーペ本体</span>
-                        <span class="price-amount">297,000円</span>
-                        <small>税込（税抜 270,000円）</small>
+            <!-- 本体（必須）＋長期サポート（任意）の関係性を「＋」コネクタで表現 -->
+            <div class="plan-cards pair-layout">
+                <div class="plan-card-group">
+                    <span class="plan-card-label">Product<span class="ja">本体（必須）</span></span>
+                    <div class="plan-card">
+                        <span class="plan-tag">Base Price</span>
+                        <div class="plan-name">BELORA 4.0X Standard</div>
+                        <div class="plan-price">
+                            <span class="price-label">ルーペ本体</span>
+                            <span class="price-amount">297,000円</span>
+                            <small>税込（税抜 270,000円）</small>
+                        </div>
+                        <ul>
+                            <li>通常保証 1年</li>
+                            <li>通常使用下の不具合に対応</li>
+                            <li>落下・衝撃・破損は有償修理</li>
+                            <li>Belora Care Membership 加入可</li>
+                        </ul>
                     </div>
-                    <ul>
-                        <li>通常保証 1年</li>
-                        <li>通常使用下の不具合に対応</li>
-                        <li>落下・衝撃・破損は有償修理</li>
-                        <li>Belora Care Membership 加入可</li>
-                    </ul>
                 </div>
-                <div class="plan-card featured recommended">
-                    <span class="recommend-badge">Long-Term Care</span>
-                    <span class="plan-tag">Membership</span>
-                    <div class="plan-name">Belora Care Membership</div>
-                    <div class="plan-price">
-                        <span class="price-label">年間サポート</span>
-                        <span class="price-amount">年額 9,800円</span>
-                        <small>税込／最大 5 年</small>
+
+                <div class="plan-connector" aria-hidden="true">
+                    <div class="plan-connector-inner">＋</div>
+                </div>
+
+                <div class="plan-card-group">
+                    <span class="plan-card-label">Care Program<span class="ja">＋ 長期サポート（任意）</span></span>
+                    <div class="plan-card featured recommended">
+                        <span class="recommend-badge">Long-Term Care</span>
+                        <span class="plan-tag">Membership</span>
+                        <div class="plan-name">Belora Care Membership</div>
+                        <div class="plan-price">
+                            <span class="price-label">年間サポート</span>
+                            <span class="price-amount">年額 9,800円</span>
+                            <small>税込／最大 5 年</small>
+                        </div>
+                        <ul>
+                            <li>点検・光軸チェック・クリーニング <strong>無償</strong></li>
+                            <li>小部品交換（ネジ・ノーズパッド等）<strong>無償</strong></li>
+                            <li>フレーム交換・鏡筒交換は<strong>メンバーシップ専用価格</strong></li>
+                        </ul>
                     </div>
-                    <ul>
-                        <li>点検・光軸チェック・クリーニング <strong>無償</strong></li>
-                        <li>小部品交換（ネジ・ノーズパッド等）<strong>無償</strong></li>
-                        <li>フレーム交換・鏡筒交換は<strong>メンバーシップ専用価格</strong></li>
-                    </ul>
                 </div>
             </div>
+
+            <p class="plan-pair-description">
+                BELORA 4.0X <strong>本体</strong> に、長期使用を支える <strong>Belora Care Membership</strong> を組み合わせることで、メンテナンスから修理対応まで <strong>最大5年間</strong> の安定した使用環境を整えられます。
+            </p>
 
             <!-- Membership 説明 -->
             <div class="policy-callout" style="margin-top: 80px;">
