@@ -2614,6 +2614,24 @@ nav a {
     font-size: 0.68rem;
 }
 
+/* 本体価格（参考）行 — 修理価格行から視覚的に区切る */
+.warranty-table-compare .row-loupe-price th,
+.warranty-table-compare .row-loupe-price td{
+    background: rgba(86, 81, 184, 0.05);
+    padding-top: 18px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid rgba(86, 81, 184, 0.25);
+    text-align: center;
+    vertical-align: middle;
+}
+.warranty-table-compare .row-loupe-price th{
+    text-align: left;
+    background: rgba(86, 81, 184, 0.025);
+}
+.warranty-table-compare .row-loupe-price td.col-competitor{
+    background: rgba(0, 0, 0, 0.04);
+}
+
 .warranty-table tbody tr:last-child th,
 .warranty-table tbody tr:last-child td{
     border-bottom: none;
