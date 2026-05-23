@@ -112,7 +112,7 @@
             margin-top: 4px;
         }
         /* Standard を「主役」として最大限に強化 */
-        .warranty-wrap .plan-cards > .plan-card:first-child {
+        .warranty-wrap .plan-card-group:first-child .plan-card {
             background:
                 radial-gradient(ellipse at top right, rgba(184, 85, 129, 0.10), transparent 60%),
                 radial-gradient(ellipse at bottom left, rgba(86, 81, 184, 0.10), transparent 55%),
@@ -126,7 +126,7 @@
             transform: translateY(-3px);
             padding-top: 52px;
         }
-        .warranty-wrap .plan-cards > .plan-card:first-child::before {
+        .warranty-wrap .plan-card-group:first-child .plan-card::before {
             content: "";
             position: absolute;
             top: 0;
@@ -137,7 +137,7 @@
             z-index: 1;
         }
         /* 主役バッジ（Membership の recommend-badge と対をなす） */
-        .warranty-wrap .plan-cards > .plan-card:first-child::after {
+        .warranty-wrap .plan-card-group:first-child .plan-card::after {
             content: "★ Main Product";
             position: absolute;
             top: -13px;
@@ -156,7 +156,7 @@
             z-index: 2;
             text-transform: uppercase;
         }
-        .warranty-wrap .plan-cards > .plan-card:first-child .plan-tag {
+        .warranty-wrap .plan-card-group:first-child .plan-card .plan-tag {
             align-self: flex-start;
             padding: 6px 14px;
             border: 1px solid rgba(86, 81, 184, 0.5);
@@ -166,7 +166,7 @@
             letter-spacing: 0.28em;
             background: rgba(255, 255, 255, 0.6);
         }
-        .warranty-wrap .plan-cards > .plan-card:first-child .plan-name {
+        .warranty-wrap .plan-card-group:first-child .plan-card .plan-name {
             background: linear-gradient(45deg, #5651b8, #1a1a2e, #b85581);
             -webkit-background-clip: text;
             background-clip: text;
@@ -174,12 +174,12 @@
             color: transparent;
             font-size: 1.6rem;
         }
-        .warranty-wrap .plan-cards > .plan-card:first-child .plan-price {
+        .warranty-wrap .plan-card-group:first-child .plan-card .plan-price {
             border-top-color: rgba(86, 81, 184, 0.25);
             padding-top: 14px;
             margin-top: 4px;
         }
-        .warranty-wrap .plan-cards > .plan-card:first-child .plan-price .price-amount {
+        .warranty-wrap .plan-card-group:first-child .plan-card .plan-price .price-amount {
             background: linear-gradient(90deg, #5651b8 0%, #8c4c9f 55%, #b85581 100%);
             -webkit-background-clip: text;
             background-clip: text;
@@ -190,18 +190,18 @@
             line-height: 1.1;
             letter-spacing: 0.02em;
         }
-        .warranty-wrap .plan-cards > .plan-card:first-child .plan-price .price-label {
+        .warranty-wrap .plan-card-group:first-child .plan-card .plan-price .price-label {
             color: #5651b8;
             font-weight: 600;
         }
-        .warranty-wrap .plan-cards > .plan-card:first-child .plan-price small {
+        .warranty-wrap .plan-card-group:first-child .plan-card .plan-price small {
             color: #6b67a0;
             font-weight: 500;
         }
-        .warranty-wrap .plan-cards > .plan-card:first-child ul li {
+        .warranty-wrap .plan-card-group:first-child .plan-card ul li {
             color: var(--text);
         }
-        .warranty-wrap .plan-cards > .plan-card:first-child ul li::before {
+        .warranty-wrap .plan-card-group:first-child .plan-card ul li::before {
             background: linear-gradient(90deg, #5651b8, #b85581);
             opacity: 1;
             width: 6px;
