@@ -119,22 +119,31 @@
             -webkit-text-fill-color: transparent;
             color: transparent;
         }
-        /* Membership（ダーク・ミッドナイトトーン・同等の存在感） */
-        .warranty-wrap .plan-cards > .plan-card:last-child {
-            background: linear-gradient(160deg, rgba(26, 26, 46, 0.08), rgba(26, 26, 46, 0.02));
-            border: 1px solid rgba(26, 26, 46, 0.45);
-            box-shadow: 0 16px 42px rgba(26, 26, 46, 0.14);
+        /* Membership（featured recommended に同梱の紫→ピンクグラデを再強化） */
+        .warranty-wrap .plan-card.recommended {
+            background: linear-gradient(160deg, rgba(86, 81, 184, 0.12), rgba(184, 85, 129, 0.05) 60%, rgba(184, 85, 129, 0.10));
+            border-color: rgba(86, 81, 184, 0.55);
+            box-shadow: 0 20px 50px rgba(86, 81, 184, 0.20), 0 0 0 1px rgba(86, 81, 184, 0.06);
         }
-        .warranty-wrap .plan-cards > .plan-card:last-child .plan-tag {
-            color: #1a1a2e;
+        .warranty-wrap .plan-card.recommended .plan-tag {
+            color: var(--accent);
             font-weight: 600;
         }
-        .warranty-wrap .plan-cards > .plan-card:last-child .plan-name {
-            background: linear-gradient(90deg, #1a1a2e, #3a3a5a);
+        .warranty-wrap .plan-card.recommended .plan-name {
+            background: linear-gradient(90deg, #5651b8, #b85581);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             color: transparent;
+        }
+        .warranty-wrap .plan-card .recommend-badge {
+            font-family: "Helvetica Neue", "Segoe UI", sans-serif;
+            background: linear-gradient(90deg, #4f4ac3 0%, #7e54a6 50%, #b85581 100%);
+            letter-spacing: 0.28em;
+            font-weight: 600;
+            font-size: 0.7rem;
+            padding: 7px 22px;
+            box-shadow: 0 10px 26px rgba(86, 81, 184, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.20);
         }
         .warranty-wrap h3.title-gradient {
             background: linear-gradient(90deg, #5651b8 0%, #8c4c9f 55%, #b85581 100%);
@@ -255,8 +264,9 @@
                         <li>Belora Care Membership 加入可</li>
                     </ul>
                 </div>
-                <div class="plan-card">
-                    <span class="plan-tag plan-tag-optional">OPTIONAL</span>
+                <div class="plan-card featured recommended">
+                    <span class="recommend-badge">LONG-TERM CARE</span>
+                    <span class="plan-tag">MEMBERSHIP</span>
                     <div class="plan-name">Belora Care Membership</div>
                     <div class="plan-price">年額 9,800円<small>税込／最大 5 年</small></div>
                     <ul>
