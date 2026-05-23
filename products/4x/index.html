@@ -111,12 +111,20 @@
             font-weight: 400;
             margin-top: 4px;
         }
-        /* Standard を「主役」として強化 */
+        /* Standard を「主役」として最大限に強化 */
         .warranty-wrap .plan-cards > .plan-card:first-child {
-            background: linear-gradient(165deg, rgba(86, 81, 184, 0.09), rgba(184, 85, 129, 0.04) 70%, rgba(86, 81, 184, 0.02));
-            border: 1px solid rgba(86, 81, 184, 0.45);
-            box-shadow: 0 18px 48px rgba(86, 81, 184, 0.14);
+            background:
+                radial-gradient(ellipse at top right, rgba(184, 85, 129, 0.10), transparent 60%),
+                radial-gradient(ellipse at bottom left, rgba(86, 81, 184, 0.10), transparent 55%),
+                linear-gradient(165deg, rgba(86, 81, 184, 0.12), rgba(184, 85, 129, 0.04) 70%, rgba(86, 81, 184, 0.03));
+            border: 1.5px solid rgba(86, 81, 184, 0.55);
+            box-shadow:
+                0 24px 60px rgba(86, 81, 184, 0.20),
+                0 0 0 1px rgba(86, 81, 184, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
             overflow: hidden;
+            transform: translateY(-3px);
+            padding-top: 52px;
         }
         .warranty-wrap .plan-cards > .plan-card:first-child::before {
             content: "";
@@ -124,18 +132,39 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 6px;
             background: linear-gradient(90deg, #5651b8 0%, #8c4c9f 55%, #b85581 100%);
+            z-index: 1;
+        }
+        /* 主役バッジ（Membership の recommend-badge と対をなす） */
+        .warranty-wrap .plan-cards > .plan-card:first-child::after {
+            content: "★ Main Product";
+            position: absolute;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #4f4ac3 0%, #7e54a6 50%, #b85581 100%);
+            color: #fff;
+            padding: 7px 24px;
+            border-radius: 999px;
+            font-family: "Inter","Helvetica Neue","Segoe UI",sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.32em;
+            font-weight: 600;
+            white-space: nowrap;
+            box-shadow: 0 10px 26px rgba(86, 81, 184, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            z-index: 2;
+            text-transform: uppercase;
         }
         .warranty-wrap .plan-cards > .plan-card:first-child .plan-tag {
             align-self: flex-start;
             padding: 6px 14px;
-            border: 1px solid rgba(86, 81, 184, 0.45);
+            border: 1px solid rgba(86, 81, 184, 0.5);
             border-radius: 999px;
             color: #5651b8;
             font-weight: 600;
             letter-spacing: 0.28em;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.6);
         }
         .warranty-wrap .plan-cards > .plan-card:first-child .plan-name {
             background: linear-gradient(45deg, #5651b8, #1a1a2e, #b85581);
@@ -143,6 +172,12 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
             color: transparent;
+            font-size: 1.6rem;
+        }
+        .warranty-wrap .plan-cards > .plan-card:first-child .plan-price {
+            border-top-color: rgba(86, 81, 184, 0.25);
+            padding-top: 14px;
+            margin-top: 4px;
         }
         .warranty-wrap .plan-cards > .plan-card:first-child .plan-price .price-amount {
             background: linear-gradient(90deg, #5651b8 0%, #8c4c9f 55%, #b85581 100%);
@@ -150,18 +185,43 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
             color: transparent;
-            font-weight: 500;
-            font-size: 2rem;
+            font-weight: 600;
+            font-size: 2.6rem;
+            line-height: 1.1;
+            letter-spacing: 0.02em;
         }
         .warranty-wrap .plan-cards > .plan-card:first-child .plan-price .price-label {
             color: #5651b8;
             font-weight: 600;
         }
-        .warranty-wrap .plan-cards > .plan-card:first-child .plan-price {
-            border-top-color: rgba(86, 81, 184, 0.25);
+        .warranty-wrap .plan-cards > .plan-card:first-child .plan-price small {
+            color: #6b67a0;
+            font-weight: 500;
+        }
+        .warranty-wrap .plan-cards > .plan-card:first-child ul li {
+            color: var(--text);
+        }
+        .warranty-wrap .plan-cards > .plan-card:first-child ul li::before {
+            background: linear-gradient(90deg, #5651b8, #b85581);
+            opacity: 1;
+            width: 6px;
+            height: 2px;
+            top: 17px;
         }
 
-        /* Membership 側はバッジ・グラデ名のみ維持 */
+        /* Membership 側はサポート役として控えめに */
+        .warranty-wrap .plan-card.recommended {
+            transform: none;
+            box-shadow: 0 8px 24px rgba(86, 81, 184, 0.08);
+            background: linear-gradient(180deg, rgba(86, 81, 184, 0.045), rgba(184, 85, 129, 0.02));
+            border-color: rgba(86, 81, 184, 0.3);
+        }
+        .warranty-wrap .plan-card.recommended .recommend-badge {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--accent);
+            border: 1px solid rgba(86, 81, 184, 0.4);
+            box-shadow: 0 4px 12px rgba(86, 81, 184, 0.15);
+        }
         .warranty-wrap .plan-card.recommended .plan-name {
             background: linear-gradient(90deg, #5651b8, #b85581);
             -webkit-background-clip: text;
