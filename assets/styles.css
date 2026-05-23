@@ -2567,6 +2567,28 @@ nav a {
     background: rgba(86, 81, 184, 0.035);
 }
 
+.warranty-table .col-competitor{
+    background: rgba(0, 0, 0, 0.018);
+    color: var(--sub);
+    font-size: 0.88em;
+    line-height: 1.55;
+}
+
+.warranty-table thead th.col-competitor{
+    color: var(--sub);
+    background: rgba(0, 0, 0, 0.025);
+    font-style: normal;
+}
+
+.warranty-table tbody td.col-competitor strong{
+    color: var(--text);
+    font-weight: 600;
+}
+
+.warranty-table tbody th{
+    width: 30%;
+}
+
 .warranty-table tbody tr:last-child th,
 .warranty-table tbody tr:last-child td{
     border-bottom: none;
