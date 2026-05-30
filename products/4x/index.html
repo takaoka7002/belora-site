@@ -356,6 +356,23 @@
                 transform: rotate(90deg);
             }
         }
+        /* モバイル: グラデーション文字をやめて単色に
+           背景クリップ + テキスト透明化は OS / フォント / 字形依存で「7」など
+           特定の数字だけ別フォントで描画される問題が起きるため */
+        @media (max-width: 850px) {
+            .warranty-wrap .plan-card-group:first-child .plan-card .plan-price .price-amount {
+                background: none !important;
+                -webkit-background-clip: initial !important;
+                background-clip: initial !important;
+                -webkit-text-fill-color: initial !important;
+                color: #5651b8 !important;
+                /* 数字の描画統一 */
+                font-feature-settings: "tnum" 1, "lnum" 1, "palt" 0 !important;
+                -webkit-font-feature-settings: "tnum" 1, "lnum" 1, "palt" 0 !important;
+                font-variant-numeric: lining-nums tabular-nums !important;
+                font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "游明朝", "Times New Roman", Georgia, serif !important;
+            }
+        }
 
         /* 価格セクション内のフローティング区切り */
         .warranty-wrap .section-divider {
