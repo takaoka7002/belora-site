@@ -1780,10 +1780,19 @@ nav a {
         url("/assets/hero_top.png") center / cover no-repeat;
 }
 @media (max-width: 850px){
+    /* モバイル: シネマティック構図。ルーペを大きく見せつつ
+       下部はテキスト保護のため強めにフェード、上下に微ヴィネット */
     .section-dark.hero-section .hero-bg-image {
         background:
-            linear-gradient(to top, #050508 18%, rgba(5,5,8,0.45) 65%, transparent 100%),
-            url("/assets/hero_top.png") center top / cover no-repeat;
+            /* 上部の微ヴィネット (空気感を出す) */
+            linear-gradient(to bottom, rgba(5,5,8,0.45) 0%, rgba(5,5,8,0.0) 14%),
+            /* 中央のソフトヴィネット (フォーカス強調) */
+            radial-gradient(ellipse 90% 55% at center 32%, transparent 0%, transparent 45%, rgba(5,5,8,0.25) 100%),
+            /* 下部の強フェード (テキスト保護) */
+            linear-gradient(to top, #050508 26%, rgba(5,5,8,0.55) 48%, rgba(5,5,8,0.10) 78%, transparent 100%),
+            /* 画像: ルーペが画面を支配するサイズ感 + 上寄せ */
+            url("/assets/hero_top.png?v=20260530m") center 28% / 115% auto no-repeat,
+            #050508;
     }
 }
 
