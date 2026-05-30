@@ -1780,22 +1780,22 @@ nav a {
         url("/assets/hero_top.png") center / cover no-repeat;
 }
 @media (max-width: 850px){
-    /* モバイル: 画像はcoverで全面を覆い、その上に下→上のスムースなフェードだけを乗せる
-       画像エンドが見えないので境界線が生じない */
+    /* モバイル: 縦長専用画像 hero_top_mobile.png を使用 (941x1672、ポートレート)
+       cover でほぼ等比でフィット → 横方向の極端なクロップが発生しない */
     .section-dark.hero-section .hero-bg-image {
         background:
-            /* 上部のごく薄い暗色 (空気感) */
-            linear-gradient(to bottom, rgba(5,5,8,0.30) 0%, transparent 14%),
-            /* メインフェード: 下0%→上100%の単純な滑らかなグラデ */
+            /* 下部の暗部 (テキスト保護) */
             linear-gradient(to top,
                 #050508 0%,
-                rgba(5,5,8,0.85) 25%,
-                rgba(5,5,8,0.55) 45%,
-                rgba(5,5,8,0.28) 65%,
+                #050508 22%,
+                rgba(5,5,8,0.78) 38%,
+                rgba(5,5,8,0.50) 52%,
+                rgba(5,5,8,0.25) 68%,
                 rgba(5,5,8,0.08) 85%,
                 transparent 100%),
-            /* 画像: cover で全面を埋めるためエンドが見えない */
-            url("/assets/hero_top.png?v=20260530p") center 28% / cover no-repeat;
+            /* 縦長ループ画像 */
+            url("/assets/hero_top_mobile.png?v=20260530u") center / cover no-repeat,
+            #050508;
     }
 }
 
