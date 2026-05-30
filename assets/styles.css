@@ -1777,13 +1777,13 @@ nav a {
 .section-dark.hero-section .hero-bg-image {
     background:
         linear-gradient(to right, #050508 0%, rgba(5,5,8,0.6) 40%, rgba(5,5,8,0.15) 80%, transparent 100%),
-        url("/assets/hero_top.png") center / cover no-repeat;
+        url("/assets/hero_top.png?v=20260530c") center / cover no-repeat;
 }
 @media (max-width: 850px){
     .section-dark.hero-section .hero-bg-image {
         background:
             linear-gradient(to top, #050508 18%, rgba(5,5,8,0.45) 65%, transparent 100%),
-            url("/assets/hero_top.png") center top / cover no-repeat;
+            url("/assets/hero_top.png?v=20260530c") center top / cover no-repeat;
     }
 }
 
