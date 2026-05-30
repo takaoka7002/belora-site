@@ -1780,22 +1780,28 @@ nav a {
         url("/assets/hero_top.png") center / cover no-repeat;
 }
 @media (max-width: 850px){
-    /* モバイル: 画像はcoverで全面を覆い、その上に下→上のスムースなフェードだけを乗せる
-       画像エンドが見えないので境界線が生じない */
+    /* モバイル: 引き構図でルーペ全体を上部に表示、下に向かって滑らかに黒へ
+       画像は width=100% で左右の縁が viewport 端と一致 → 横方向の境界線が出ない
+       画像下端は強めの暗部 (50-60%) で覆って境界を消す */
     .section-dark.hero-section .hero-bg-image {
         background:
-            /* 上部のごく薄い暗色 (空気感) */
-            linear-gradient(to bottom, rgba(5,5,8,0.30) 0%, transparent 14%),
-            /* メインフェード: 下0%→上100%の単純な滑らかなグラデ */
+            /* メインの下→上フェード
+               40%付近で 0.85 alpha とすることで画像下端を確実に覆い、
+               そこから100%(viewport top)へ滑らかに透明化 */
             linear-gradient(to top,
                 #050508 0%,
-                rgba(5,5,8,0.85) 25%,
-                rgba(5,5,8,0.55) 45%,
-                rgba(5,5,8,0.28) 65%,
-                rgba(5,5,8,0.08) 85%,
+                #050508 22%,
+                rgba(5,5,8,0.92) 32%,
+                rgba(5,5,8,0.75) 42%,
+                rgba(5,5,8,0.55) 52%,
+                rgba(5,5,8,0.38) 62%,
+                rgba(5,5,8,0.22) 72%,
+                rgba(5,5,8,0.10) 82%,
+                rgba(5,5,8,0.03) 92%,
                 transparent 100%),
-            /* 画像: cover で全面を埋めるためエンドが見えない */
-            url("/assets/hero_top.png?v=20260530p") center 28% / cover no-repeat;
+            /* 画像: 横幅 100% / 上部寄せ。引きの構図で全体が見える */
+            url("/assets/hero_top.png?v=20260530r") center top / 100% auto no-repeat,
+            #050508;
     }
 }
 
