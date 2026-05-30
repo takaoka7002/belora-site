@@ -71,6 +71,21 @@
     <link rel="stylesheet" href="/assets/styles.css">
 
     <style>
+        /* ASCII数字だけ Times New Roman を強制し、字形ズレを根治
+           Android で「7」だけ別フォントに切り替わる現象を unicode-range で抑制 */
+        @font-face {
+            font-family: 'PriceDigits';
+            src: local('Times New Roman'),
+                 local('TimesNewRomanPSMT'),
+                 local('Times-Roman'),
+                 local('Times'),
+                 local('Liberation Serif'),
+                 local('Noto Serif'),
+                 local('Georgia');
+            unicode-range: U+0030-0039, U+002C, U+002E;
+            font-display: swap;
+        }
+
         /* ヒーロー画像枠: 円形フレームを外し、画像を直置きで表示 */
         .product-detail-image{
             width: min(560px, 90vw);
@@ -121,11 +136,12 @@
             font-weight: 400;
             color: var(--text);
             letter-spacing: 0.04em;
-            /* 数字描画を統一: palt を切って tabular-nums で全桁揃える */
+            /* 数字描画を統一: PriceDigits で ASCII 数字を Times Roman 系に強制、
+               palt を切って tabular-nums で全桁揃える */
             font-feature-settings: "tnum" 1, "lnum" 1, "palt" 0;
             -webkit-font-feature-settings: "tnum" 1, "lnum" 1, "palt" 0;
             font-variant-numeric: lining-nums tabular-nums;
-            font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "游明朝", "Times New Roman", Georgia, serif;
+            font-family: 'PriceDigits', "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "游明朝", "Times New Roman", Georgia, serif;
         }
         .warranty-wrap .plan-card .plan-price small {
             width: 100%;
