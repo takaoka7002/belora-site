@@ -121,6 +121,11 @@
             font-weight: 400;
             color: var(--text);
             letter-spacing: 0.04em;
+            /* 数字描画を統一: palt を切って tabular-nums で全桁揃える */
+            font-feature-settings: "tnum" 1, "lnum" 1, "palt" 0;
+            -webkit-font-feature-settings: "tnum" 1, "lnum" 1, "palt" 0;
+            font-variant-numeric: lining-nums tabular-nums;
+            font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "游明朝", "Times New Roman", Georgia, serif;
         }
         .warranty-wrap .plan-card .plan-price small {
             width: 100%;
