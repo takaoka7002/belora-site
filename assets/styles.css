@@ -1773,17 +1773,20 @@ nav a {
     color: var(--accent);
 }
 
-/* ダーク版ヒーロー：右側の光のかすかな抜けを左テキストエリアへ繋げる */
+/* ダーク版ヒーロー：右側の光のかすかな抜けを左テキストエリアへ繋げる
+   画像は引き気味の構図でルーペ全体が見えるよう調整（cover→pulled-back） */
 .section-dark.hero-section .hero-bg-image {
     background:
-        linear-gradient(to right, #050508 0%, rgba(5,5,8,0.6) 40%, rgba(5,5,8,0.15) 80%, transparent 100%),
-        url("/assets/hero_top.png") center / cover no-repeat;
+        linear-gradient(to right, #050508 0%, rgba(5,5,8,0.55) 35%, rgba(5,5,8,0.20) 70%, rgba(5,5,8,0.10) 100%),
+        url("/assets/hero_top.png?v=20260530e") 70% 50% / 75% auto no-repeat,
+        #050508;
 }
 @media (max-width: 850px){
     .section-dark.hero-section .hero-bg-image {
         background:
-            linear-gradient(to top, #050508 18%, rgba(5,5,8,0.45) 65%, transparent 100%),
-            url("/assets/hero_top.png") center top / cover no-repeat;
+            linear-gradient(to top, #050508 16%, rgba(5,5,8,0.35) 55%, rgba(5,5,8,0.10) 95%),
+            url("/assets/hero_top.png?v=20260530e") center 22% / 88% auto no-repeat,
+            #050508;
     }
 }
 
