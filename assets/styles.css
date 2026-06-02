@@ -2943,17 +2943,16 @@ nav a {
 /* ============================================================
    4.0x 製品画像スライダー（カーソルでスライド可能）
    ============================================================ */
+/* 製品セクション全体を白背景にして、ページ全体にかかる薄い色み
+   (body::before のグラデーション)を覆い、写真の白となじませる */
+.product-4x-section{
+    background: #ffffff;
+    position: relative;
+    z-index: 1;
+}
 .product-slider{
-    /* スライダー本体は中央 460px。背景は box-shadow + clip-path で
-       全幅の白帯にして、ページ全体の薄い色み(body::before)を覆い、
-       写真の白となじませる（レイアウトに影響せず横スクロールも出ない） */
     width: min(460px, 88vw);
     margin: 0 auto 40px;
-    padding: 30px 0 22px;
-    background: #fff;
-    box-shadow: 0 0 0 100vw #fff;
-    -webkit-clip-path: inset(0 -100vw 0 -100vw);
-    clip-path: inset(0 -100vw 0 -100vw);
 }
 .product-slider .product-detail-image{
     width: 100%;
@@ -2963,7 +2962,7 @@ nav a {
     padding: 0;
     display: block;
     overflow: hidden;       /* スライド外を確実にクリップ */
-    /* 帯と同じ白。枠線・影・色付き背景を除去して継ぎ目をなくす */
+    /* 白背景になじませるため、枠線・影・色付き背景を除去 */
     background: #fff;
     border: none;
     box-shadow: none;
