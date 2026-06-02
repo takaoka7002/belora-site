@@ -445,11 +445,34 @@
 <div class="main-content">
 
     <section class="content-block">
-        <div class="product-detail-image">
-            <img src="/assets/product_4x_hero.png?v=20260530f"
-                 alt="BELORA 4.0X TTL KEPLERIAN 製品画像 — 鯖江チタンフレーム × ケプラー式光学ユニット"
-                 loading="lazy"
-                 style="width:100%; height:100%; object-fit:cover; display:block;">
+        <div class="product-slider" id="product4xSlider">
+            <div class="product-detail-image">
+                <div class="slider-track">
+                    <div class="slide">
+                        <img src="/assets/product_4x_hero.png?v=20260530f"
+                             alt="BELORA 4.0X TTL KEPLERIAN 製品画像 — 鯖江チタンフレーム × ケプラー式光学ユニット"
+                             loading="lazy" draggable="false">
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/product_4x_02.png?v=20260602"
+                             alt="BELORA 4.0X TTL KEPLERIAN — 上方からの全体ビュー"
+                             loading="lazy" draggable="false">
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/product_4x_03.png?v=20260602"
+                             alt="BELORA 4.0X TTL KEPLERIAN — 正面ビュー（対物レンズ）"
+                             loading="lazy" draggable="false">
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/product_4x_04.png?v=20260602"
+                             alt="BELORA 4.0X TTL KEPLERIAN — サイドビュー"
+                             loading="lazy" draggable="false">
+                    </div>
+                </div>
+                <button class="slider-arrow prev" type="button" aria-label="前の画像">&#8249;</button>
+                <button class="slider-arrow next" type="button" aria-label="次の画像">&#8250;</button>
+            </div>
+            <div class="slider-dots" aria-hidden="true"></div>
         </div>
         <h1 class="title-gradient">4.0X TTL KEPLERIAN</h1>
         <p class="subtitle">Standard / Wide Field</p>
@@ -606,6 +629,98 @@
 </footer>
 
 <script src="/assets/main.js"></script>
+
+<!-- 4.0x 製品画像スライダー -->
+<script>
+(function () {
+  var root = document.getElementById('product4xSlider');
+  if (!root) return;
+  var track = root.querySelector('.slider-track');
+  var slides = root.querySelectorAll('.slide');
+  var dotsWrap = root.querySelector('.slider-dots');
+  var prevBtn = root.querySelector('.slider-arrow.prev');
+  var nextBtn = root.querySelector('.slider-arrow.next');
+  var count = slides.length;
+  if (count <= 1) {
+    if (prevBtn) prevBtn.style.display = 'none';
+    if (nextBtn) nextBtn.style.display = 'none';
+    return;
+  }
+
+  var index = 0;
+  var dots = [];
+
+  // ドット生成
+  for (var i = 0; i < count; i++) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', (i + 1) + '枚目の画像へ');
+    (function (n) { b.addEventListener('click', function () { goTo(n); }); })(i);
+    dotsWrap.appendChild(b);
+    dots.push(b);
+  }
+
+  function render() {
+    track.style.transform = 'translateX(' + (-index * 100) + '%)';
+    for (var j = 0; j < dots.length; j++) {
+      dots[j].classList.toggle('active', j === index);
+    }
+  }
+  function goTo(n) {
+    index = (n + count) % count;
+    render();
+  }
+  function next() { goTo(index + 1); }
+  function prev() { goTo(index - 1); }
+
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+
+  // ドラッグ（カーソル）でスライド — Pointer Events でマウス/タッチ両対応
+  var dragging = false, startX = 0, deltaX = 0, width = 0;
+
+  function onDown(e) {
+    dragging = true;
+    startX = e.clientX;
+    deltaX = 0;
+    width = root.querySelector('.product-detail-image').clientWidth || 1;
+    track.classList.add('is-dragging');
+    try { track.setPointerCapture(e.pointerId); } catch (err) {}
+  }
+  function onMove(e) {
+    if (!dragging) return;
+    deltaX = e.clientX - startX;
+    var pct = (-index * 100) + (deltaX / width) * 100;
+    track.style.transform = 'translateX(' + pct + '%)';
+  }
+  function onUp() {
+    if (!dragging) return;
+    dragging = false;
+    track.classList.remove('is-dragging');
+    var threshold = width * 0.18;
+    if (deltaX <= -threshold) { next(); }
+    else if (deltaX >= threshold) { prev(); }
+    else { render(); }
+  }
+
+  track.addEventListener('pointerdown', onDown);
+  track.addEventListener('pointermove', onMove);
+  track.addEventListener('pointerup', onUp);
+  track.addEventListener('pointercancel', onUp);
+  track.addEventListener('pointerleave', onUp);
+  // 画像ドラッグのゴースト抑止
+  track.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+  // キーボード操作
+  root.setAttribute('tabindex', '0');
+  root.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { next(); }
+    else if (e.key === 'ArrowLeft') { prev(); }
+  });
+
+  render();
+})();
+</script>
 
 </body>
 </html>

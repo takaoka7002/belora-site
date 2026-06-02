@@ -2939,3 +2939,98 @@ nav a {
         padding: 22px 18px;
     }
 }
+
+/* ============================================================
+   4.0x 製品画像スライダー（カーソルでスライド可能）
+   ============================================================ */
+.product-slider{
+    width: min(350px, 80vw);
+    margin: 0 auto 40px;
+}
+.product-slider .product-detail-image{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    /* トラックをフレーム全面に */
+    display: block;
+}
+.product-slider .slider-track{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform .45s cubic-bezier(.22,.61,.36,1);
+    cursor: grab;
+    touch-action: pan-y;
+    will-change: transform;
+}
+.product-slider .slider-track.is-dragging{
+    transition: none;
+    cursor: grabbing;
+}
+.product-slider .slide{
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+}
+.product-slider .slide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+/* 前後の矢印（円の左右中央＝クリップされない位置） */
+.product-slider .slider-arrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(6px);
+    color: var(--text);
+    font-size: 1.35rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3;
+    padding: 0;
+    transition: background .2s ease, transform .2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.product-slider .slider-arrow:hover{
+    background: #fff;
+}
+.product-slider .slider-arrow.prev{ left: 10px; }
+.product-slider .slider-arrow.next{ right: 10px; }
+/* ドット（円の外・下部） */
+.product-slider .slider-dots{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    margin-top: 18px;
+}
+.product-slider .slider-dots button{
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--line-strong);
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease;
+}
+.product-slider .slider-dots button.active{
+    background: var(--accent);
+    transform: scale(1.3);
+}
+@media (max-width: 850px){
+    .product-slider .slider-arrow{ width: 34px; height: 34px; font-size: 1.2rem; }
+}
