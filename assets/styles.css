@@ -2944,13 +2944,16 @@ nav a {
    4.0x 製品画像スライダー（カーソルでスライド可能）
    ============================================================ */
 .product-slider{
-    width: min(350px, 80vw);
+    width: min(460px, 88vw);
     margin: 0 auto 40px;
 }
 .product-slider .product-detail-image{
     width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;   /* 大きくしても正円を維持 */
     margin: 0 auto;
     padding: 0;
+    background: #fff;       /* 白背景の製品写真になじませる */
     /* トラックをフレーム全面に */
     display: block;
 }
@@ -2975,7 +2978,8 @@ nav a {
 .product-slider .slide img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;   /* 見切れさせず全体を表示 */
+    padding: 7%;           /* 製品が円の縁に触れないよう余白 */
     display: block;
     user-select: none;
     -webkit-user-drag: none;
