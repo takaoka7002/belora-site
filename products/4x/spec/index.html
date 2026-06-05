@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>仕様と設計思想 | BELORA 4.0X TTL KEPLERIAN｜4倍サージカルルーペ</title>
-    <meta name="description" content="BELORA 4.0X TTL KEPLERIAN の仕様と設計思想。ケプラー式光学、レンズ5枚＋プリズム2個、TTL搭載、作業距離400mm時 視野72mm、作業距離・瞳孔間距離の個別測定、鯖江チタンフレーム。大きく見るためではなく、鮮明に観察するための高倍率を。">
-    <meta name="keywords" content="4倍 サージカルルーペ 仕様,4X ルーペ 設計思想,ケプラー式 TTL,レンズ5枚 プリズム2個,鯖江チタン,Belora 4X スペック">
+    <meta name="description" content="大きく見るためではなく、鮮明に観察するために。BELORA 4.0X TTL KEPLERIAN の仕様の裏側にある設計思想。ケプラー式光学、レンズ5枚＋プリズム2個、TTL個別製作、鯖江チタンフレーム（ヒンジ・テンプル設計）まで、なぜこの仕様なのかを解説。">
+    <meta name="keywords" content="4倍 サージカルルーペ 仕様,4X ルーペ 設計思想,ケプラー式 TTL,レンズ5枚 プリズム2個,鯖江チタン ヒンジ テンプル,Belora 4X">
     <meta name="author" content="株式会社Belora">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0a0a0f">
@@ -16,7 +16,7 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://belora.jp/products/4x/spec/">
     <meta property="og:title" content="仕様と設計思想 | BELORA 4.0X TTL KEPLERIAN">
-    <meta property="og:description" content="大きく見るためではなく、鮮明に観察するために。BELORA 4.0X の光学設計・TTL搭載・鯖江チタンフレーム・個別測定までの設計思想と製品仕様。">
+    <meta property="og:description" content="大きく見るためではなく、鮮明に観察するために。仕様の裏側にあるBELORA 4.0X の設計思想。">
     <meta property="og:image" content="https://belora.jp/og-image.jpg">
     <meta property="og:site_name" content="BELORA">
     <meta property="og:locale" content="ja_JP">
@@ -24,7 +24,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://belora.jp/products/4x/spec/">
     <meta name="twitter:title" content="仕様と設計思想 | BELORA 4.0X TTL KEPLERIAN">
-    <meta name="twitter:description" content="大きく見るためではなく、鮮明に観察するために。BELORA 4.0X の設計思想と製品仕様。">
+    <meta name="twitter:description" content="大きく見るためではなく、鮮明に観察するために。BELORA 4.0X の設計思想。">
     <meta name="twitter:image" content="https://belora.jp/og-image.jpg">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -54,74 +54,128 @@
     <link rel="stylesheet" href="/assets/styles.css?v=20260602d">
 
     <style>
-        /* イントロ */
-        .spec-intro {
-            max-width: 640px; margin: 44px auto 0; text-align: center;
+        /* ===== Hero ===== */
+        .spec-hero-head { max-width: 760px; margin: 0 auto; text-align: center; }
+        .spec-hero-head h1.title-gradient {
+            font-size: clamp(1.55rem, 3.4vw, 2.35rem);
+            line-height: 1.65; letter-spacing: 0.05em; margin-top: 14px;
+        }
+        .spec-hero-lead {
+            max-width: 640px; margin: 34px auto 0; text-align: center;
             color: var(--muted); line-height: 2.2; font-size: 0.97rem;
             word-break: auto-phrase; line-break: strict;
         }
-        .spec-intro p { margin: 0 0 1.2em; }
-        .spec-intro p:last-child { margin-bottom: 0; }
+        .spec-hero-img {
+            width: min(620px, 92vw); margin: 56px auto 0; display: block;
+        }
+        .spec-hero-img img { width: 100%; height: auto; display: block; }
 
-        /* ナラティブ（番号付きセクション） */
-        .spec-narrative { max-width: 760px; margin: 0 auto; text-align: left; }
-        .spec-section { margin-top: 92px; }
-        .spec-section-head { display: flex; gap: 20px; align-items: flex-start; }
-        .spec-section-head .sec-num {
-            font-family: "Inter", "Helvetica Neue", sans-serif;
-            font-size: 0.92rem; font-weight: 600; letter-spacing: 0.08em;
-            color: var(--accent); min-width: 34px; padding-top: 7px;
+        /* ===== Belief cards (設計思想) ===== */
+        .belief-wrap { max-width: 800px; margin: 92px auto 0; }
+        .belief-intro {
+            text-align: center; margin-bottom: 12px;
         }
-        .spec-section-head .sec-en {
-            display: block; font-family: "Inter", "Helvetica Neue", sans-serif;
-            font-size: 0.64rem; letter-spacing: 0.4em; text-transform: uppercase;
-            color: var(--accent); font-weight: 600; margin-bottom: 12px;
+        .belief-intro .eyebrow {
+            font-family: "Inter","Helvetica Neue",sans-serif; font-size: 0.66rem;
+            letter-spacing: 0.42em; text-transform: uppercase; color: var(--accent); font-weight: 600;
         }
-        .spec-section-head .sec-title {
-            font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "游明朝", serif;
-            font-size: clamp(1.28rem, 2.6vw, 1.62rem); letter-spacing: 0.06em;
-            line-height: 1.7; color: var(--text); font-weight: 500;
+        .belief-intro h2 {
+            font-family: "Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
+            font-size: clamp(1.3rem,2.6vw,1.7rem); letter-spacing: 0.1em; font-weight: 500;
+            color: var(--text); margin-top: 10px;
         }
-        .spec-section-body { margin-top: 26px; padding-left: 54px; }
-        .spec-section-body p {
-            margin: 0 0 1.35em; line-height: 2.15; font-size: 0.95rem;
-            color: var(--muted); letter-spacing: 0.02em;
-            word-break: auto-phrase; line-break: strict;
+        .belief-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.42));
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 38px 42px;
+            margin-top: 26px;
+            box-shadow: 0 12px 44px rgba(86,81,184,0.05);
         }
-        .spec-section-body p:last-child { margin-bottom: 0; }
-        .spec-section-body ul { margin: 4px 0 1.6em; padding: 0; list-style: none; }
-        .spec-section-body li {
-            position: relative; padding-left: 20px; margin-bottom: 11px;
-            line-height: 1.9; font-size: 0.93rem; color: var(--text); letter-spacing: 0.02em;
+        .belief-card .bc-head { display: flex; align-items: center; gap: 14px; }
+        .belief-card .bc-num {
+            font-family: "Inter","Helvetica Neue",sans-serif; font-size: 0.78rem; font-weight: 600;
+            color: #fff; width: 30px; height: 30px; border-radius: 50%;
+            background: linear-gradient(135deg, #5651b8 0%, #8c4c9f 55%, #b85581 100%);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            box-shadow: 0 6px 16px rgba(86,81,184,0.28);
         }
-        .spec-section-body li::before {
-            content: ""; position: absolute; left: 0; top: 13px;
+        .belief-card .bc-en {
+            font-family: "Inter","Helvetica Neue",sans-serif; font-size: 0.64rem;
+            letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); font-weight: 600;
+        }
+        .belief-card .bc-title {
+            font-family: "Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
+            font-size: clamp(1.16rem, 2.3vw, 1.42rem); letter-spacing: 0.05em; line-height: 1.7;
+            color: var(--text); font-weight: 500; margin: 20px 0 0;
+        }
+        .belief-card .bc-body { margin-top: 18px; }
+        .belief-card .bc-body p {
+            margin: 0 0 1.1em; line-height: 2.1; font-size: 0.94rem; color: var(--muted);
+            letter-spacing: 0.02em; word-break: auto-phrase; line-break: strict;
+        }
+        .belief-card .bc-body p:last-child { margin-bottom: 0; }
+        .belief-card .bc-list { margin: 6px 0 2px; padding: 0; list-style: none; }
+        .belief-card .bc-list li {
+            position: relative; padding-left: 20px; margin-bottom: 10px;
+            line-height: 1.85; font-size: 0.92rem; color: var(--text); letter-spacing: 0.02em;
+        }
+        .belief-card .bc-list li::before {
+            content: ""; position: absolute; left: 0; top: 12px;
             width: 8px; height: 1.5px; background: linear-gradient(90deg, #5651b8, #b85581);
         }
-        .spec-subhead {
-            font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "游明朝", serif;
-            font-size: 1.08rem; letter-spacing: 0.05em; color: var(--text); font-weight: 500;
-            margin: 40px 0 18px; padding-top: 22px; border-top: 1px solid var(--line);
-        }
 
-        /* 仕様表 */
-        .spec-table-wrap { max-width: 760px; margin: 0 auto; }
-        .spec-table-wrap .spec-table { margin: 24px 0 0; max-width: 100%; }
+        /* ===== 詳しく見る（折りたたみ） ===== */
+        details.more { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 16px; }
+        details.more > summary {
+            list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 9px;
+            font-family: "Inter","Helvetica Neue",sans-serif; font-size: 0.7rem; letter-spacing: 0.24em;
+            text-transform: uppercase; color: var(--accent); font-weight: 600; user-select: none;
+        }
+        details.more > summary::-webkit-details-marker { display: none; }
+        details.more > summary::after { content: "＋"; font-size: 0.95rem; line-height: 1; }
+        details.more[open] > summary::after { content: "－"; }
+        details.more .more-body { margin-top: 16px; }
+        details.more .more-body p {
+            margin: 0 0 1.1em; line-height: 2.1; font-size: 0.92rem; color: var(--muted);
+            letter-spacing: 0.02em; word-break: auto-phrase; line-break: strict;
+        }
+        details.more .more-body p:last-child { margin-bottom: 0; }
+
+        /* ===== 仕様表 ===== */
+        .spec-table-wrap { max-width: 760px; margin: 100px auto 0; }
+        .spec-table-wrap .belief-intro { margin-bottom: 6px; }
+        .spec-table-wrap .spec-table { margin: 26px 0 0; max-width: 100%; }
         .spec-table-wrap .spec-table th { width: 36%; }
         .spec-foot-note {
-            max-width: 760px; margin: 24px auto 0; font-size: 0.8rem; color: var(--sub);
+            max-width: 760px; margin: 22px auto 0; font-size: 0.8rem; color: var(--sub);
             line-height: 1.9; letter-spacing: 0.02em;
         }
 
-        .spec-cta-row {
-            margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 16px;
+        /* ===== CTA ===== */
+        .spec-cta {
+            max-width: 760px; margin: 96px auto 0; text-align: center;
+            padding-top: 64px; border-top: 1px solid var(--line);
         }
-        .spec-cta-row .cta-primary-group { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+        .spec-cta .eyebrow {
+            font-family: "Inter","Helvetica Neue",sans-serif; font-size: 0.66rem;
+            letter-spacing: 0.42em; text-transform: uppercase; color: var(--accent); font-weight: 600;
+        }
+        .spec-cta h2 {
+            font-family: "Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
+            font-size: clamp(1.3rem,2.6vw,1.7rem); letter-spacing: 0.08em; font-weight: 500;
+            color: var(--text); margin: 12px 0 0;
+        }
+        .spec-cta p {
+            max-width: 600px; margin: 26px auto 0; color: var(--muted); line-height: 2.15;
+            font-size: 0.95rem; word-break: auto-phrase; line-break: strict;
+        }
+        .spec-cta .cta-buttons {
+            margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+        }
 
         @media (max-width: 640px) {
-            .spec-section-head { gap: 12px; }
-            .spec-section-head .sec-num { min-width: 26px; }
-            .spec-section-body { padding-left: 0; }
+            .belief-card { padding: 28px 22px; }
         }
     </style>
 </head>
@@ -159,145 +213,162 @@
 <div class="main-content">
 
     <section class="content-block">
-        <span class="section-eyebrow">Specifications &amp; Design</span>
-        <h1 class="title-gradient">仕様と設計思想</h1>
-        <p class="subtitle">BELORA 4.0X TTL KEPLERIAN</p>
 
-        <div class="spec-intro">
-            <p>BELORA 4.0×は、ただ大きく見せるためのルーペではありません。日常臨床の中で、細部の輪郭、色の差、質感を自然に捉えやすくすること。そして、長く使い続けられる視野と装着感を両立すること。</p>
-            <p>そのために、BELORAは光学設計、装着方式、フレーム、作業距離の測定までを一体で設計しています。</p>
+        <!-- 1. Hero -->
+        <div class="spec-hero-head">
+            <span class="section-eyebrow">BELORA 4.0X TTL KEPLERIAN</span>
+            <h1 class="title-gradient">大きく見るためではなく、<br>鮮明に観察するために。</h1>
+        </div>
+        <p class="spec-hero-lead">
+            BELORA 4.0×は、ただ大きく見せるためのルーペではありません。細部の輪郭、色の差、質感を自然に捉えやすくすること。そして、長く使い続けられる視野と装着感を両立すること。そのために、光学設計、装着方式、フレーム、作業距離の測定までを一体で設計しています。
+        </p>
+        <div class="spec-hero-img">
+            <img src="/assets/product_4x_hero.png?v=20260530f" alt="BELORA 4.0X TTL KEPLERIAN — 鯖江チタンフレーム × ケプラー式光学ユニット" loading="lazy" draggable="false">
         </div>
 
-        <div class="spec-narrative">
+        <!-- 設計思想カード群 -->
+        <div class="belief-wrap">
+            <div class="belief-intro">
+                <span class="eyebrow">Design Principles</span>
+                <h2>なぜ、この仕様なのか。</h2>
+            </div>
 
-            <!-- 01 -->
-            <div class="spec-section">
-                <div class="spec-section-head">
-                    <span class="sec-num">01</span>
-                    <div>
-                        <span class="sec-en">Optical Design</span>
-                        <div class="sec-title">大きく見るためではなく、鮮明に観察するために。</div>
-                    </div>
+            <!-- 01 Optical Design -->
+            <div class="belief-card">
+                <div class="bc-head">
+                    <span class="bc-num">01</span>
+                    <span class="bc-en">Optical Design｜光学設計</span>
                 </div>
-                <div class="spec-section-body">
-                    <p>高倍率ルーペは、単に倍率を上げれば完成するものではありません。倍率が高くなるほど、視野の広さや明るさ、被写界深度、周辺像の安定性など、さまざまな要素を高いレベルで両立させる必要があり、光学設計の難易度は大きく高まります。</p>
-                    <p>BELORA 4.0×では、ケプラー式光学系を採用しています。ケプラー式は、もともと天体観測や自然観察に用いられる単眼鏡・双眼鏡の分野で発展してきた光学方式です。遠くの対象を細部まで鮮明に観察するために培われた光学設計の考え方を、BELORAでは歯科・医療臨床向けに再構成しました。</p>
-                    <p>目指したのは、単なる拡大ではありません。輪郭の見やすさ、色の違いの識別、質感や境界の把握といった、観察そのものの質を高めることを重視しています。</p>
-                    <ul>
+                <div class="bc-title">単眼鏡の光学思想を、歯科・医療臨床へ。</div>
+                <div class="bc-body">
+                    <p>BELORA 4.0×では、ケプラー式光学系を採用しています。ケプラー式は、天体観測や自然観察に用いられる単眼鏡・双眼鏡の分野で発展してきた光学方式です。遠くの対象を細部まで鮮明に観察するために培われた考え方を、BELORAでは歯科・医療臨床向けに再構成しました。</p>
+                    <p>重視したのは、単なる拡大ではありません。</p>
+                    <ul class="bc-list">
                         <li>細部の輪郭を追いやすいこと</li>
-                        <li>硬組織・軟組織・歯科補綴物などの色の違いを捉えやすいこと</li>
+                        <li>硬組織、軟組織、補綴物などの色の違いを捉えやすいこと</li>
                         <li>質感や境界を自然に認識できること</li>
                         <li>視野全体に違和感が少ないこと</li>
                     </ul>
-                    <p>大きく見えるだけでは、十分ではありません。BELORAは、鮮明に観察するための高倍率を追求しています。</p>
+                </div>
+                <details class="more">
+                    <summary>詳しく見る</summary>
+                    <div class="more-body">
+                        <p>高倍率ルーペは、単に倍率を上げれば完成するものではありません。倍率が高くなるほど、視野の広さや明るさ、被写界深度、周辺像の安定性など、さまざまな要素を高いレベルで両立させる必要があり、光学設計の難易度は大きく高まります。</p>
+                        <p>大きく見えるだけでは、十分ではありません。BELORAは、鮮明に観察するための高倍率を追求しています。</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- 02 Keplerian 4.0× -->
+            <div class="belief-card">
+                <div class="bc-head">
+                    <span class="bc-num">02</span>
+                    <span class="bc-en">Keplerian 4.0×｜4.0倍を選んだ理由</span>
+                </div>
+                <div class="bc-title">日常臨床で使うための、4.0倍。</div>
+                <div class="bc-body">
+                    <p>BELORAが4.0倍を選んだのは、精密な観察と日常的な使いやすさのバランスを重視したためです。高倍率になるほど細部は見やすくなります。一方で、視野の広さ、明るさ、被写界深度、姿勢との相性も重要になります。</p>
+                    <p>BELORA 4.0×は、日常の臨床で自然に使い続けられる高倍率を目指して設計しています。</p>
                 </div>
             </div>
 
-            <!-- 02 -->
-            <div class="spec-section">
-                <div class="spec-section-head">
-                    <span class="sec-num">02</span>
-                    <div>
-                        <span class="sec-en">Keplerian 4.0×</span>
-                        <div class="sec-title">日常臨床で使うための、4.0倍。</div>
+            <!-- 03 Lens Configuration -->
+            <div class="belief-card">
+                <div class="bc-head">
+                    <span class="bc-num">03</span>
+                    <span class="bc-en">Lens Configuration｜レンズ5枚＋プリズム2個</span>
+                </div>
+                <div class="bc-title">見え方の質を優先した光学構成。</div>
+                <div class="bc-body">
+                    <p>BELORA 4.0×は、レンズ5枚とプリズム2個で構成されています。高倍率ルーペでは、レンズ枚数を増やすことで収差補正や像の安定性を高めやすくなる一方、光学ユニットの重量は増えます。</p>
+                    <p>BELORAでは軽さだけを優先するのではなく、見え方の自然さ、像の安定性、細部の輪郭の捉えやすさを重視しました。</p>
+                </div>
+                <details class="more">
+                    <summary>詳しく見る</summary>
+                    <div class="more-body">
+                        <p>他メーカーと比較すると、レンズ構成は比較的多い部類に入りますが、その分、単に拡大するだけでなく、見え方の自然さ、像の安定性、細部の輪郭の捉えやすさを追求しています。</p>
+                        <p>細部を見たい。でも、長時間使ったときに違和感が強いものにはしたくない。そのために、BELORAはレンズ枚数だけでなく、光学性能と装着性を含めた光学ユニット全体のバランスを重視しています。</p>
                     </div>
-                </div>
-                <div class="spec-section-body">
-                    <p>BELORAが4.0倍を選んだのは、精密な観察と日常的な使いやすさのバランスを重視したためです。</p>
-                    <p>高倍率になるほど、細部は見やすくなります。一方で、視野の狭さ、ピントの合わせやすさ、明るさ、姿勢との相性も重要になります。</p>
-                    <p>BELORA 4.0×は、保存修復、補綴治療、歯周治療、外科処置など、日常の臨床で自然に使い続けられる高倍率を目指して設計しています。</p>
-                </div>
+                </details>
             </div>
 
-            <!-- 03 -->
-            <div class="spec-section">
-                <div class="spec-section-head">
-                    <span class="sec-num">03</span>
-                    <div>
-                        <span class="sec-en">Lens Configuration</span>
-                        <div class="sec-title">レンズ5枚＋プリズム2個という構成。</div>
+            <!-- 04 TTL Custom Fit -->
+            <div class="belief-card">
+                <div class="bc-head">
+                    <span class="bc-num">04</span>
+                    <span class="bc-en">TTL Custom Fit｜TTL方式と個別測定</span>
+                </div>
+                <div class="bc-title">視線と視野を合わせる、個別設計。</div>
+                <div class="bc-body">
+                    <p>BELORA 4.0×は、TTL（Through-The-Lens）方式を採用しています。TTL方式は、フレームレンズ内に光学ユニットを組み込む方式で、作業距離や瞳孔間距離に合わせて個別に製作します。光学ユニットを視線の延長上に配置できるため、診療中も自然な目線で対象を観察しやすくなります。</p>
+                </div>
+                <details class="more">
+                    <summary>詳しく見る</summary>
+                    <div class="more-body">
+                        <p>TTL方式は術者一人ひとりに合わせて個別製作するため、一般的なフリップアップ方式と比べて価格が高くなる傾向があり、他の術者と共有して使用することはできません。</p>
+                        <p>一方で、眼に近い位置へ光学ユニットを配置できることから、光学性能を十分に引き出しやすいという特長があります。視野の自然さや見え方の安定性を重視する術者に選ばれているのも、TTL方式ならではの利点によるものです。</p>
                     </div>
-                </div>
-                <div class="spec-section-body">
-                    <p>BELORA 4.0×は、レンズ5枚とプリズム2個で構成されています。</p>
-                    <p>高倍率ルーペの光学設計では、レンズ枚数を増やすことで収差補正や像の安定性を高めやすくなります。一方で、レンズが増えるほど光学ユニットの重量は増加するため、設計上のトレードオフも生まれます。</p>
-                    <p>BELORAでは、軽さだけを優先するのではなく、見え方の質を重視しました。他メーカーと比較すると、レンズ構成は比較的多い部類に入りますが、その分、単に拡大するだけでなく、見え方の自然さ、像の安定性、細部の輪郭の捉えやすさを追求しています。</p>
-                    <p>細部を見たい。でも、長時間使ったときに違和感が強いものにはしたくない。</p>
-                    <p>そのために、BELORAはレンズ枚数だけでなく、光学性能と装着性を含めた光学ユニット全体のバランスを重視しています。</p>
-                </div>
+                </details>
             </div>
 
-            <!-- 04 -->
-            <div class="spec-section">
-                <div class="spec-section-head">
-                    <span class="sec-num">04</span>
-                    <div>
-                        <span class="sec-en">TTL Mounting</span>
-                        <div class="sec-title">視線と視野を一致させる、TTL方式。</div>
+            <!-- 05 Sabae Titanium Frame -->
+            <div class="belief-card">
+                <div class="bc-head">
+                    <span class="bc-num">05</span>
+                    <span class="bc-en">Sabae Titanium Frame｜鯖江チタンフレーム</span>
+                </div>
+                <div class="bc-title">視野は、フレームでも決まる。</div>
+                <div class="bc-body">
+                    <p>ルーペの性能は、鏡筒だけで決まるものではありません。どれだけ光学性能の高い鏡筒でも、それを支えるフレームが安定していなければ、本来の視野を維持することはできません。BELORAは、市販フレームに鏡筒を取り付けるのではなく、ルーペとしての使用を前提にフレームを専用設計しています。</p>
+                    <p>素材にはチタンを採用。チタンは軽量で剛性が高く、腐食にも強いため、医療現場で長く使用する道具に適しています。鯖江で培われたチタン加工技術を、医療用ルーペの土台として活かしています。</p>
+                </div>
+                <details class="more">
+                    <summary>詳しく見る</summary>
+                    <div class="more-body">
+                        <p>一般的な眼鏡フレームには、アセテート（プラスチック）素材が使われることがあります。アセテートは軽量で加工しやすい一方、高倍率ルーペのような重量のある鏡筒を装着した場合、フレーム全体のバランスによっては前方へずり落ちやすくなることがあります。また、細かなフィッティング調整には限界があります。</p>
+                        <p>鯖江で製造されるチタンフレームは、職人が一本一本丁寧に仕上げています。製造には手間とコストがかかりますが、長く使う道具だからこそ、素材と仕上げにこだわっています。</p>
                     </div>
-                </div>
-                <div class="spec-section-body">
-                    <p>BELORA 4.0×は、TTL（Through-The-Lens）方式を採用しています。TTL方式とは、フレームレンズ内に光学ユニットを組み込む構造で、術者一人ひとりの作業距離や瞳孔間距離に合わせて個別に製作されます。</p>
-                    <p>そのため、一般的なフリップアップ方式と比べて価格が高くなる傾向があり、他の術者と共有して使用することはできません。</p>
-                    <p>一方で、光学ユニットを視線の延長上に配置できるため、診療中も自然な目線で対象を観察しやすくなります。また、眼に近い位置へ光学ユニットを配置できることから、光学性能を十分に引き出しやすいという特長があります。</p>
-                    <p>視野の自然さや見え方の安定性を重視する術者に選ばれているのも、TTL方式ならではの利点によるものです。</p>
-                </div>
+                </details>
             </div>
 
-            <!-- 05 -->
-            <div class="spec-section">
-                <div class="spec-section-head">
-                    <span class="sec-num">05</span>
-                    <div>
-                        <span class="sec-en">Working Distance &amp; PD</span>
-                        <div class="sec-title">一人ひとりの作業距離と瞳孔間距離に合わせる。</div>
-                    </div>
+            <!-- 06 Hinge Design -->
+            <div class="belief-card">
+                <div class="bc-head">
+                    <span class="bc-num">06</span>
+                    <span class="bc-en">Hinge Design｜ヒンジへのこだわり</span>
                 </div>
-                <div class="spec-section-body">
-                    <p>BELORA 4.0×は、作業距離と瞳孔間距離をユーザーごとに測定して製作します。</p>
-                    <p>一人ひとりの診療環境や身体条件によって、最適な見え方は異なります。身長、診療姿勢、ユニットポジション、目線、作業距離、瞳孔間距離。そのすべてが、ルーペの使いやすさに影響します。</p>
-                    <p>だからBELORAは、既製品として一律に合わせるのではなく、一人ひとりの臨床姿勢に合わせた設計を大切にしています。</p>
-                </div>
-            </div>
-
-            <!-- 06 -->
-            <div class="spec-section">
-                <div class="spec-section-head">
-                    <span class="sec-num">06</span>
-                    <div>
-                        <span class="sec-en">Sabae Titanium Frame</span>
-                        <div class="sec-title">視野は、フレームでも決まる。</div>
-                    </div>
-                </div>
-                <div class="spec-section-body">
-                    <p>ルーペの性能は、鏡筒だけで決まるものではありません。どれだけ光学性能の高い鏡筒でも、それを支えるフレームが安定していなければ、本来の視野を維持することはできません。</p>
-                    <p>BELORAは、市販フレームに鏡筒を取り付けるのではなく、ルーペとしての使用を前提にフレームを専用設計しています。</p>
-                    <p>一般的な眼鏡フレームには、アセテート（プラスチック）素材が使われることがあります。アセテートは軽量で加工しやすい一方、高倍率ルーペのような重量のある鏡筒を装着した場合、フレーム全体のバランスによっては前方へずり落ちやすくなることがあります。また、細かなフィッティング調整には限界があります。</p>
-                    <p>BELORAが素材に選んだのはチタンです。鯖江で製造されるチタンフレームは、職人が一本一本丁寧に仕上げています。製造には手間とコストがかかりますが、チタンは軽量で剛性が高く、腐食にも強いため、医療現場で長く使用する道具に適した素材です。</p>
-
-                    <div class="spec-subhead">負荷が集中しやすいヒンジ部にも、鯖江の技術を。</div>
+                <div class="bc-title">負荷が集中しやすいヒンジ部にも、鯖江の技術を。</div>
+                <div class="bc-body">
                     <p>ルーペは通常の眼鏡よりも、フロント側に鏡筒の重量がかかります。そのため、開閉を繰り返すヒンジ部には負荷が集中しやすく、長く使ううえで重要な設計ポイントになります。</p>
-                    <p>BELORAでは、鯖江の眼鏡づくりで培われた金属加工と組立技術を活かし、ヒンジ部の剛性と耐久性に配慮した構造を採用しています。</p>
-                    <p>毎日開閉し、毎日装着する道具だからこそ、見えない部分の強さも大切にしています。</p>
+                    <p>BELORAでは、鯖江の眼鏡づくりで培われた金属加工と組立技術を活かし、ヒンジ部の剛性と耐久性に配慮した構造を採用しています。毎日開閉し、毎日装着する道具だからこそ、見えない部分の強さも大切にしています。</p>
+                </div>
+            </div>
 
-                    <div class="spec-subhead">耳だけでなく、頭部でも支えるテンプル設計。</div>
+            <!-- 07 Temple Design -->
+            <div class="belief-card">
+                <div class="bc-head">
+                    <span class="bc-num">07</span>
+                    <span class="bc-en">Temple Design｜テンプル設計</span>
+                </div>
+                <div class="bc-title">耳だけでなく、頭部でも支える。</div>
+                <div class="bc-body">
                     <p>高倍率ルーペでは、鏡筒の重量をどのように支えるかが装着感に大きく影響します。鼻や耳だけに負担が集中すると、長時間使用時のずれや疲労につながりやすくなります。</p>
                     <p>BELORAでは、テンプルをやや長めに設計し、耳だけでなく側頭部から後頭部にかけても支えやすい形状を目指しました。フレーム全体で重量を分散することで、前方へのずれを抑え、安定した装着感につなげています。</p>
-                    <p>さらに、チタンはフィッティング調整の自由度が高く、術者一人ひとりの顔立ちや装着位置に合わせて細かく調整できるという特長があります。フレームを適切にフィッティングすることで、重量が分散され、ずれにくく安定したホールド感が生まれます。これにより、高倍率ルーペでも快適な装着感を維持しながら、本来の視野を安定して確保することができます。</p>
-                    <p>眼鏡産地として培われた高度なチタン加工技術を、医療用ルーペのフレームづくりに活かす。視野を支えるフレームだからこそ、素材選びだけでなく、ヒンジ、テンプル、フィッティングまで一体で設計しています。</p>
                 </div>
+                <details class="more">
+                    <summary>詳しく見る</summary>
+                    <div class="more-body">
+                        <p>さらに、チタンはフィッティング調整の自由度が高く、術者一人ひとりの顔立ちや装着位置に合わせて細かく調整できるという特長があります。フレームを適切にフィッティングすることで、重量が分散され、ずれにくく安定したホールド感が生まれます。これにより、高倍率ルーペでも快適な装着感を維持しながら、本来の視野を安定して確保することができます。</p>
+                    </div>
+                </details>
             </div>
-
         </div>
 
-        <!-- 07 仕様表 -->
+        <!-- 9. Specifications -->
         <div class="spec-table-wrap">
-            <div class="spec-section-head" style="margin-top:92px;">
-                <span class="sec-num">07</span>
-                <div>
-                    <span class="sec-en">Specifications</span>
-                    <div class="sec-title">製品仕様</div>
-                </div>
+            <div class="belief-intro">
+                <span class="eyebrow">Specifications</span>
+                <h2>製品仕様</h2>
             </div>
             <table class="spec-table">
                 <tr><th>製品名</th><td>BELORA 4.0× TTL KEPLERIAN</td></tr>
@@ -305,7 +376,7 @@
                 <tr><th>光学方式</th><td>ケプラー式</td></tr>
                 <tr><th>マウント方式</th><td>TTL方式</td></tr>
                 <tr><th>レンズ構成</th><td>レンズ5枚＋プリズム2個</td></tr>
-                <tr><th>視野範囲</th><td>作業距離400mm時 72mm</td></tr>
+                <tr><th>視野範囲</th><td>作業距離400mm時 約72mm</td></tr>
                 <tr><th>作業距離</th><td>ユーザーごとに個別測定</td></tr>
                 <tr><th>瞳孔間距離</th><td>ユーザーごとに個別測定</td></tr>
                 <tr><th>フレーム</th><td>鯖江チタンフレーム</td></tr>
@@ -320,29 +391,17 @@
             </p>
         </div>
 
-        <!-- 08 See It Yourself -->
-        <div class="spec-narrative">
-            <div class="spec-section">
-                <div class="spec-section-head">
-                    <span class="sec-num">08</span>
-                    <div>
-                        <span class="sec-en">See It Yourself</span>
-                        <div class="sec-title">仕様だけでは、見え方は伝わりません。</div>
-                    </div>
-                </div>
-                <div class="spec-section-body">
-                    <p>ルーペは、スペックだけでは判断できません。同じ倍率でも、視野の印象、装着感、姿勢との相性は実際にかけてみなければ分かりません。</p>
-                    <p>BELORA 4.0×の見え方、作業距離、装着感を、デモでご確認ください。</p>
-                </div>
+        <!-- 10. CTA -->
+        <div class="spec-cta">
+            <span class="eyebrow">See It Yourself</span>
+            <h2>仕様だけでは、見え方は伝わりません。</h2>
+            <p>
+                ルーペは、スペックだけでは判断できません。同じ倍率でも、視野の印象、装着感、姿勢との相性は実際にかけてみなければ分かりません。BELORA 4.0×の見え方、作業距離、装着感を、デモでご確認ください。
+            </p>
+            <div class="cta-buttons">
+                <a href="/contact/" class="btn-solid" style="background:linear-gradient(135deg,#5651b8 0%,#8c4c9f 55%,#b85581 100%); border-color:transparent; color:#fff; box-shadow:0 14px 34px rgba(86,81,184,0.32);">デモを申し込む</a>
+                <a href="/products/4x/" class="btn-outline">製品ページに戻る</a>
             </div>
-        </div>
-
-        <div class="spec-cta-row">
-            <div class="cta-primary-group">
-                <a href="/contact/" class="btn-outline">ご相談・デモ依頼</a>
-                <a href="/contact/" class="btn-outline">事前登録（販売開始のご案内）</a>
-            </div>
-            <a href="/products/4x/" class="back-btn">← BELORA 4.0X 製品ページに戻る</a>
         </div>
 
     </section>
