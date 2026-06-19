@@ -117,43 +117,6 @@
     <link rel="stylesheet" href="/assets/styles.css?v=20260602d">
 
     <style>
-        /* ===== NEWS / 活動報告 ===== */
-        .news-list {
-            max-width: 760px; margin: 44px auto 0; text-align: left;
-            display: flex; flex-direction: column; gap: 22px;
-        }
-        .news-card {
-            display: grid; grid-template-columns: 210px 1fr; gap: 28px; align-items: center;
-            background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.42));
-            border: 1px solid var(--line); border-radius: 14px;
-            padding: 20px; box-shadow: 0 12px 44px rgba(86,81,184,0.05);
-        }
-        .news-thumb {
-            width: 100%; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden;
-        }
-        .news-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .news-thumb-ph {
-            width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, #ece9f7, #f3eef4);
-            color: var(--sub); font-size: 0.74rem; letter-spacing: 0.2em;
-        }
-        .news-date {
-            font-family: "Inter","Helvetica Neue",sans-serif; font-size: 0.72rem;
-            letter-spacing: 0.18em; color: var(--accent); font-weight: 600;
-        }
-        .news-title {
-            font-family: "Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
-            font-size: clamp(1.05rem, 2.1vw, 1.22rem); line-height: 1.7;
-            color: var(--text); font-weight: 500; margin: 10px 0 0;
-        }
-        .news-text {
-            margin: 12px 0 0; color: var(--muted); line-height: 2.0; font-size: 0.9rem;
-            letter-spacing: 0.02em; word-break: auto-phrase; line-break: strict;
-        }
-        @media (max-width: 640px) {
-            .news-card { grid-template-columns: 1fr; gap: 16px; padding: 18px; }
-        }
-
         /* ===== Instagram 公式埋め込み ===== */
         .ig-embeds {
             max-width: 1140px; margin: 40px auto 0;
@@ -221,32 +184,6 @@
             日々の診療に長く寄り添うルーペをお届けします。
         </p>
         <a href="/philosophy/" class="view-btn" style="margin-top:40px;">ブランド哲学を見る</a>
-    </section>
-
-    <!-- ===== NEWS / 活動報告 =====
-         新しいお知らせを追加するときは、下の <article class="news-card"> ... </article> を
-         まるごとコピーして news-list の先頭（このコメントの直後）に貼り付けてください。
-         写真を載せるときは、画像を /assets/news/ に置き、各カードの
-         <div class="news-thumb"> 内の <img ...> のコメントを外して news-thumb-ph の div を削除します。 -->
-    <section class="content-block">
-        <div class="line"></div>
-        <h2 class="title-gradient">NEWS</h2>
-        <p class="product-sub" style="margin-bottom:4px;">最近の活動・お知らせ ／ RECENT ACTIVITIES</p>
-
-        <div class="news-list">
-            <article class="news-card">
-                <div class="news-thumb">
-                    <!-- 写真ができたら、次の行のコメントを外して下の news-thumb-ph を削除してください
-                    <img src="/assets/news/2026-06-18_aguh.jpg" alt="愛知学院大学歯学部附属病院での説明会の様子" loading="lazy"> -->
-                    <div class="news-thumb-ph"><span>写真準備中</span></div>
-                </div>
-                <div class="news-body">
-                    <time class="news-date" datetime="2026-06-18">2026.06.18</time>
-                    <h3 class="news-title">愛知学院大学歯学部附属病院にて説明会を実施しました</h3>
-                    <p class="news-text">愛知学院大学歯学部附属病院の先生方に、BELORA 4.0× TTL KEPLERIAN の光学設計と装着感についてご説明し、実機をご体験いただきました。貴重なご意見をいただき、誠にありがとうございました。</p>
-                </div>
-            </article>
-        </div>
     </section>
 
     <!-- ===== Instagram（公式埋め込み）=====
