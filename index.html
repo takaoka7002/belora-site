@@ -118,12 +118,31 @@
 
     <style>
         /* ===== Instagram 公式埋め込み ===== */
+        .ig-layout {
+            max-width: 1000px; margin: 44px auto 0; text-align: left;
+            display: grid; grid-template-columns: 1fr 540px; gap: 56px; align-items: center;
+        }
+        .ig-intro { max-width: 360px; }
+        .ig-lead {
+            color: var(--muted); line-height: 2.15; font-size: 0.95rem;
+            letter-spacing: 0.02em; word-break: auto-phrase; line-break: strict; margin: 0;
+        }
+        .ig-handle {
+            display: block; margin-top: 18px; font-family: "Inter","Helvetica Neue",sans-serif;
+            font-size: 0.82rem; letter-spacing: 0.12em; color: var(--accent); font-weight: 600;
+        }
+        .ig-follow { margin-top: 26px; }
         .ig-embeds {
-            max-width: 1140px; margin: 40px auto 0;
+            width: 540px; max-width: 100%;
             display: flex; flex-wrap: wrap; gap: 18px; justify-content: center;
         }
         .ig-embeds .instagram-media { margin: 0 !important; }
-        .ig-follow { margin-top: 30px; }
+        @media (max-width: 900px) {
+            .ig-layout {
+                grid-template-columns: 1fr; gap: 30px; justify-items: center; text-align: center;
+            }
+            .ig-intro { max-width: 540px; }
+        }
     </style>
 </head>
 <body>
@@ -194,15 +213,20 @@
     <section class="content-block">
         <div class="line"></div>
         <h2 class="title-gradient">Instagram</h2>
-        <p class="product-sub" style="margin-bottom:4px;">公式インスタグラム ／ @belora_surgical_loupes</p>
+        <p class="product-sub" style="margin-bottom:4px;">公式インスタグラム</p>
 
-        <div class="ig-embeds">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZw5s7ZEic9/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:540px; min-width:326px; padding:0; width:99.375%;">
-                <a href="https://www.instagram.com/p/DZw5s7ZEic9/" target="_blank" rel="noopener noreferrer">この投稿をInstagramで見る</a>
-            </blockquote>
+        <div class="ig-layout">
+            <div class="ig-intro">
+                <p class="ig-lead">開発の舞台裏や製品の細部、活動の様子を発信しています。最新の更新は公式Instagramでご覧ください。</p>
+                <span class="ig-handle">@belora_surgical_loupes</span>
+                <a href="https://www.instagram.com/belora_surgical_loupes/" target="_blank" rel="noopener noreferrer" class="view-btn ig-follow">公式Instagramを見る</a>
+            </div>
+            <div class="ig-embeds">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZw5s7ZEic9/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:540px; min-width:326px; padding:0; width:99.375%;">
+                    <a href="https://www.instagram.com/p/DZw5s7ZEic9/" target="_blank" rel="noopener noreferrer">この投稿をInstagramで見る</a>
+                </blockquote>
+            </div>
         </div>
-
-        <a href="https://www.instagram.com/belora_surgical_loupes/" target="_blank" rel="noopener noreferrer" class="view-btn ig-follow">公式Instagramを見る</a>
     </section>
 
     <section class="content-block">
