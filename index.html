@@ -153,6 +153,14 @@
         @media (max-width: 640px) {
             .news-card { grid-template-columns: 1fr; gap: 16px; padding: 18px; }
         }
+
+        /* ===== Instagram 公式埋め込み ===== */
+        .ig-embeds {
+            max-width: 1140px; margin: 40px auto 0;
+            display: flex; flex-wrap: wrap; gap: 18px; justify-content: center;
+        }
+        .ig-embeds .instagram-media { margin: 0 !important; }
+        .ig-follow { margin-top: 30px; }
     </style>
 </head>
 <body>
@@ -241,6 +249,25 @@
         </div>
     </section>
 
+    <!-- ===== Instagram（公式埋め込み）=====
+         投稿を追加するときは、下の <blockquote class="instagram-media" ...> ... </blockquote> を
+         まるごとコピーし、data-instgrm-permalink と <a href> の2か所のURLを
+         新しい投稿のURL（https://www.instagram.com/p/XXXX/ 形式）に置き換えて、
+         ig-embeds の中に貼り付けてください。embed.js は1回読み込めば全件に効きます。 -->
+    <section class="content-block">
+        <div class="line"></div>
+        <h2 class="title-gradient">Instagram</h2>
+        <p class="product-sub" style="margin-bottom:4px;">公式インスタグラム ／ @belora_surgical_loupes</p>
+
+        <div class="ig-embeds">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZw5s7ZEic9/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:540px; min-width:326px; padding:0; width:99.375%;">
+                <a href="https://www.instagram.com/p/DZw5s7ZEic9/" target="_blank" rel="noopener noreferrer">この投稿をInstagramで見る</a>
+            </blockquote>
+        </div>
+
+        <a href="https://www.instagram.com/belora_surgical_loupes/" target="_blank" rel="noopener noreferrer" class="view-btn ig-follow">公式Instagramを見る</a>
+    </section>
+
     <section class="content-block">
         <div class="line"></div>
         <h2 class="title-gradient">BELORA Founders</h2>
@@ -276,6 +303,7 @@
 </footer>
 
 <script src="/assets/main.js"></script>
+<script async src="//www.instagram.com/embed.js"></script>
 
 </body>
 </html>
