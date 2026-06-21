@@ -133,15 +133,22 @@
         }
         .ig-follow { display: inline-block; margin-top: 26px; }
         .ig-embeds {
-            width: 540px; max-width: 100%;
+            width: 100%; max-width: 540px;
             display: flex; flex-wrap: wrap; gap: 18px; justify-content: center;
         }
-        .ig-embeds .instagram-media { margin: 0 !important; }
+        /* 埋め込みiframeを画面幅に追従させ、スマホで見切れないようにする */
+        .ig-embeds .instagram-media {
+            margin: 0 auto !important;
+            min-width: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
         @media (max-width: 900px) {
             .ig-layout {
                 grid-template-columns: 1fr; gap: 30px; justify-items: center; text-align: center;
             }
             .ig-intro { max-width: 540px; }
+            .ig-embeds { max-width: 100%; }
         }
     </style>
 </head>
