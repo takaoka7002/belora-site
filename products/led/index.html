@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>BELORA LIGHT | ルーペ用LEDライト｜フリッカーフリー・高演色・軽量</title>
-    <meta name="description" content="BELORA LIGHT は、拡大鏡（ルーペ）をお使いの方のためのLED照明。DC調光によるフリッカーフリーで撮影時もちらつかず、高演色（CRI90前後・色温度約5700K）で色を自然に再現。マグネット式バッテリーで着脱かんたん、軽量・無段階調光。日本製の照明用品です。">
-    <meta name="keywords" content="ルーペ用ライト,LEDライト,フリッカーフリー,高演色,High CRI,マグネット バッテリー,USB-PD,BELORA LIGHT,軽量 LED,無段階調光">
+    <meta name="description" content="BELORA LIGHT は、拡大鏡（ルーペ）をお使いの方のためのLED照明。DC調光によるフリッカーフリーで撮影時もちらつかず、高演色（CRI90・色温度約5700K）で色を自然に再現。マグネット式バッテリーで着脱かんたん、軽量・6段階調光。日本製の照明用品です。">
+    <meta name="keywords" content="ルーペ用ライト,LEDライト,フリッカーフリー,高演色,High CRI,マグネット バッテリー,USB-PD,BELORA LIGHT,軽量 LED,6段階調光">
     <meta name="author" content="株式会社Belora">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0a0a0f">
@@ -43,7 +43,7 @@
       "@context": "https://schema.org",
       "@type": "Product",
       "name": "BELORA LIGHT",
-      "description": "拡大鏡（ルーペ）用のLED照明。フリッカーフリー（DC調光）、高演色（CRI90前後・色温度約5700K）、マグネット式バッテリー、軽量・無段階調光。日本製の照明用品です。",
+      "description": "拡大鏡（ルーペ）用のLED照明。フリッカーフリー（DC調光）、高演色（CRI90・色温度約5700K）、マグネット式バッテリー、軽量・6段階調光。日本製の照明用品です。",
       "brand": { "@type": "Brand", "name": "BELORA" },
       "category": "照明用品 / LEDライト",
       "manufacturer": { "@type": "Organization", "name": "株式会社Belora", "address": { "@type": "PostalAddress", "addressCountry": "JP" } },
@@ -110,6 +110,53 @@
         color:var(--muted); font-size:.86rem; line-height:1.9; text-align:center;
       }
       .section-dark .led-tagline{ color:var(--dark-text); }
+
+      /* ===== ヒーロー背景に溶け込む光（縁をほのかに定義＝“くっきり”の余韻） ===== */
+      .led-hero__orb{
+        position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+        width:min(680px,90vw); height:min(680px,90vw); border-radius:50%;
+        z-index:0; pointer-events:none;
+        background:radial-gradient(circle at 50% 48%,
+          rgba(255,251,241,0.95) 0%,
+          rgba(255,248,232,0.55) 40%,
+          rgba(250,246,255,0.22) 63%,
+          rgba(246,244,252,0.05) 82%,
+          transparent 100%);
+      }
+      .led-hero__orb::after{
+        content:''; position:absolute; inset:15%; border-radius:50%;
+        box-shadow:0 0 0 1px rgba(120,120,180,0.18);
+      }
+
+      /* ===== FEATURES：エディトリアルなリスト型 ===== */
+      .led-featlist{ max-width:780px; margin:50px auto 0; }
+      .led-featrow{
+        display:flex; gap:38px; align-items:baseline;
+        padding:36px 6px; border-top:1px solid var(--line);
+      }
+      .led-featlist .led-featrow:last-child{ border-bottom:1px solid var(--line); }
+      .led-featrow__num{ flex:0 0 88px; }
+      .led-featrow__n{
+        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
+        font-size:2.5rem; line-height:1;
+        background:linear-gradient(45deg,#5651b8,#1a1a2e,#b85581);
+        -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+      }
+      .led-featrow__tag{
+        display:block; margin-top:11px; font-size:.62rem; letter-spacing:.26em;
+        color:var(--sub); font-weight:700;
+      }
+      .led-featrow__body{ flex:1; }
+      .led-featrow__ttl{
+        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
+        font-size:clamp(1.2rem,2.4vw,1.45rem); margin:0 0 12px; color:var(--text); letter-spacing:.03em;
+      }
+      .led-featrow__txt{ margin:0; color:var(--muted); line-height:2.05; font-size:.98rem; }
+      @media (max-width:640px){
+        .led-featrow{ flex-direction:column; gap:12px; }
+        .led-featrow__num{ display:flex; align-items:baseline; gap:14px; flex-basis:auto; }
+        .led-featrow__tag{ margin-top:0; }
+      }
     </style>
 </head>
 <body>
@@ -147,10 +194,9 @@
 <div class="main-content">
 
     <!-- ===== HERO ===== -->
-    <section class="content-block" style="padding-bottom:20px;">
+    <section class="content-block" style="position:relative; overflow:hidden; padding-bottom:20px;">
+        <div class="led-hero__orb"></div>
         <div class="led-hero">
-            <div class="led-hero__glow"></div>
-            <div class="led-hero__rings"></div>
             <div class="led-hero__inner">
                 <div class="led-eyebrow">LED Light for Loupes</div>
                 <h1 class="title-gradient">BELORA LIGHT</h1>
@@ -158,7 +204,7 @@
                 <p class="led-tagline">見える、という楽しさ。</p>
                 <p class="led-lead">
                     拡大鏡（ルーペ）をお使いの方のための、軽くて自然なあかり。
-                    ちらつきを抑えたフリッカーフリー設計で、手元をくっきりと、
+                    ちらつきを抑えたフリッカーフリー設計で、細部までくっきりと、
                     撮影してもなめらかに照らします。
                 </p>
             </div>
@@ -170,41 +216,37 @@
         <h2 class="title-gradient">FEATURES</h2>
         <p class="subtitle">ルーペ時間を、もっと快適に。</p>
 
-        <div class="feature-grid" style="margin-top:50px;">
-            <div class="feature-card">
-                <span class="feature-num-label">FEATURE 01</span>
-                <h3 class="feature-card-title">撮影しても、ちらつかない</h3>
-                <p class="feature-card-text">
-                    DC調光方式により光のちらつき（フリッカー）を抑えました。
-                    動画・写真での手元の記録もなめらかで、目にもやさしい安定した光です。
-                </p>
+        <div class="led-featlist">
+            <div class="led-featrow">
+                <div class="led-featrow__num"><span class="led-featrow__n">01</span><span class="led-featrow__tag">FLICKER-FREE</span></div>
+                <div class="led-featrow__body">
+                    <h3 class="led-featrow__ttl">撮影しても、ちらつかない</h3>
+                    <p class="led-featrow__txt">DC調光方式により光のちらつき（フリッカー）を抑えました。動画・写真での記録もなめらかで、目にもやさしい安定した光です。</p>
+                </div>
             </div>
 
-            <div class="feature-card">
-                <span class="feature-num-label">FEATURE 02</span>
-                <h3 class="feature-card-title">色を、ありのままに</h3>
-                <p class="feature-card-text">
-                    高演色（High CRI・Ra90前後）／色温度 約5700K の白色光。
-                    対象の色合いを忠実に、自然光に近い見え方で照らします。
-                </p>
+            <div class="led-featrow">
+                <div class="led-featrow__num"><span class="led-featrow__n">02</span><span class="led-featrow__tag">HIGH-CRI</span></div>
+                <div class="led-featrow__body">
+                    <h3 class="led-featrow__ttl">色を、ありのままに</h3>
+                    <p class="led-featrow__txt">高演色（High CRI・Ra90）／色温度 約5700K の白色光。対象の色合いを忠実に、自然光に近い見え方で照らします。</p>
+                </div>
             </div>
 
-            <div class="feature-card">
-                <span class="feature-num-label">FEATURE 03</span>
-                <h3 class="feature-card-title">ワンタッチで、着脱</h3>
-                <p class="feature-card-text">
-                    電源はマグネット式。付ければ点灯、外せば完全にオフ。
-                    ケーブルに縛られない軽快さで扱えます（USB-PD給電）。
-                </p>
+            <div class="led-featrow">
+                <div class="led-featrow__num"><span class="led-featrow__n">03</span><span class="led-featrow__tag">MAGNETIC</span></div>
+                <div class="led-featrow__body">
+                    <h3 class="led-featrow__ttl">ワンタッチで、着脱</h3>
+                    <p class="led-featrow__txt">電源はマグネット式。付ければ点灯、外せば完全にオフ。ケーブルに縛られない軽快さで扱えます（USB-PD給電）。</p>
+                </div>
             </div>
 
-            <div class="feature-card">
-                <span class="feature-num-label">FEATURE 04</span>
-                <h3 class="feature-card-title">軽く、思いのままの明るさ</h3>
-                <p class="feature-card-text">
-                    ルーペに一体化する軽量設計。明るさは手元のボタンで
-                    無段階に調整でき、作業や好みに合わせられます。
-                </p>
+            <div class="led-featrow">
+                <div class="led-featrow__num"><span class="led-featrow__n">04</span><span class="led-featrow__tag">DIMMABLE</span></div>
+                <div class="led-featrow__body">
+                    <h3 class="led-featrow__ttl">軽く、思いのままの明るさ</h3>
+                    <p class="led-featrow__txt">ルーペに一体化する軽量設計。明るさはボタンで6段階に調整でき、シーンや好みに合わせられます。</p>
+                </div>
             </div>
         </div>
     </section>
@@ -212,10 +254,10 @@
     <!-- ===== STATEMENT ===== -->
     <section class="content-block section-dark" style="padding-top:80px; padding-bottom:80px;">
         <div class="led-eyebrow" style="text-align:center; color:var(--dark-sub);">Precision Lighting</div>
-        <h2 class="title-gradient" style="text-align:center;">手元を、もっとクリアに。</h2>
+        <h2 class="title-gradient" style="text-align:center;">視界を、もっとクリアに。</h2>
         <p class="led-lead" style="color:var(--dark-muted);">
-            精密な手元作業のために設計した、軽くて自然なあかり。
-            見やすさは、作業そのものの心地よさを静かに変えていきます。
+            精密に見るために設計した、軽くて自然なあかり。
+            見やすさは、見る時間そのものの心地よさを静かに変えていきます。
         </p>
     </section>
 
@@ -228,8 +270,8 @@
         <div class="led-spec">
             <dl><dt>光源</dt><dd>高演色 白色LED（High CRI）</dd></dl>
             <dl><dt>色温度</dt><dd>約 5700K（昼白色）</dd></dl>
-            <dl><dt>演色性</dt><dd>Ra 90 前後</dd></dl>
-            <dl><dt>調光</dt><dd>無段階調光（手元ボタン操作）</dd></dl>
+            <dl><dt>演色性</dt><dd>Ra 90</dd></dl>
+            <dl><dt>調光</dt><dd>6段階調光（ボタン操作）</dd></dl>
             <dl><dt>調光方式</dt><dd>DC調光（フリッカーフリー）</dd></dl>
             <dl><dt>電源</dt><dd>USB-PD 給電 ／ マグネット式バッテリー<span style="color:var(--sub);">（バッテリーは別売）</span></dd></dl>
             <dl><dt>装着</dt><dd>ルーペ一体型</dd></dl>
@@ -238,7 +280,7 @@
 
         <div class="led-note">
             ※ 本製品は照明用品です（医療機器ではありません）。<br>
-            拡大鏡（ルーペ）をご使用の方の手元照明としてお使いいただけます。仕様は改良のため予告なく変更する場合があります。
+            拡大鏡（ルーペ）をご使用の方の照明としてお使いいただけます。仕様は改良のため予告なく変更する場合があります。
         </div>
 
         <div class="action-buttons" style="margin-top:56px;">
