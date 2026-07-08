@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>BELORA LIGHT | ルーペ用LEDライト｜フリッカーフリー・高演色・軽量</title>
-    <meta name="description" content="BELORA LIGHT は、拡大鏡（ルーペ）をお使いの方のためのLED照明。DC調光によるフリッカーフリーで撮影時もちらつかず、高演色（CRI90・色温度約5700K）で色を自然に再現。マグネット式バッテリーで着脱かんたん、軽量・6段階調光。日本製の照明用品です。">
-    <meta name="keywords" content="ルーペ用ライト,LEDライト,フリッカーフリー,高演色,High CRI,マグネット バッテリー,USB-PD,BELORA LIGHT,軽量 LED,6段階調光">
+    <meta name="description" content="BELORA LIGHT は、拡大鏡（ルーペ）をお使いの方のためのLED照明。DC調光によるフリッカーフリーで撮影時もちらつかず、高演色（CRI90・色温度約5700K）で色を自然に再現。USB-C（USB-PD）給電、軽量・6段階調光。マグネット式バッテリー（別売）にも対応。日本製の照明用品です。">
+    <meta name="keywords" content="ルーペ用ライト,LEDライト,フリッカーフリー,高演色,High CRI,USB-C,USB-PD,マグネット バッテリー,BELORA LIGHT,軽量 LED,6段階調光">
     <meta name="author" content="株式会社Belora">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0a0a0f">
@@ -16,7 +16,7 @@
     <meta property="og:type" content="product">
     <meta property="og:url" content="https://belora.jp/products/led/">
     <meta property="og:title" content="BELORA LIGHT | ルーペ用LEDライト">
-    <meta property="og:description" content="フリッカーフリー（DC調光）で撮影時もちらつかない、高演色・軽量のルーペ用LED照明。マグネット式バッテリーで着脱かんたん。日本製。">
+    <meta property="og:description" content="フリッカーフリー（DC調光）で撮影時もちらつかない、高演色・軽量のルーペ用LED照明。USB-C給電、マグネット式バッテリー（別売）対応。日本製。">
     <meta property="og:image" content="https://belora.jp/og-image.jpg">
     <meta property="og:site_name" content="BELORA">
     <meta property="og:locale" content="ja_JP">
@@ -43,7 +43,7 @@
       "@context": "https://schema.org",
       "@type": "Product",
       "name": "BELORA LIGHT",
-      "description": "拡大鏡（ルーペ）用のLED照明。フリッカーフリー（DC調光）、高演色（CRI90・色温度約5700K）、マグネット式バッテリー、軽量・6段階調光。日本製の照明用品です。",
+      "description": "拡大鏡（ルーペ）用のLED照明。フリッカーフリー（DC調光）、高演色（CRI90・色温度約5700K）、USB-C（USB-PD）給電、軽量・6段階調光、マグネット式バッテリー（別売）対応。日本製の照明用品です。",
       "brand": { "@type": "Brand", "name": "BELORA" },
       "category": "照明用品 / LEDライト",
       "manufacturer": { "@type": "Organization", "name": "株式会社Belora", "address": { "@type": "PostalAddress", "addressCountry": "JP" } },
@@ -91,6 +91,13 @@
         max-width:600px; margin:26px auto 0; line-height:2.05; color:var(--muted);
         font-size:clamp(.98rem,2vw,1.08rem);
       }
+      .led-producttitle{
+        margin:20px 0 0;
+        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
+        font-size:clamp(1.3rem,3vw,1.75rem); letter-spacing:.14em; line-height:1.55;
+        color:var(--text);
+      }
+      .led-hero h1.title-gradient{ font-size:clamp(1.8rem,4.2vw,2.7rem); letter-spacing:.12em; line-height:1.5; }
       .led-tagline{
         font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
         font-size:clamp(1.5rem,4vw,2.2rem); letter-spacing:.08em; line-height:1.6;
@@ -111,22 +118,18 @@
       }
       .section-dark .led-tagline{ color:var(--dark-text); }
 
-      /* ===== ヒーロー背景に溶け込む光（縁をほのかに定義＝“くっきり”の余韻） ===== */
+      /* ===== 中央のくっきりした光スポット（ダーク背景に浮かぶ円） ===== */
       .led-hero__orb{
         position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-        width:min(680px,90vw); height:min(680px,90vw); border-radius:50%;
+        width:min(840px,92vw); height:min(840px,92vw); border-radius:50%;
         z-index:0; pointer-events:none;
-        background:radial-gradient(circle at 50% 48%,
-          rgba(255,251,241,0.95) 0%,
-          rgba(255,248,232,0.55) 40%,
-          rgba(250,246,255,0.22) 63%,
-          rgba(246,244,252,0.05) 82%,
-          transparent 100%);
+        background:radial-gradient(circle at 50% 46%, #fbf7ee 0%, #f8f3e6 60%, #f4edd9 90%, #f0e9d0 100%);
+        box-shadow:
+          0 0 0 1px rgba(255,250,236,0.55),
+          0 0 70px 14px rgba(255,244,214,0.16),
+          0 0 180px 60px rgba(255,238,205,0.07);
       }
-      .led-hero__orb::after{
-        content:''; position:absolute; inset:15%; border-radius:50%;
-        box-shadow:0 0 0 1px rgba(120,120,180,0.18);
-      }
+      @media (max-width:640px){ .led-hero__orb{ width:min(840px,150vw); height:min(840px,150vw); } }
 
       /* ===== FEATURES：エディトリアルなリスト型 ===== */
       .led-featlist{ max-width:780px; margin:50px auto 0; }
@@ -194,14 +197,12 @@
 <div class="main-content">
 
     <!-- ===== HERO ===== -->
-    <section class="content-block" style="position:relative; overflow:hidden; padding-bottom:20px;">
+    <section class="content-block" style="position:relative; overflow:hidden; padding-bottom:20px; background:radial-gradient(120% 125% at 50% 44%, #1e1e26 0%, #141419 56%, #0b0b10 100%);">
         <div class="led-hero__orb"></div>
         <div class="led-hero">
             <div class="led-hero__inner">
                 <div class="led-eyebrow">LED Light for Loupes</div>
-                <h1 class="title-gradient">BELORA LIGHT</h1>
-                <p class="subtitle">ルーペ用 LED 照明</p>
-                <p class="led-tagline">見える、という楽しさ。</p>
+                <h1 class="title-gradient">高演色（高CRI）LEDライト</h1>
                 <p class="led-lead">
                     拡大鏡（ルーペ）をお使いの方のための、軽くて自然なあかり。
                     ちらつきを抑えたフリッカーフリー設計で、細部までくっきりと、
@@ -234,10 +235,10 @@
             </div>
 
             <div class="led-featrow">
-                <div class="led-featrow__num"><span class="led-featrow__n">03</span><span class="led-featrow__tag">MAGNETIC</span></div>
+                <div class="led-featrow__num"><span class="led-featrow__n">03</span><span class="led-featrow__tag">USB-C POWERED</span></div>
                 <div class="led-featrow__body">
-                    <h3 class="led-featrow__ttl">ワンタッチで、着脱</h3>
-                    <p class="led-featrow__txt">電源はマグネット式。付ければ点灯、外せば完全にオフ。ケーブルに縛られない軽快さで扱えます（USB-PD給電）。</p>
+                    <h3 class="led-featrow__ttl">USB-Cで、手軽に点灯</h3>
+                    <p class="led-featrow__txt">電源はUSB-C。市販のモバイルバッテリーやUSB電源でそのまま使えます。マグネット式バッテリー（別売）と組み合わせれば、ケーブルレスで、付けて点灯・外して完全オフも可能です。</p>
                 </div>
             </div>
 
@@ -271,9 +272,10 @@
             <dl><dt>光源</dt><dd>高演色 白色LED（High CRI）</dd></dl>
             <dl><dt>色温度</dt><dd>約 5700K（昼白色）</dd></dl>
             <dl><dt>演色性</dt><dd>Ra 90</dd></dl>
+            <dl><dt>明るさ</dt><dd>約 52,000 lx<span style="color:var(--sub);">（作業距離 400mm・当社実測条件／使用状況により変動します）</span></dd></dl>
             <dl><dt>調光</dt><dd>6段階調光（ボタン操作）</dd></dl>
             <dl><dt>調光方式</dt><dd>DC調光（フリッカーフリー）</dd></dl>
-            <dl><dt>電源</dt><dd>USB-PD 給電 ／ マグネット式バッテリー<span style="color:var(--sub);">（バッテリーは別売）</span></dd></dl>
+            <dl><dt>電源</dt><dd>USB-C（USB-PD）給電<span style="color:var(--sub);">／モバイルバッテリー等のUSB電源で駆動（マグネット式バッテリーは別売）</span></dd></dl>
             <dl><dt>装着</dt><dd>ルーペ一体型</dd></dl>
             <dl><dt>生産</dt><dd>日本製（Made in Japan）</dd></dl>
         </div>
