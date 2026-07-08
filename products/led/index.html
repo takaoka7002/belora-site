@@ -160,6 +160,47 @@
         .led-featrow__num{ display:flex; align-items:baseline; gap:14px; flex-basis:auto; }
         .led-featrow__tag{ margin-top:0; }
       }
+
+      /* ===== WHY HIGH CRI ===== */
+      .led-why{ max-width:820px; margin:0 auto; }
+      .led-why__lead{
+        max-width:680px; margin:22px auto 0; line-height:2.05; color:var(--muted);
+        font-size:clamp(.98rem,2vw,1.08rem); text-align:center;
+      }
+      .led-why__fig{ margin:46px auto 0; max-width:900px; }
+      .led-why__fig img{
+        width:100%; height:auto; display:block; border-radius:16px;
+        box-shadow:0 20px 54px rgba(20,30,50,.14);
+      }
+      .led-why__cap{ margin-top:14px; text-align:center; font-size:.8rem; color:var(--sub); letter-spacing:.03em; }
+      .led-why__cols{ display:flex; gap:40px; margin:52px auto 0; max-width:760px; }
+      .led-why__col{ flex:1; }
+      .led-why__col h3{
+        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
+        font-size:1.12rem; letter-spacing:.04em; color:var(--text); margin:0 0 10px;
+      }
+      .led-why__col p{ margin:0; color:var(--muted); line-height:2.0; font-size:.95rem; }
+      .led-why__ra{
+        display:inline-block; margin-left:8px; font-size:.62rem; letter-spacing:.2em; font-weight:700;
+        color:#fff; background:linear-gradient(90deg,#5651b8,#b85581);
+        padding:3px 9px; border-radius:999px; vertical-align:middle;
+      }
+      .led-why__callout{
+        max-width:760px; margin:50px auto 0; padding:28px 32px; border-radius:14px;
+        background:linear-gradient(180deg, rgba(86,81,184,.055), rgba(184,85,129,.055));
+        border:1px solid var(--line);
+      }
+      .led-why__callout h3{
+        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
+        font-size:clamp(1.12rem,2.4vw,1.3rem); letter-spacing:.04em; color:var(--text);
+        margin:0 0 14px; line-height:1.5;
+      }
+      .led-why__callout p{ margin:0; color:var(--muted); line-height:2.05; font-size:.96rem; }
+      .led-why__callout strong{ color:var(--text); }
+      @media (max-width:640px){
+        .led-why__cols{ flex-direction:column; gap:26px; }
+        .led-why__callout{ padding:22px 20px; }
+      }
     </style>
 </head>
 <body>
@@ -248,6 +289,47 @@
                     <h3 class="led-featrow__ttl">軽く、思いのままの明るさ</h3>
                     <p class="led-featrow__txt">ルーペに一体化する軽量設計。明るさはボタンで6段階に調整でき、シーンや好みに合わせられます。</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHY HIGH CRI ===== -->
+    <section class="content-block" style="padding-top:40px;">
+        <div class="led-eyebrow" style="text-align:center;">Why High CRI</div>
+        <h2 class="title-gradient">なぜ、高演色なのか。</h2>
+        <p class="subtitle">色の見え方を、決めるもの。</p>
+
+        <div class="led-why">
+            <p class="led-why__lead">
+                「演色性（Ra）」は、その光が<strong>どれだけ自然光に近く色を再現できるか</strong>を表す指標です。
+                太陽光を Ra100 とし、数値が高いほど、ものの色を“ありのまま”に照らします。
+                同じ対象でも、光しだいで見える色は変わります。
+            </p>
+
+            <figure class="led-why__fig">
+                <img src="/assets/led-cri-comparison.png" alt="高演色LEDと一般的なLEDで同じ模様を照らしたときの色の見え方の違い（イメージ）">
+            </figure>
+
+            <div class="led-why__cols">
+                <div class="led-why__col">
+                    <h3>一般的なLEDだと</h3>
+                    <p>演色性が低い光は、彩度が落ちて色がくすみがち。とくに赤系が濁り、微妙な色の違いが分かりにくくなります。</p>
+                </div>
+                <div class="led-why__col">
+                    <h3>BELORA LIGHT は<span class="led-why__ra">Ra 90</span></h3>
+                    <p>高演色の白色光で、対象の色みを忠実に再現。細部の色や質感の違いまで、自然光に近い見え方で確かめられます。</p>
+                </div>
+            </div>
+
+            <div class="led-why__callout">
+                <h3>明るさは、“上げるほど良い”ではありません。</h3>
+                <p>
+                    演色性の低い光で明るさだけを上げても、<strong>白飛び（ハレーション）で対象が白く飛び、かえって見えづらく</strong>なります。
+                    強すぎる光は反射やまぶしさを生み、コントラストが失われ、目の負担にもつながります。
+                    大切なのは光量そのものではなく、<strong>色を忠実に再現する高演色</strong>と、
+                    <strong>シーンに合わせて最適な明るさへ整えられること</strong>。
+                    BELORA LIGHT は 6段階調光で、明るすぎない“ちょうどいい”光に調整できます。
+                </p>
             </div>
         </div>
     </section>
