@@ -181,7 +181,7 @@
         z-index:100;
         width:242px;
         height:42px;
-        background:url(/assets/brand-lockup-white.png) no-repeat left center / contain;
+        background:url(/assets/brand-lockup-color.png) no-repeat left center / contain;
         text-decoration:none;
         cursor:pointer;
         font-size:0;          /* DOM上のBELORAテキストは残しつつ視覚的に非表示 */
