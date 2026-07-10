@@ -173,40 +173,23 @@
         to{opacity:1; transform:translateY(0);}
     }
 
+    /* ロゴ（マーク＋BELORAワードマーク）を1枚の画像で表示。BELORAの書体はロゴと完全一致 */
     .site-logo{
         position:fixed;
-        top:28px;
+        top:23px;
         left:40px;
         z-index:100;
-        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN",serif;
-        font-size:1.4rem;
-        letter-spacing:.22em;
+        width:232px;
+        height:42px;
+        background:url(/assets/brand-lockup-white.png) no-repeat left center / contain;
         text-decoration:none;
-        color:#fff;
         cursor:pointer;
-        background:linear-gradient(45deg,#c2bfff,#ffffff,#f0c4d3);
-        -webkit-background-clip:text;
-        -webkit-text-fill-color:transparent;
-        font-weight: bold;
+        font-size:0;          /* DOM上のBELORAテキストは残しつつ視覚的に非表示 */
+        line-height:0;
+        overflow:hidden;
     }
-
-    /* Rマークの文字サイズと位置を調整 */
-    .site-logo span {
-        letter-spacing: normal;
-        font-size: 0.75em;
-        vertical-align: super;
-        margin-left: 4px;
-    }
-
-    .site-logo::before {
-        content: "";
-        display: inline-block;
-        width: 1.55em;
-        height: 0.86em;
-        margin-right: 0.5em;
-        vertical-align: -0.14em;
-        background: url(/assets/brand-mark-white.png) no-repeat center / contain;
-    }
+    .site-logo span { display:none; }   /* ® は非表示 */
+    .site-logo::before { content:none; }
 
     nav{
         position:fixed;
@@ -257,10 +240,11 @@
             height:108px;
         }
         .site-logo{
-            top:0;
-            left:18px;
-            height:54px;
-            font-size:1.2rem;
+            top:11px;
+            left:16px;
+            width:188px;
+            height:34px;
+            font-size:0;
         }
         nav{
             top:54px;
