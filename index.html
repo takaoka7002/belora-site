@@ -150,6 +150,17 @@
             .ig-intro { max-width: 540px; }
             .ig-embeds { max-width: 100%; }
         }
+
+        /* ===== ヒーローのブランドマーク ===== */
+        .hero-mark {
+            display: block;
+            width: clamp(94px, 11vw, 140px);
+            height: auto;
+            margin: 0 0 26px;
+        }
+        @media (max-width: 850px) {
+            .hero-mark { margin-left: auto; margin-right: auto; }
+        }
     </style>
 </head>
 <body>
@@ -189,6 +200,7 @@
     <section class="hero-section section-dark">
         <div class="hero-bg-image"></div>
         <div class="hero-content">
+            <img class="hero-mark" src="/assets/brand-mark-white.png" alt="BELORA ブランドマーク">
             <h1 class="hero-title">BELORA<br>TTL Surgical Loupes</h1>
             <p class="hero-copy">
                 日本の光学技術と鯖江チタンフレームを組み合わせ、

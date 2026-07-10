@@ -198,6 +198,16 @@
         margin-left: 4px;
     }
 
+    .site-logo::before {
+        content: "";
+        display: inline-block;
+        width: 1.55em;
+        height: 0.86em;
+        margin-right: 0.5em;
+        vertical-align: -0.14em;
+        background: url(/assets/brand-mark-white.png) no-repeat center / contain;
+    }
+
     nav{
         position:fixed;
         top:0;
