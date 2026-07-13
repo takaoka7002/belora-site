@@ -117,7 +117,7 @@
     <link rel="stylesheet" href="/assets/styles.css?v=20260602d">
 
     <style>
-        /* ===== Instagram 公式埋め込み ===== */
+        /* ===== Instagram 公式埋め込み（カルーセル） ===== */
         .ig-layout {
             max-width: 1000px; margin: 44px auto 0; text-align: left;
             display: grid; grid-template-columns: 1fr 540px; gap: 56px; align-items: center;
@@ -132,23 +132,58 @@
             font-size: 0.82rem; letter-spacing: 0.12em; color: var(--accent); font-weight: 600;
         }
         .ig-follow { display: inline-block; margin-top: 26px; }
-        .ig-embeds {
-            width: 100%; max-width: 540px;
-            display: flex; flex-wrap: wrap; gap: 18px; justify-content: center;
+
+        /* カルーセル本体：投稿が増えても1件ずつ横スワイプで見られる */
+        .ig-carousel { position: relative; width: 100%; max-width: 540px; margin: 0 auto; }
+        .ig-track {
+            position: relative;
+            display: flex; overflow-x: auto;
+            scroll-snap-type: x mandatory; scroll-behavior: smooth;
+            -ms-overflow-style: none; scrollbar-width: none;
+        }
+        .ig-track::-webkit-scrollbar { display: none; }
+        .ig-slide {
+            flex: 0 0 100%; scroll-snap-align: center;
+            display: flex; justify-content: center; padding: 4px; box-sizing: border-box;
         }
         /* 埋め込みiframeを画面幅に追従させ、スマホで見切れないようにする */
-        .ig-embeds .instagram-media {
+        .ig-track .instagram-media {
             margin: 0 auto !important;
             min-width: 0 !important;
             width: 100% !important;
             max-width: 100% !important;
         }
+        /* 前後の矢印 */
+        .ig-arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 42px; height: 42px; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.18);
+            background: rgba(15,15,22,0.72); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+            color: #fff; font-size: 1.5rem; line-height: 1; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 3; transition: background .2s, opacity .2s;
+        }
+        .ig-arrow:hover { background: rgba(86,81,184,0.85); }
+        .ig-arrow[disabled] { opacity: 0.3; cursor: default; }
+        .ig-arrow.prev { left: -14px; }
+        .ig-arrow.next { right: -14px; }
+        /* ドット */
+        .ig-dots { display: flex; justify-content: center; gap: 9px; margin-top: 20px; }
+        .ig-dot {
+            width: 8px; height: 8px; border-radius: 50%; padding: 0;
+            border: none; background: rgba(255,255,255,0.25); cursor: pointer;
+            transition: background .2s, transform .2s;
+        }
+        .ig-dot.active { background: var(--accent); transform: scale(1.25); }
+
         @media (max-width: 900px) {
             .ig-layout {
                 grid-template-columns: 1fr; gap: 30px; justify-items: center; text-align: center;
             }
             .ig-intro { max-width: 540px; }
-            .ig-embeds { max-width: 100%; }
+            .ig-carousel { max-width: 100%; }
+            .ig-arrow.prev { left: 2px; }
+            .ig-arrow.next { right: 2px; }
         }
 
     </style>
@@ -214,11 +249,13 @@
         <a href="/philosophy/" class="view-btn" style="margin-top:40px;">ブランド哲学を見る</a>
     </section>
 
-    <!-- ===== Instagram（公式埋め込み）=====
-         投稿を追加するときは、下の <blockquote class="instagram-media" ...> ... </blockquote> を
-         まるごとコピーし、data-instgrm-permalink と <a href> の2か所のURLを
-         新しい投稿のURL（https://www.instagram.com/p/XXXX/ 形式）に置き換えて、
-         ig-embeds の中に貼り付けてください。embed.js は1回読み込めば全件に効きます。 -->
+    <!-- ===== Instagram（公式埋め込み・カルーセル）=====
+         投稿を追加するときは、下の <div class="ig-slide"> ... </div> を1ブロックまるごとコピーし、
+         data-instgrm-permalink と <a href> の2か所のURLを、新しい投稿のURL
+         （https://www.instagram.com/p/XXXX/ 形式）に置き換えて、
+         ig-track の中（新しい投稿ほど上＝左に来るよう先頭）に貼り付けてください。
+         矢印・ドット・スワイプはJS（main.js）が自動で件数に合わせて動きます。
+         embed.js は1回読み込めば全件に効きます。 -->
     <section class="content-block">
         <div class="line"></div>
         <h2 class="title-gradient">Instagram</h2>
@@ -230,13 +267,27 @@
                 <span class="ig-handle">@belora_surgical_loupes</span>
                 <a href="https://www.instagram.com/belora_surgical_loupes/" target="_blank" rel="noopener noreferrer" class="view-btn ig-follow">公式Instagramを見る</a>
             </div>
-            <div class="ig-embeds">
-                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZw5s7ZEic9/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:540px; min-width:326px; padding:0; width:99.375%;">
-                    <a href="https://www.instagram.com/p/DZw5s7ZEic9/" target="_blank" rel="noopener noreferrer">この投稿をInstagramで見る</a>
-                </blockquote>
-                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaXPiDxEhWG/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:540px; min-width:326px; padding:0; width:99.375%;">
-                    <a href="https://www.instagram.com/p/DaXPiDxEhWG/" target="_blank" rel="noopener noreferrer">この投稿をInstagramで見る</a>
-                </blockquote>
+            <div class="ig-carousel">
+                <button class="ig-arrow prev" type="button" aria-label="前の投稿へ">&#8249;</button>
+                <div class="ig-track">
+                    <div class="ig-slide">
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DapiELXktt5/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:540px; min-width:326px; padding:0; width:99.375%;">
+                            <a href="https://www.instagram.com/p/DapiELXktt5/" target="_blank" rel="noopener noreferrer">この投稿をInstagramで見る</a>
+                        </blockquote>
+                    </div>
+                    <div class="ig-slide">
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZw5s7ZEic9/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:540px; min-width:326px; padding:0; width:99.375%;">
+                            <a href="https://www.instagram.com/p/DZw5s7ZEic9/" target="_blank" rel="noopener noreferrer">この投稿をInstagramで見る</a>
+                        </blockquote>
+                    </div>
+                    <div class="ig-slide">
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaXPiDxEhWG/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:540px; min-width:326px; padding:0; width:99.375%;">
+                            <a href="https://www.instagram.com/p/DaXPiDxEhWG/" target="_blank" rel="noopener noreferrer">この投稿をInstagramで見る</a>
+                        </blockquote>
+                    </div>
+                </div>
+                <button class="ig-arrow next" type="button" aria-label="次の投稿へ">&#8250;</button>
+                <div class="ig-dots"></div>
             </div>
         </div>
     </section>

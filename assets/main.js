@@ -133,5 +133,77 @@
       }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
       targets.forEach(function (el) { io.observe(el); });
     }
+
+    // Instagram カルーセル（TOPページのみ）
+    // 投稿(.ig-slide)を1件ずつ横スクロール。矢印・ドット・スワイプに対応し、件数は動的に判定。
+    var igTrack = document.querySelector('.ig-track');
+    if (igTrack) {
+      var igCarousel = igTrack.closest('.ig-carousel');
+      var slides = igTrack.querySelectorAll('.ig-slide');
+      var prevBtn = igCarousel.querySelector('.ig-arrow.prev');
+      var nextBtn = igCarousel.querySelector('.ig-arrow.next');
+      var dotsWrap = igCarousel.querySelector('.ig-dots');
+      var current = 0;
+      var dots = [];
+
+      // 現在位置に最も近いスライドを求める
+      function nearestSlide() {
+        var center = igTrack.scrollLeft + igTrack.clientWidth / 2;
+        var idx = 0, min = Infinity;
+        for (var i = 0; i < slides.length; i++) {
+          var c = slides[i].offsetLeft + slides[i].clientWidth / 2;
+          var d = Math.abs(c - center);
+          if (d < min) { min = d; idx = i; }
+        }
+        return idx;
+      }
+
+      function goTo(idx) {
+        if (idx < 0) idx = 0;
+        if (idx > slides.length - 1) idx = slides.length - 1;
+        igTrack.scrollTo({ left: slides[idx].offsetLeft, behavior: 'smooth' });
+      }
+
+      function updateUI() {
+        current = nearestSlide();
+        for (var i = 0; i < dots.length; i++) {
+          dots[i].classList.toggle('active', i === current);
+        }
+        if (prevBtn) prevBtn.disabled = (current === 0);
+        if (nextBtn) nextBtn.disabled = (current === slides.length - 1);
+      }
+
+      // ドット生成
+      for (var s = 0; s < slides.length; s++) {
+        (function (idx) {
+          var dot = document.createElement('button');
+          dot.className = 'ig-dot' + (idx === 0 ? ' active' : '');
+          dot.type = 'button';
+          dot.setAttribute('aria-label', (idx + 1) + '件目の投稿へ');
+          dot.addEventListener('click', function () { goTo(idx); });
+          dotsWrap.appendChild(dot);
+          dots.push(dot);
+        })(s);
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
+      if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
+
+      var igTick = false;
+      igTrack.addEventListener('scroll', function () {
+        if (igTick) return;
+        window.requestAnimationFrame(function () { updateUI(); igTick = false; });
+        igTick = true;
+      }, { passive: true });
+
+      // 投稿が1件だけのときは操作UIを隠す
+      if (slides.length <= 1) {
+        if (prevBtn) prevBtn.style.display = 'none';
+        if (nextBtn) nextBtn.style.display = 'none';
+        if (dotsWrap) dotsWrap.style.display = 'none';
+      }
+
+      updateUI();
+    }
   });
 })();
