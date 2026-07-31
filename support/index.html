@@ -198,8 +198,17 @@
     <section class="content-block" id="repair">
         <h2 class="title-gradient" style="margin-top:0;">修理・メンテナンスのお申し込み</h2>
         <p class="subtitle" style="margin-bottom:28px;">
-            BELORA Care Membership に加入されていない方は、こちらのフォームからお申し込みください。<br>
-            会員の方は <a href="https://care.belora.jp/repair" target="_blank" rel="noopener">会員サイト</a> からお申し込みいただけます。
+            BELORA Care Membership のご加入状況をお選びください。
+        </p>
+
+        <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center;">
+            <a href="/membership/" class="btn-solid">会員の方</a>
+            <button type="button" class="btn-outline" onclick="showRepairForm()">非会員の方</button>
+        </div>
+
+        <div id="repair-form-wrapper" class="contact-form-wrapper" style="margin-top:44px;">
+        <p class="subtitle" style="margin-top:0; margin-bottom:28px; max-width:none;">
+            非会員の方の修理・メンテナンスは、以下のフォームからお申し込みください。
         </p>
 
         <form
@@ -273,6 +282,7 @@
 
             <button type="submit" class="submit-btn">送信する</button>
         </form>
+        </div>
     </section>
 
 </div>

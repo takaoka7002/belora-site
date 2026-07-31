@@ -9,6 +9,17 @@
 (function () {
   'use strict';
 
+  // 入口の「非会員の方」ボタンでフォームを表示する。
+  // 表示制御は .contact-form-wrapper / .active（お問合せページと共用のCSS）を流用。
+  window.showRepairForm = function () {
+    var wrapper = document.getElementById('repair-form-wrapper');
+    if (!wrapper) return;
+    wrapper.classList.add('active');
+    // 固定ナビ（高さ88px）の下に隠れないよう余白を取ってスクロールする
+    var top = wrapper.getBoundingClientRect().top + window.pageYOffset - 110;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  };
+
   window.handleRepairFormSubmit = function (event) {
     event.preventDefault();
 
