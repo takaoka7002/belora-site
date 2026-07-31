@@ -191,6 +191,90 @@
         <a href="/contact/" class="primary-cta" style="margin-top:44px;">サポートへのお問い合わせ</a>
     </section>
 
+    <!-- ===== 修理・メンテナンス申込フォーム（メンバーシップ非会員向け）=====
+         会員は care.belora.jp/repair から申し込む導線のため、ここは非会員専用。
+         送信は /assets/repair-form.js が担当し、修理固有の項目を message に整形して
+         お問合せフォームと同じGASエンドポイントに送る（GAS側の改修不要）。 -->
+    <section class="content-block" id="repair">
+        <h2 class="title-gradient" style="margin-top:0;">修理・メンテナンスのお申し込み</h2>
+        <p class="subtitle" style="margin-bottom:28px;">
+            BELORA Care Membership に加入されていない方は、こちらのフォームからお申し込みください。<br>
+            会員の方は <a href="https://care.belora.jp/repair" target="_blank" rel="noopener">会員サイト</a> からお申し込みいただけます。
+        </p>
+
+        <form
+            name="support-repair-nonmember"
+            onsubmit="handleRepairFormSubmit(event)"
+            action="https://script.google.com/macros/s/AKfycbwnubQQ9i1rPYAFI9wEVRLKWZ1f8eIPgjhRjTZM4K2F7C-B3RFwzyaNj938RHcyvc_O/exec"
+            class="form-container"
+        >
+            <div class="form-group">
+                <label class="form-label">対象製品 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                <div class="radio-group">
+                    <label class="check-label"><input type="radio" name="product" value="BELORA 4.0×（ルーペ本体）" required> BELORA 4.0×（ルーペ本体）</label>
+                    <label class="check-label"><input type="radio" name="product" value="LEDライト"> LEDライト</label>
+                    <label class="check-label"><input type="radio" name="product" value="ケース・付属品"> ケース・付属品</label>
+                    <label class="check-label"><input type="radio" name="product" value="その他・不明"> その他・不明</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">ご依頼内容（複数選択可）</label>
+                <div class="checkbox-group">
+                    <label class="check-label"><input type="checkbox" name="repair_type" value="メンテナンス（点検・光軸チェック・クリーニング）"> メンテナンス（点検・光軸チェック・クリーニング）</label>
+                    <label class="check-label"><input type="checkbox" name="repair_type" value="小部品交換（ネジ・ノーズパッド等）"> 小部品交換（ネジ・ノーズパッド等）</label>
+                    <label class="check-label"><input type="checkbox" name="repair_type" value="フレーム修理"> フレーム修理</label>
+                    <label class="check-label"><input type="checkbox" name="repair_type" value="鏡筒交換"> 鏡筒交換</label>
+                    <label class="check-label"><input type="checkbox" name="repair_type" value="内容がわからない・要相談"> 内容がわからない・要相談</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">シリアル番号（製品本体に記載）</label>
+                <input type="text" name="serial" class="form-input" placeholder="お分かりになる場合はご記入ください">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">ご購入時期</label>
+                <input type="text" name="purchased_at" class="form-input" placeholder="例：2026年5月">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">お名前 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                <input type="text" name="name" class="form-input" required placeholder="例：山田 太郎">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">医療機関名・ご所属</label>
+                <input type="text" name="clinic" class="form-input" placeholder="例：ベローラ歯科医院">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">メールアドレス <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                <input type="email" name="email" class="form-input" required placeholder="例：info@belora.jp">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">電話番号 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                <input type="tel" name="phone" class="form-input" required placeholder="例：03-0000-0000">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">症状・ご希望内容 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
+                <textarea name="detail" class="form-input" rows="5" required placeholder="例：右側の鏡筒の見え方がぼやける／フレームのつるが変形した　など、お気づきの状態をご記入ください。"></textarea>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 24px;">
+                <div class="notice-box" style="margin: 0; padding: 12px 16px; font-size: 0.85rem; background: transparent; border: 1px solid rgba(255,255,255,0.1);">
+                    非会員の方の修理・メンテナンスは有償対応となります。内容を確認のうえお見積りをご案内し、ご承諾後に着手いたします。価格は <a href="/membership/" style="color: var(--accent); text-decoration: underline;">修理価格表</a>、保証の範囲は <a href="/support/warranty/" style="color: var(--accent); text-decoration: underline;">保証規約</a> をご確認ください。<br>
+                    お客様から収集する個人情報は、当社が定める<a href="/privacy/" style="color: var(--accent); text-decoration: underline;">個人情報保護方針（プライバシーポリシー）</a>に則って厳重に管理いたします。
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">送信する</button>
+        </form>
+    </section>
+
 </div>
 
 <footer class="global-footer">
@@ -215,6 +299,7 @@
 </footer>
 
 <script src="/assets/main.js"></script>
+<script src="/assets/repair-form.js"></script>
 
 </body>
 </html>
