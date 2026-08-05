@@ -347,6 +347,13 @@
         max-width:760px;
     }
 
+    /* 本文中の強調。.detail-text strong などと同じ流儀で、
+       muted から本文色に上げて太字にする。 */
+    .subtitle strong{
+        color:var(--text);
+        font-weight:bold;
+    }
+
     .hero-section{
         position:relative;
         min-height:100vh;
