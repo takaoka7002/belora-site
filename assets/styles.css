@@ -793,6 +793,20 @@
         border-radius: 20px;
     }
 
+    /* 品目カテゴリのラベル（例：アクセサリー） */
+    .category-badge {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 6px 14px;
+        background: var(--accent-soft);
+        border: 1px solid rgba(86, 81, 184, 0.3);
+        color: var(--accent);
+        font-size: 0.75rem;
+        font-weight: bold;
+        letter-spacing: 0.15em;
+        border-radius: 20px;
+    }
+
     /* ロック状態のボタン */
     .lens-circle.locked {
         cursor: not-allowed;
