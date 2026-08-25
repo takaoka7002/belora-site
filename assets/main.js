@@ -84,63 +84,6 @@
       }
     }
 
-    // モバイル：ハンバーガーメニュー
-    // ボタンはJSで生成する。JSが動かない環境では従来どおり横並びナビが表示される
-    (function setupMobileNav() {
-      var nav = document.querySelector('nav');
-      if (!nav || document.querySelector('.nav-toggle')) return;
-
-      if (!nav.id) nav.id = 'global-nav';
-
-      var btn = document.createElement('button');
-      btn.className = 'nav-toggle';
-      btn.type = 'button';
-      btn.setAttribute('aria-label', 'メニューを開く');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.setAttribute('aria-controls', nav.id);
-      btn.innerHTML = '<span class="nav-toggle-bar"></span>' +
-                      '<span class="nav-toggle-bar"></span>' +
-                      '<span class="nav-toggle-bar"></span>';
-      document.body.appendChild(btn);
-      document.body.classList.add('has-mobile-nav');
-
-      function closeNav() {
-        if (!document.body.classList.contains('nav-open')) return;
-        document.body.classList.remove('nav-open');
-        btn.setAttribute('aria-expanded', 'false');
-        btn.setAttribute('aria-label', 'メニューを開く');
-      }
-
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var open = document.body.classList.toggle('nav-open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
-      });
-
-      // リンクを押したら閉じる
-      var links = nav.querySelectorAll('a');
-      for (var i = 0; i < links.length; i++) {
-        links[i].addEventListener('click', closeNav);
-      }
-
-      // Escape キーで閉じる
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' || e.keyCode === 27) closeNav();
-      });
-
-      // メニュー外をタップしたら閉じる
-      document.addEventListener('click', function (e) {
-        if (nav.contains(e.target) || btn.contains(e.target)) return;
-        closeNav();
-      });
-
-      // デスクトップ幅に戻ったら閉じる
-      window.addEventListener('resize', function () {
-        if (window.innerWidth > 980) closeNav();
-      });
-    })();
-
     // モバイル：下にスクロール時にナビ＆ロゴを隠す（上にスクロール時に再表示）
     // ※CSSのメディアクエリで効果はモバイルのみ。デスクトップではclass付与しても見た目変わらない
     var lastScroll = 0;
@@ -150,11 +93,6 @@
       if (ticking) return;
       window.requestAnimationFrame(function () {
         var current = window.scrollY || window.pageYOffset;
-        if (document.body.classList.contains('nav-open')) {
-          lastScroll = current;
-          ticking = false;
-          return;
-        }
         if (current > lastScroll && current > threshold) {
           document.body.classList.add('nav-hidden');
         } else if (current < lastScroll - 5 || current <= threshold) {
