@@ -3082,3 +3082,13 @@ nav a {
 @media (max-width: 850px){
     .product-slider .slider-arrow{ width: 34px; height: 34px; font-size: 1.2rem; }
 }
+
+
+/* 準備中のボタン（クリックさせない） */
+.btn-solid.locked,
+.btn-outline.locked{
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+    user-select: none;
+}
