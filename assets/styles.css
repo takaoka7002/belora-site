@@ -292,6 +292,96 @@
         body.nav-hidden::after {
             transform: translateY(-100%);
         }
+        /* ハンバーガーボタンもスクロール時に隠す */
+        body.nav-hidden .nav-toggle {
+            transform: translateY(-200%);
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
+    /* ===== モバイル：ハンバーガーメニュー =====
+       ボタンは main.js が生成し、body に .has-mobile-nav を付与する。
+       JSが動かない環境では従来どおり横並びのナビが表示される（フォールバック）。 */
+    .nav-toggle { display: none; }
+
+    @media (max-width: 980px) {
+        /* ナビが折りたたまれるぶん、ヘッダー帯を 108px → 64px に縮める */
+        body.has-mobile-nav::after { height: 64px; }
+        body.has-mobile-nav .site-logo { top: 15px; left: 16px; }
+        body.has-mobile-nav .article-container { padding-top: 64px; }
+
+        body.has-mobile-nav .nav-toggle {
+            display: flex;
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            z-index: 101;
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            border: 0;
+            border-radius: 4px;
+            background: transparent;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            transition: transform 0.35s ease, opacity 0.35s ease;
+        }
+        .nav-toggle:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+        }
+        .nav-toggle-bar {
+            display: block;
+            width: 20px;
+            height: 1.5px;
+            background: #fff;
+            transition: transform 0.3s ease, opacity 0.25s ease;
+        }
+        body.nav-open .nav-toggle-bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        body.nav-open .nav-toggle-bar:nth-child(2) { opacity: 0; }
+        body.nav-open .nav-toggle-bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+        body.has-mobile-nav nav {
+            top: 64px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            max-height: 0;
+            overflow: hidden;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
+            gap: 0;
+            padding: 0;
+            background: #050508;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: max-height 0.38s cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: 99;
+        }
+        body.has-mobile-nav.nav-open nav {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        body.has-mobile-nav nav a {
+            display: block;
+            padding: 15px 22px;
+            font-size: 0.82rem;
+            letter-spacing: 0.12em;
+            white-space: nowrap;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        body.has-mobile-nav nav a:last-child { border-bottom: 0; }
+        body.has-mobile-nav nav a::after { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .nav-toggle, .nav-toggle-bar, body.has-mobile-nav nav { transition: none; }
     }
 
     .content-block{
