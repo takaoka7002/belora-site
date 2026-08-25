@@ -181,7 +181,7 @@
         z-index:100;
         width:242px;
         height:42px;
-        background:url(/assets/brand-lockup-white.png) no-repeat left center / contain;
+        background:url(/assets/brand-lockup-white.webp) no-repeat left center / contain;
         text-decoration:none;
         cursor:pointer;
         font-size:0;          /* DOM上のBELORAテキストは残しつつ視覚的に非表示 */
@@ -1791,7 +1791,7 @@ nav a {
 .section-dark.hero-section .hero-bg-image {
     background:
         linear-gradient(to right, #050508 0%, rgba(5,5,8,0.6) 40%, rgba(5,5,8,0.15) 80%, transparent 100%),
-        url("/assets/hero_top.png") center / cover no-repeat;
+        url("/assets/hero_top.webp") center / cover no-repeat;
 }
 @media (max-width: 850px){
     /* モバイル: 縦長専用画像 hero_top_mobile.png を使用 (941x1672、ポートレート)
@@ -1808,7 +1808,7 @@ nav a {
                 rgba(5,5,8,0.08) 85%,
                 transparent 100%),
             /* 縦長ループ画像 */
-            url("/assets/hero_top_mobile.png?v=20260530u") center / cover no-repeat,
+            url("/assets/hero_top_mobile.webp?v=20260530u") center / cover no-repeat,
             #050508;
     }
 }
