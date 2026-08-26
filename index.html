@@ -120,7 +120,9 @@
         /* ===== Instagram 公式埋め込み（カルーセル） ===== */
         .ig-layout {
             max-width: 1000px; margin: 44px auto 0; text-align: left;
-            display: grid; grid-template-columns: 1fr 540px; gap: 56px; align-items: center;
+            /* 1fr は minmax(auto,1fr) と同義で、中身の min-content より小さくならない。
+               minmax(0,1fr) にしないと埋め込みの最小幅で列が広がり、文書全体が横に伸びる */
+            display: grid; grid-template-columns: minmax(0, 1fr) 540px; gap: 56px; align-items: center;
         }
         .ig-intro { max-width: 360px; }
         .ig-lead {
@@ -137,13 +139,17 @@
         .ig-carousel { position: relative; width: 100%; max-width: 540px; margin: 0 auto; }
         .ig-track {
             position: relative;
+            width: 100%; max-width: 100%;
             display: flex; overflow-x: auto;
             scroll-snap-type: x mandatory; scroll-behavior: smooth;
             -ms-overflow-style: none; scrollbar-width: none;
         }
         .ig-track::-webkit-scrollbar { display: none; }
         .ig-slide {
-            flex: 0 0 100%; scroll-snap-align: center;
+            /* min-width:0 が無いと、flexアイテムの自動最小サイズ（min-content）で
+               スライドが中身の幅まで広がり、埋め込みJSが走るまで文書全体が横に伸びる */
+            flex: 0 0 100%; min-width: 0; max-width: 100%;
+            scroll-snap-align: center;
             display: flex; justify-content: center; padding: 4px; box-sizing: border-box;
         }
         /* 埋め込みiframeを画面幅に追従させ、スマホで見切れないようにする */
@@ -178,7 +184,7 @@
 
         @media (max-width: 900px) {
             .ig-layout {
-                grid-template-columns: 1fr; gap: 30px; justify-items: center; text-align: center;
+                grid-template-columns: minmax(0, 1fr); gap: 30px; justify-items: center; text-align: center;
             }
             .ig-intro { max-width: 540px; }
             .ig-carousel { max-width: 100%; }
