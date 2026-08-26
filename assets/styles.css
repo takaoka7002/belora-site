@@ -262,11 +262,12 @@
     nav button.active-nav::after, nav a.active-nav::after {width:100%;}
 
     @media (max-width: 980px){
+        /* ナビはハンバーガーに折りたたむため、帯は64pxで固定 */
         body::after{
-            height:108px;
+            height:64px;
         }
         .site-logo{
-            top:11px;
+            top:15px;
             left:16px;
             width:196px;
             height:34px;
@@ -327,17 +328,13 @@
     }
 
     /* ===== モバイル：ハンバーガーメニュー =====
-       ボタンは main.js が生成し、body に .has-mobile-nav を付与する。
-       JSが動かない環境では従来どおり横並びのナビが表示される（フォールバック）。 */
+       折りたたんだ状態をCSSの初期値にしている。JSでクラスを付けて切り替える方式だと、
+       JS実行前に旧レイアウトが一瞬描画されて画面が飛ぶため。
+       ボタン自体は main.js が生成するが position:fixed なのでレイアウトは動かない。 */
     .nav-toggle { display: none; }
 
     @media (max-width: 980px) {
-        /* ナビが折りたたまれるぶん、ヘッダー帯を 108px → 64px に縮める */
-        body.has-mobile-nav::after { height: 64px; }
-        body.has-mobile-nav .site-logo { top: 15px; left: 16px; }
-        body.has-mobile-nav .article-container { padding-top: 64px; }
-
-        body.has-mobile-nav .nav-toggle {
+        .nav-toggle {
             display: flex;
             position: fixed;
             top: 12px;
@@ -371,7 +368,7 @@
         body.nav-open .nav-toggle-bar:nth-child(2) { opacity: 0; }
         body.nav-open .nav-toggle-bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-        body.has-mobile-nav nav {
+        nav {
             top: 64px;
             left: 0;
             right: 0;
@@ -390,11 +387,11 @@
             transition: max-height 0.38s cubic-bezier(0.165, 0.84, 0.44, 1);
             z-index: 99;
         }
-        body.has-mobile-nav.nav-open nav {
+        body.nav-open nav {
             max-height: 70vh;
             overflow-y: auto;
         }
-        body.has-mobile-nav nav a {
+        nav a {
             display: block;
             padding: 15px 22px;
             font-size: 0.82rem;
@@ -402,12 +399,12 @@
             white-space: nowrap;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
-        body.has-mobile-nav nav a:last-child { border-bottom: 0; }
-        body.has-mobile-nav nav a::after { display: none; }
+        nav a:last-child { border-bottom: 0; }
+        nav a::after { display: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-        .nav-toggle, .nav-toggle-bar, body.has-mobile-nav nav { transition: none; }
+        .nav-toggle, .nav-toggle-bar, nav { transition: none; }
     }
 
     .content-block{
@@ -1470,7 +1467,7 @@ nav a {
 }
 /* ヘッダー帯はモバイルで 108px になるため、記事側も合わせる */
 @media (max-width: 980px) {
-    .article-container { padding-top: 108px; }
+    .article-container { padding-top: 64px; }
     .article-header { padding-top: 32px; }
 }
 .article-eyebrow {

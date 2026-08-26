@@ -102,7 +102,6 @@
                       '<span class="nav-toggle-bar"></span>' +
                       '<span class="nav-toggle-bar"></span>';
       document.body.appendChild(btn);
-      document.body.classList.add('has-mobile-nav');
 
       function closeNav() {
         if (!document.body.classList.contains('nav-open')) return;
