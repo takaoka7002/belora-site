@@ -65,6 +65,18 @@
     </script>
 
     <link rel="stylesheet" href="/assets/styles.css?v=20260602d">
+    <style>
+      /* ハニーポット：画面外に出して人には見えないようにする。
+         display:none を避けるボットがいるため、位置で隠す */
+      .hp-wrap {
+        position: absolute !important;
+        left: -9999px !important;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+    </style>
 </head>
 <body>
 
@@ -120,6 +132,10 @@
             >
                 <input type="hidden" name="form-name" value="contact-individual">
                 <input type="hidden" name="ref" value="">
+                <!-- ボット対策のハニーポット。人には見えない。入力があれば自動投稿とみなす -->
+                <div class="hp-wrap" aria-hidden="true">
+                    <label>ご担当者のWebサイト<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
+                </div>
 
                 <div class="form-group">
                     <label class="form-label">お問い合わせ内容 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>
@@ -180,6 +196,10 @@
             >
                 <input type="hidden" name="form-name" value="contact-corporate">
                 <input type="hidden" name="ref" value="">
+                <!-- ボット対策のハニーポット。人には見えない。入力があれば自動投稿とみなす -->
+                <div class="hp-wrap" aria-hidden="true">
+                    <label>ご担当者のWebサイト<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
+                </div>
 
                 <div class="form-group">
                     <label class="form-label">お問い合わせ内容 <span style="color:var(--accent); font-size:.8rem;">*必須</span></label>

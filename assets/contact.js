@@ -57,6 +57,21 @@
       }
     }
 
+    // ボット対策
+    // (1) ハニーポットに入力があれば送信しない（人には見えない欄のため）
+    if ((data.get('company_website') || '').trim() !== '') {
+      window.location.href = '/thank-you.html';
+      return;
+    }
+    // (2) 送信時刻とトークンを添える。
+    //     静的HTMLだけを読んでGASへ直接POSTするボットはこの値を作れない。
+    //     GAS側で form_token が base64('belora:' + form_ts) と一致するかを検証する。
+    var nowTs = Date.now();
+    data.set('form_ts', String(nowTs));
+    try {
+      data.set('form_token', btoa('belora:' + nowTs));
+    } catch (e) { /* silent */ }
+
     // diagnostic: 開発者ツールConsoleで実送信内容を確認できる
     try { console.log('[Belora contact] payload:', Object.fromEntries(data)); } catch (e) {}
 
