@@ -9,6 +9,9 @@
 (function () {
   'use strict';
 
+  // ページを開いた時刻。入力にかかった時間の測定に使う（同じ端末の時計どうしで比較する）
+  var beloraPageLoadedAt = Date.now();
+
   // 入口の「非会員の方」ボタンでフォームを表示する。
   // 表示制御は .contact-form-wrapper / .active（お問合せページと共用のCSS）を流用。
   window.showRepairForm = function () {
@@ -59,6 +62,19 @@
     data.append('email', one('email'));
     data.append('phone', one('phone'));
     data.append('message', body);
+
+    // ボット対策。お問合せフォーム（assets/contact.js）と同じ値をGASへ渡す。
+    // これが無いとGAS側が自動投稿と判定し、通知メールも自動返信も送られない。
+    if ((formData.get('company_website') || '').toString().trim() !== '') {
+      window.location.href = '/thank-you.html';
+      return;
+    }
+    var nowTs = Date.now();
+    data.append('form_ts', String(nowTs));
+    try {
+      data.append('form_token', btoa('belora:' + nowTs));
+    } catch (e) { /* silent */ }
+    data.append('form_elapsed', String(nowTs - beloraPageLoadedAt));
 
     try { console.log('[Belora repair] payload:', Object.fromEntries(data)); } catch (e) {}
 

@@ -5,6 +5,9 @@
 (function () {
   'use strict';
 
+  // ページを開いた時刻。入力にかかった時間の測定に使う（同じ端末の時計どうしで比較する）
+  var beloraPageLoadedAt = Date.now();
+
   // URLパラメータ ?ref=xxx を全フォームの hidden input[name="ref"] に反映
   // 説明会・キャンペーン別流入元の判別に使用（例: aguh2026 = 愛知学院大学歯学部付属病院 研修医説明会）
   try {
@@ -71,6 +74,10 @@
     try {
       data.set('form_token', btoa('belora:' + nowTs));
     } catch (e) { /* silent */ }
+    // (3) ページを開いてから送信するまでの秒数。必ずこちら側で測る。
+    //     GAS側がサーバ時計と form_ts を引き算すると常に0秒になり、
+    //     正規のお問合せまで「速すぎる＝自動入力」と誤判定される（2026-08-29の不具合）。
+    data.set('form_elapsed', String(nowTs - beloraPageLoadedAt));
 
     // diagnostic: 開発者ツールConsoleで実送信内容を確認できる
     try { console.log('[Belora contact] payload:', Object.fromEntries(data)); } catch (e) {}
