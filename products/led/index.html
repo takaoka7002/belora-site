@@ -131,6 +131,18 @@
       }
       @media (max-width:640px){ .led-hero__orb{ width:min(840px,150vw); height:min(840px,150vw); } }
 
+      /* ===== PRODUCT 実写 =====
+         写真の白（#fff）となじませるため、セクションごと白で body::before の
+         微細ノイズを覆う（4.0x ページの .product-4x-section と同じ手法） */
+      .led-product{ background:#ffffff; position:relative; z-index:1; }
+      .led-product__shot{ width:min(620px,86vw); margin:20px auto 0; }
+      .led-product__shot img{ width:100%; height:auto; display:block; }
+
+      /* ===== 配光の実写（ダーク背景に浮かぶスポット） ===== */
+      .led-beamshot{ width:min(520px,82vw); margin:-26px auto -14px; }
+      .led-beamshot img{ width:100%; height:auto; display:block; }
+      @media (max-width:640px){ .led-beamshot{ margin:-18px auto -10px; } }
+
       /* ===== FEATURES：エディトリアルなリスト型 ===== */
       .led-featlist{ max-width:780px; margin:50px auto 0; }
       .led-featrow{
@@ -250,6 +262,16 @@
         </div>
     </section>
 
+    <!-- ===== PRODUCT ===== -->
+    <section class="content-block led-product">
+        <div class="led-eyebrow" style="text-align:center;">Product</div>
+        <div class="led-product__shot">
+            <img src="/assets/product_light_set.webp?v=20260910"
+                 alt="BELORA LIGHT 一式 — ライトヘッド、バッテリーユニット、接続ケーブル"
+                 width="1100" height="1021" loading="lazy" decoding="async">
+        </div>
+    </section>
+
     <!-- ===== FEATURES ===== -->
     <section class="content-block" style="padding-top:40px;">
         <h2 class="title-gradient">FEATURES</h2>
@@ -329,7 +351,12 @@
     </section>
 
     <!-- ===== STATEMENT ===== -->
-    <section class="content-block section-dark" style="padding-top:80px; padding-bottom:80px;">
+    <section class="content-block section-dark" style="padding-top:64px; padding-bottom:80px;">
+        <div class="led-beamshot">
+            <img src="/assets/led-beam.webp?v=20260910"
+                 alt="BELORA LIGHT の照射イメージ — 中心から周辺までムラの少ない円形のスポット"
+                 width="900" height="900" loading="lazy" decoding="async">
+        </div>
         <div class="led-eyebrow" style="text-align:center; color:var(--dark-sub);">Precision Lighting</div>
         <h2 class="title-gradient" style="text-align:center;">視界を、もっとクリアに。</h2>
         <p class="led-lead" style="color:var(--dark-muted);">
