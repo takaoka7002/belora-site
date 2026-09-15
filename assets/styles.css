@@ -711,47 +711,96 @@
     }
 
     /* ▼▼▼ PRODUCTS page features grid (グラスモーフィズム適用) ▼▼▼ */
-    /* 3本柱。囲わず、細い罫で区切るだけにする。
-       トップでは名前と要点だけを見せ、詳細は製品ページに任せる */
-    .pillars {
-        max-width: 760px;
-        margin: 44px auto 0;
-        text-align: left;
-        border-top: 1px solid var(--line);
+    /* 「見えること」へ向かう3本柱。並列ではなく、3つが1つに集まる図。
+       光学が見せ、フレームがそれを保ち、サポートが失われた時間を戻す。 */
+    .seeing-map {
+        max-width: 860px;
+        margin: 48px auto 0;
     }
 
-    .pillar {
+    .seeing-row {
         display: grid;
-        grid-template-columns: 8.5rem 1fr;
-        gap: 0 28px;
-        align-items: baseline;
-        padding: 22px 4px;
-        border-bottom: 1px solid var(--line);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        text-align: center;
     }
 
-    .pillar dt {
-        margin: 0;
+    .seeing-label {
+        display: block;
         font-family: "Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
-        font-size: 1.12rem;
-        letter-spacing: .04em;
+        font-size: 1.18rem;
+        letter-spacing: .06em;
         color: var(--text);
+        margin-bottom: 12px;
     }
 
-    .pillar dd {
+    .seeing-node p {
         margin: 0;
         color: var(--muted);
-        font-size: 1rem;
-        line-height: 1.85;
+        font-size: 0.98rem;
+        line-height: 1.8;
+    }
+
+    .seeing-node small {
+        display: block;
+        margin-top: 8px;
+        font-size: 0.82rem;
+        color: var(--sub);
+    }
+
+    /* 3本を1本に束ねる罫 */
+    .seeing-join {
+        position: relative;
+        height: 74px;
+        margin-top: 26px;
+    }
+
+    .seeing-join::before,
+    .seeing-join::after,
+    .seeing-join span {
+        content: "";
+        position: absolute;
+        background: var(--line-strong);
+    }
+
+    .seeing-join::before { left: 16.6667%; top: 0; width: 1px; height: 24px; }
+    .seeing-join::after  { left: 83.3333%; top: 0; width: 1px; height: 24px; }
+    .seeing-join .stub   { left: 50%; top: 0; width: 1px; height: 24px; }
+    .seeing-join .bar    { left: 16.6667%; right: 16.6667%; top: 24px; height: 1px; }
+    .seeing-join .drop   { left: 50%; top: 24px; width: 1px; height: 38px; }
+
+    .seeing-join .tip {
+        left: 50%;
+        top: 62px;
+        width: 0; height: 0;
+        background: none;
+        transform: translateX(-4px);
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 7px solid var(--line-strong);
+    }
+
+    .seeing-goal {
+        margin: 22px 0 0;
+        text-align: center;
+        font-family: "Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
+        font-size: clamp(1.6rem, 4vw, 2.3rem);
+        letter-spacing: .1em;
     }
 
     @media (max-width: 680px) {
-        .pillar {
+        .seeing-row {
             grid-template-columns: 1fr;
-            gap: 6px;
-            padding: 18px 2px;
+            gap: 30px;
         }
-        .pillar dt { font-size: 1.05rem; }
-        .pillar dd { font-size: 0.95rem; }
+        /* 縦積みでは束ねる罫は成立しないので、1本の縦線だけにする */
+        .seeing-join { height: 52px; margin-top: 20px; }
+        .seeing-join::before,
+        .seeing-join::after,
+        .seeing-join .bar { display: none; }
+        .seeing-join .stub { left: 50%; top: 0; height: 40px; }
+        .seeing-join .drop { display: none; }
+        .seeing-join .tip { top: 40px; }
     }
 
     .feature-grid-wrapper {
