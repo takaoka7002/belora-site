@@ -603,21 +603,38 @@
         background:var(--text);
     }
 
+    /* スマホは文字を写真に重ねない。
+       重ねると鏡筒の明るい部分に見出しが乗って、写真も文字も損をする。
+       写真は上、文字は下。それぞれに専用の場所を与える。 */
     @media (max-width:850px){
+        .hero-section{
+            display:block;
+            min-height:0;
+        }
         .hero-bg-image{
+            position:relative;
+            inset:auto;
             width:100%;
+            height:46vh;
+            min-height:280px;
+            max-height:420px;
             background:linear-gradient(to top,var(--bg) 10%,rgba(255,255,255,0.5) 62%);
         }
         .hero-content{
-            display:flex;
-            flex-direction:column;
-            justify-content:flex-end;
-            min-height:82vh;
-            padding-bottom:52px;
+            display:block;
+            min-height:0;
+            padding:32px 7% 64px;
+            text-align:center;
         }
-        .hero-eyebrow{text-align:center;}
+        .hero-eyebrow{margin-bottom:14px;}
         .hero-title{text-align:center;}
-        .hero-copy{text-align:center; margin-left:auto; margin-right:auto;}
+        .hero-copy{
+            margin-left:auto;
+            margin-right:auto;
+            text-align:left;
+            font-size:1rem;
+            line-height:1.95;
+        }
         .hero-buttons{justify-content:center;}
     }
 
@@ -2065,17 +2082,14 @@ nav a {
        cover でほぼ等比でフィット → 横方向の極端なクロップが発生しない */
     .section-dark.hero-section .hero-bg-image {
         background:
-            /* 下部の暗部 (テキスト保護) */
+            /* 文字は重ねないので、保護用の暗部は不要。
+               下端だけ地色へ溶かして、文字の帯へ自然につなぐ */
             linear-gradient(to top,
                 #050508 0%,
-                #050508 22%,
-                rgba(5,5,8,0.78) 38%,
-                rgba(5,5,8,0.50) 52%,
-                rgba(5,5,8,0.25) 68%,
-                rgba(5,5,8,0.08) 85%,
-                transparent 100%),
-            /* 縦長ループ画像 */
-            url("/assets/hero_top_mobile.webp?v=20260530u") center / cover no-repeat,
+                rgba(5,5,8,0.55) 12%,
+                transparent 30%),
+            /* 縦長ループ画像。製品が入る高さで見せる */
+            url("/assets/hero_top_mobile.webp?v=20260530u") center 38% / cover no-repeat,
             #050508;
     }
 }
