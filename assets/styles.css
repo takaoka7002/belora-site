@@ -711,24 +711,25 @@
     }
 
     /* ▼▼▼ PRODUCTS page features grid (グラスモーフィズム適用) ▼▼▼ */
-    /* 「見えること」へ向かう3本柱。並列ではなく、3つが1つに集まる図。
-       光学が見せ、フレームがそれを保ち、サポートが失われた時間を戻す。 */
+    /* 「見える」へ向かう4本柱。並列ではなく、4つが1つに集まる図。
+       光学が見せ、照明が色を届け、フレームがそれを保ち、
+       サポートが失われた時間を戻す。 */
     .seeing-map {
-        max-width: 860px;
+        max-width: 1000px;
         margin: 48px auto 0;
     }
 
     .seeing-row {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
         text-align: center;
     }
 
     .seeing-label {
         display: block;
         font-family: "Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
-        font-size: 1.18rem;
+        font-size: 1.14rem;
         letter-spacing: .06em;
         color: var(--text);
         margin-bottom: 12px;
@@ -737,30 +738,28 @@
     .seeing-node p {
         margin: 0;
         color: var(--muted);
-        font-size: 0.98rem;
+        font-size: 0.95rem;
         line-height: 1.8;
     }
 
-    /* 3本を1本に束ねる罫 */
+    /* 4本を1本に束ねる罫 */
     .seeing-join {
         position: relative;
         height: 74px;
         margin-top: 26px;
     }
 
-    .seeing-join::before,
-    .seeing-join::after,
     .seeing-join span {
-        content: "";
         position: absolute;
         background: var(--line-strong);
     }
 
-    .seeing-join::before { left: 16.6667%; top: 0; width: 1px; height: 24px; }
-    .seeing-join::after  { left: 83.3333%; top: 0; width: 1px; height: 24px; }
-    .seeing-join .stub   { left: 50%; top: 0; width: 1px; height: 24px; }
-    .seeing-join .bar    { left: 16.6667%; right: 16.6667%; top: 24px; height: 1px; }
-    .seeing-join .drop   { left: 50%; top: 24px; width: 1px; height: 38px; }
+    .seeing-join .s1 { left: 12.5%; top: 0; width: 1px; height: 24px; }
+    .seeing-join .s2 { left: 37.5%; top: 0; width: 1px; height: 24px; }
+    .seeing-join .s3 { left: 62.5%; top: 0; width: 1px; height: 24px; }
+    .seeing-join .s4 { left: 87.5%; top: 0; width: 1px; height: 24px; }
+    .seeing-join .bar { left: 12.5%; right: 12.5%; top: 24px; height: 1px; }
+    .seeing-join .drop { left: 50%; top: 24px; width: 1px; height: 38px; }
 
     .seeing-join .tip {
         left: 50%;
@@ -781,19 +780,25 @@
         letter-spacing: .1em;
     }
 
-    @media (max-width: 680px) {
+    /* 4列は狭いと潰れるので、早めに縦積みへ切り替える */
+    @media (max-width: 900px) {
         .seeing-row {
             grid-template-columns: 1fr;
-            gap: 30px;
+            gap: 28px;
         }
-        /* 縦積みでは束ねる罫は成立しないので、1本の縦線だけにする */
         .seeing-join { height: 52px; margin-top: 20px; }
-        .seeing-join::before,
-        .seeing-join::after,
-        .seeing-join .bar { display: none; }
-        .seeing-join .stub { left: 50%; top: 0; height: 40px; }
+        .seeing-join .s2,
+        .seeing-join .s3,
+        .seeing-join .s4,
+        .seeing-join .bar,
         .seeing-join .drop { display: none; }
+        .seeing-join .s1 { left: 50%; top: 0; height: 40px; }
         .seeing-join .tip { top: 40px; }
+    }
+
+    @media (max-width: 680px) {
+        .seeing-label { font-size: 1.05rem; }
+        .seeing-node p { font-size: 0.93rem; }
     }
 
     .feature-grid-wrapper {
