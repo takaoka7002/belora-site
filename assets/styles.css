@@ -715,14 +715,14 @@
        光学が見せ、照明が色を届け、フレームがそれを保ち、
        サポートが失われた時間を戻す。 */
     .seeing-map {
-        max-width: 1000px;
+        max-width: 1140px;
         margin: 48px auto 0;
     }
 
     .seeing-row {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 22px;
+        gap: 20px;
         text-align: center;
     }
 
@@ -738,7 +738,7 @@
     .seeing-node p {
         margin: 0;
         color: var(--muted);
-        font-size: 0.95rem;
+        font-size: 0.92rem;
         line-height: 1.8;
     }
 
@@ -780,8 +780,9 @@
         letter-spacing: .1em;
     }
 
-    /* 4列は狭いと潰れるので、早めに縦積みへ切り替える */
-    @media (max-width: 900px) {
+    /* 4列は「ガラス製のレンズ5枚とプリズム2個。」が1行に収まる幅があるときだけ。
+       1列あたり約265px必要なので、それを割る幅では縦積みにする */
+    @media (max-width: 1220px) {
         .seeing-row {
             grid-template-columns: 1fr;
             gap: 28px;
