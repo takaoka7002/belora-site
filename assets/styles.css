@@ -895,51 +895,6 @@
         margin: 0;
     }
 
-    /* 説明図。線は細く、塗りは薄く。文字はページ本文と同じ書体で */
-    .diagram {
-        margin: 44px auto;
-        max-width: 720px;
-    }
-
-    .diagram svg {
-        display: block;
-        width: 100%;
-        height: auto;
-        overflow: visible;
-    }
-
-    .diagram .dg-axis   { stroke: var(--line-strong); stroke-width: 1; fill: none; stroke-dasharray: 5 5; }
-    .diagram .dg-rule   { stroke: var(--line-strong); stroke-width: 1; fill: none; }
-    .diagram .dg-glass  { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.3; }
-    .diagram .dg-ray    { stroke: var(--accent); stroke-width: 1; fill: none; stroke-dasharray: 4 4; opacity: .7; }
-    .diagram .dg-solid  { stroke: var(--accent); stroke-width: 1.4; fill: none; }
-    .diagram .dg-label  { fill: var(--sub); font-size: 13px; letter-spacing: .04em; }
-    .diagram .dg-value  { fill: var(--text); font-size: 15px; font-weight: 600; letter-spacing: .02em; }
-
-    .diagram figcaption {
-        margin-top: 16px;
-        text-align: center;
-        font-size: 0.84rem;
-        color: var(--sub);
-        line-height: 1.7;
-    }
-
-    /* 図は viewBox ごと縮むため、狭い画面では文字が読めなくなる。
-       縮めずに横スクロールさせて、級数を保つ */
-    @media (max-width: 720px) {
-        .diagram {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        .diagram svg {
-            min-width: 620px;
-        }
-        .diagram figcaption {
-            min-width: 620px;
-            text-align: left;
-        }
-    }
-
     /* カード下部の数値行。散文と分けて、拾い読みできるようにする */
     .feature-spec {
         margin: 18px 0 0;
