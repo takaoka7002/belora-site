@@ -724,6 +724,12 @@
         margin-top: 50px;
     }
 
+    /* 3点を並べるとき。2列だと1枚あまるので3列にする */
+    .feature-grid.cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
     .feature-card {
         background: rgba(255, 255, 255, 0.7);
         backdrop-filter: blur(12px);
@@ -783,7 +789,8 @@
     }
 
     @media (max-width: 850px) {
-        .feature-grid {
+        .feature-grid,
+        .feature-grid.cols-3 {
             grid-template-columns: 1fr;
             gap: 20px;
         }
