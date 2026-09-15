@@ -729,10 +729,20 @@
     .seeing-label {
         display: block;
         font-family: "Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
-        font-size: 1.14rem;
-        letter-spacing: .06em;
+        font-size: 1.3rem;
+        letter-spacing: .08em;
         color: var(--text);
-        margin-bottom: 12px;
+        margin-bottom: 14px;
+    }
+
+    /* 項目名の上に短い罫を置いて、見出しであることを示す */
+    .seeing-label::before {
+        content: "";
+        display: block;
+        width: 26px;
+        height: 2px;
+        margin: 0 auto 12px;
+        background: var(--accent);
     }
 
     .seeing-node p {
@@ -783,10 +793,21 @@
     /* 4列は「ガラス製のレンズ5枚とプリズム2個。」が1行に収まる幅があるときだけ。
        1列あたり約265px必要なので、それを割る幅では縦積みにする */
     @media (max-width: 1220px) {
+        .seeing-map { max-width: 560px; }
+
         .seeing-row {
             grid-template-columns: 1fr;
-            gap: 28px;
+            gap: 0;
+            text-align: left;
         }
+
+        /* 縦に積むときは、罫で区切って一覧として読ませる */
+        .seeing-node { padding: 26px 0; }
+        .seeing-node + .seeing-node { border-top: 1px solid var(--line); }
+        .seeing-node:first-child { padding-top: 6px; }
+
+        .seeing-label::before { margin-left: 0; margin-right: 0; }
+        .seeing-label { font-size: 1.2rem; margin-bottom: 10px; }
         .seeing-join { height: 52px; margin-top: 20px; }
         .seeing-join .s2,
         .seeing-join .s3,
@@ -798,8 +819,9 @@
     }
 
     @media (max-width: 680px) {
-        .seeing-label { font-size: 1.05rem; }
-        .seeing-node p { font-size: 0.93rem; }
+        .seeing-label { font-size: 1.12rem; }
+        .seeing-node p { font-size: 0.95rem; line-height: 1.85; }
+        .seeing-node { padding: 22px 0; }
     }
 
     .feature-grid-wrapper {
