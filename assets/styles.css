@@ -741,13 +741,6 @@
         line-height: 1.8;
     }
 
-    .seeing-node small {
-        display: block;
-        margin-top: 8px;
-        font-size: 0.82rem;
-        color: var(--sub);
-    }
-
     /* 3本を1本に束ねる罫 */
     .seeing-join {
         position: relative;
