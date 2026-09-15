@@ -711,6 +711,49 @@
     }
 
     /* ▼▼▼ PRODUCTS page features grid (グラスモーフィズム適用) ▼▼▼ */
+    /* 3本柱。囲わず、細い罫で区切るだけにする。
+       トップでは名前と要点だけを見せ、詳細は製品ページに任せる */
+    .pillars {
+        max-width: 760px;
+        margin: 44px auto 0;
+        text-align: left;
+        border-top: 1px solid var(--line);
+    }
+
+    .pillar {
+        display: grid;
+        grid-template-columns: 8.5rem 1fr;
+        gap: 0 28px;
+        align-items: baseline;
+        padding: 22px 4px;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .pillar dt {
+        margin: 0;
+        font-family: "Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
+        font-size: 1.12rem;
+        letter-spacing: .04em;
+        color: var(--text);
+    }
+
+    .pillar dd {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.85;
+    }
+
+    @media (max-width: 680px) {
+        .pillar {
+            grid-template-columns: 1fr;
+            gap: 6px;
+            padding: 18px 2px;
+        }
+        .pillar dt { font-size: 1.05rem; }
+        .pillar dd { font-size: 0.95rem; }
+    }
+
     .feature-grid-wrapper {
         width: 100%;
         max-width: 1040px;
@@ -722,12 +765,6 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
         margin-top: 50px;
-    }
-
-    /* 3点を並べるとき。2列だと1枚あまるので3列にする */
-    .feature-grid.cols-3 {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
     }
 
     .feature-card {
@@ -789,8 +826,7 @@
     }
 
     @media (max-width: 850px) {
-        .feature-grid,
-        .feature-grid.cols-3 {
+        .feature-grid {
             grid-template-columns: 1fr;
             gap: 20px;
         }
