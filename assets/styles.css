@@ -3469,3 +3469,12 @@ nav a {
     line-height: 1.7;
     text-align: center;
 }
+/* 本文中の文脈リンク（記事以外のページ用） */
+a.text-link {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: opacity .3s ease;
+}
+a.text-link:hover { opacity: .7; }
