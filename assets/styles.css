@@ -3437,3 +3437,35 @@ nav a {
 .article-container .article-card {
     border-top: 3px solid var(--accent);
 }
+/* 記事末の黒いCTA（.section-dark）には上の見出し装飾を当てない */
+.article-container .section-dark h2 {
+    background: none;
+    padding: 0;
+    color: var(--text);
+}
+.article-container .section-dark h2::before,
+.article-container .section-dark h3::before {
+    content: none;
+}
+.article-container .section-dark strong {
+    background: none;
+}
+/* 記事中のイメージ図 */
+.article-fig {
+    margin: 32px 0 36px;
+    padding: 0;
+}
+.article-fig svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    background: #f6f5fc;
+}
+.article-fig figcaption {
+    margin-top: 10px;
+    color: var(--sub);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    text-align: center;
+}
