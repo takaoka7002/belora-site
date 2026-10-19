@@ -3356,3 +3356,84 @@ nav a {
     pointer-events: none;
     user-select: none;
 }
+
+/* ============================================================
+   ▼▼▼ コラム記事の配色（2026-10-19）▼▼▼
+   白黒だけで読みづらかったため、ブランドの紫(#5651b8)と
+   ロゴの赤紫(#b85581)で見出し・強調・表・囲みに色を付ける。
+   TOP・製品ページの .article-body には効かないよう .article-container で絞る。
+   ============================================================ */
+.article-container .article-header {
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg, #5651b8, #b85581) 1;
+}
+.article-container .article-body h2 {
+    position: relative;
+    padding: 14px 18px 14px 22px;
+    border-bottom: none;
+    border-radius: 4px;
+    background: linear-gradient(90deg, rgba(86, 81, 184, 0.10), rgba(184, 85, 129, 0.03));
+    color: #2e2a7a;
+}
+.article-container .article-body h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    border-radius: 4px 0 0 4px;
+    background: linear-gradient(180deg, #5651b8, #b85581);
+}
+.article-container .article-body h3 {
+    position: relative;
+    padding-left: 18px;
+    font-weight: bold;
+}
+.article-container .article-body h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: #b85581;
+}
+.article-container .article-body strong {
+    background: linear-gradient(transparent 62%, rgba(184, 85, 129, 0.18) 62%);
+}
+.article-container .article-body li::marker {
+    color: var(--accent);
+    font-weight: bold;
+}
+.article-container .article-toc {
+    background: var(--accent-soft);
+    border-color: rgba(86, 81, 184, 0.2);
+}
+.article-container .article-callout {
+    background: #f4f3fc;
+    border: none;
+    border-left: 4px solid var(--accent);
+    border-radius: 4px 8px 8px 4px;
+}
+.article-container .article-body blockquote {
+    border-left-color: #b85581;
+    background: rgba(184, 85, 129, 0.06);
+}
+.article-container .cmp-table thead th {
+    background: var(--accent);
+    color: #ffffff;
+    border-bottom: none;
+}
+.article-container .cmp-table tbody th {
+    color: var(--accent);
+    font-weight: bold;
+}
+.article-container .cmp-table tbody tr:nth-child(even) {
+    background: var(--bg-soft);
+}
+/* 一覧ページのカード：上辺に色帯 */
+.article-container .article-card {
+    border-top: 3px solid var(--accent);
+}
