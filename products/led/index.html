@@ -111,6 +111,25 @@
       .led-spec dt{ flex:0 0 34%; color:var(--sub); font-size:.9rem; letter-spacing:.06em; }
       .led-spec dd{ flex:1; margin:0; color:var(--text); font-size:.98rem; line-height:1.7; }
 
+      /* 電源（バッテリー必須）の図 */
+      .led-power{ max-width:680px; margin:44px auto 0; padding:28px 24px 24px; border-radius:14px; border:1px solid var(--line); background:#fff; }
+      .led-power__ttl{
+        font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝",serif;
+        font-size:clamp(1.12rem,2.4vw,1.3rem); letter-spacing:.04em; color:var(--text);
+        margin:0 0 18px; text-align:center; line-height:1.5;
+      }
+      .led-power img{ width:100%; height:auto; display:block; }
+      .led-power__warn{
+        margin:18px 0 0; padding:12px 18px; border-radius:10px; background:#fbeef1;
+        color:#a3233b; font-size:.92rem; line-height:1.85; text-align:center;
+      }
+      .led-power__note{ margin:12px 0 0; color:var(--muted); font-size:.86rem; line-height:1.9; text-align:center; }
+      .led-power__br{ display:none; }
+      @media (max-width:640px){
+        .led-power{ padding:22px 14px 18px; }
+        .led-power__br{ display:inline; }
+        .led-power picture img{ max-width:300px; margin:0 auto; }
+      }
       /* 非医療の明示バンド */
       .led-note{
         max-width:680px; margin:30px auto 0; padding:16px 20px; border-radius:8px;
@@ -419,6 +438,17 @@
             <dl><dt>コード長</dt><dd>約 100〜1,600 mm（ご注文時にご指定いただけます）</dd></dl>
             <dl><dt>組立</dt><dd>日本国内で組立</dd></dl>
             <dl><dt>一般的名称 / 医療機器届出番号</dt><dd>額帯灯（一般医療機器）／ 40B1X10003GE0254</dd></dl>
+        </div>
+
+        <div class="led-power">
+            <h3 class="led-power__ttl">点灯には、<br class="led-power__br">モバイルバッテリーが必要です。</h3>
+            <picture>
+                <source media="(max-width:640px)" srcset="/assets/led-power-diagram-sp.svg?v=20261020" width="400" height="480">
+                <img src="/assets/led-power-diagram.svg?v=20261020" width="880" height="225" loading="lazy" decoding="async"
+                     alt="モバイルバッテリーをUSB-Cケーブルでコントロールユニットにつなぐと、ライトヘッドが点灯します">
+            </picture>
+            <p class="led-power__warn">ライト本体に電池は入っていません。<br><strong>モバイルバッテリー（USB PD対応）をつながないと点灯しません。</strong></p>
+            <p class="led-power__note">指定電源は株式会社オウルテック製 <span style="white-space:nowrap;">OWL-LPB10025MG-BK</span> です（<a href="/products/options/" class="text-link">オプションパーツ</a>）。</p>
         </div>
 
     </section>
