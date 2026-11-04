@@ -453,6 +453,11 @@
         -webkit-text-fill-color:transparent;
     }
 
+    .hero-title--lines{
+        font-size:clamp(1.6rem,4vw,3.8rem);
+        line-height:1.4;
+    }
+
     .title-gradient{
         font-family:"Yu Mincho","YuMincho","Hiragino Mincho ProN","游明朝","Times New Roman",serif;
         background:linear-gradient(45deg,#5651b8,#1a1a2e,#b85581);
