@@ -50,6 +50,13 @@
       data.append(key, value);
     });
 
+    // お問い合わせ内容（チェックボックス）は複数選べるが、GASの e.parameter は
+    // 同じ名前の値を最初の1つしか受け取らない。ここで「、」区切りの1つにまとめて送る。
+    ['inquiry_type', 'corp_type'].forEach(function (key) {
+      var values = data.getAll(key);
+      if (values.length > 1) data.set(key, values.join('、'));
+    });
+
     // refをmessage先頭に注入してGAS側の改修なしで識別可能にする
     var refVal = data.get('ref');
     if (refVal) {
